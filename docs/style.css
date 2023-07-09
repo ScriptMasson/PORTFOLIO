@@ -1,0 +1,620 @@
+/* the ":root" CSS selector can be used to establish custom variables that will be used it this html file. */
+:root {
+  --bgColor: rgb(17, 0, 15);
+  --bgColorWhiter: rgb(102, 44, 95);
+}
+
+/* Styles for mobile */
+
+* {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {font-size: 10px;}
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bgColor);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-clip: border-box;
+  font-family: Verdana, sans-serif;
+  font-weight: bold;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+
+/*.flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexItem {
+  height: fit-content;
+  width: fit-content;
+}
+*/
+#navigationBar {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  position: relative;
+  top: 0%;
+  left: 0%;
+  gap: 0.5rem;
+  overflow: hidden;
+  transition: all 275ms ease-in;
+}
+
+#navigationBar:not(:hover) {
+  background-color: var(--bgColor);
+}
+#navigationBar:hover {
+  background-color: var(--bgColorWhiter);
+}
+.spanTwoRows { 
+  grid-row-start: span 2;
+  grid-row-end: auto;
+  height:auto;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#imgLogo {
+  object-fit: contain;
+  width: 5rem;
+  height: 5rem;
+}
+#navigationBar:not(:hover) h1 {
+  color: white;
+  transition: all 500ms ease-in;
+}
+#navigationBar:hover h1 {
+  color: var(--bgColor);
+  transition: all 500ms ease-in;
+}
+#headerJeremyMasson {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vw;
+  font-family: monospace;
+  font-weight: bold;
+}
+#headerDev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vw;
+  font-family: Verdana, sans-serif;
+  font-style: italic;
+}
+
+#areaForSkills {
+  width: 100vw;
+  height: 80vh;
+  display: block;
+  position: relative;
+  top: 0%;
+  left: 0%;
+  background-image: url("./bgRiviere_Mobile.png");
+  background-attachment: scroll;
+  background-position: center;
+  background-size: cover;
+  background-clip: border-box;
+  background-repeat: no-repeat;
+  padding-top: 8px;
+}
+.loadAnimated {
+  opacity: 0;
+  background-color: transparent;
+  color: transparent;
+  transition: all 1000ms ease-out;
+}
+#wrapperSkills {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(100, 100, 100, 0.55);
+  height: 20vh;
+  width: 100vw;
+  padding: 1vs;
+  gap: 1vw;
+  transition: all 500ms ease-out;
+  overflow: hidden;
+}
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 20vw;
+  height: 20vw;
+  overflow: hidden;
+  background-color: rgb(56, 56, 56);
+  box-shadow: 0 2vh rgba(0, 0, 0, 0.85);
+  margin-bottom: 2vh;
+  transition: all 1000ms ease-out;
+  border-radius: 25%;
+  border-style: inset;
+  border-width: 1vw;
+  font-size: 3vw;
+}
+.rectangle {
+  width: 90vw;
+  height: max-content;
+  position: absolute;
+  bottom: 10%;
+  left: -100dvw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 4px;
+  opacity: 0;
+  font-size: 3vh;
+}
+.show {
+  left: 0%;
+  opacity: 100;
+  transition: all 1000ms ease-out;
+}
+.rectangle span {
+  font-style: italic;
+}
+.rectangle a {
+  all: unset;
+  color: azure;
+  font-style: italic;
+  font-weight: bold;
+}
+.circleWhileShown {
+  transform: translateY(2vh);
+  height: 20vwvw;
+  box-shadow: none;
+  z-index: 1;
+  transition: all 750ms ease-out;
+}
+#purple {
+  border-color: #722d80;
+}
+#purple:hover {
+  background-color: #44164d;
+  transition: all 500ms ease-in-out;
+}
+#purpleRectangle {
+  background-color: #44164d;
+  transition: all 500ms ease-in-out;
+}
+#green {
+  border-color: #22692e;
+  font-size: 2vw;
+}
+#green:hover {
+  background-color: #17471f;
+  transition: all 500ms ease-out;
+}
+#greenRectangle {
+  background-color: #17471f;
+  transition: all 500ms ease-in-out;
+}
+#red {
+  border-color: #c75c5c;
+}
+#red:hover {
+  background-color: #700303;
+  transition: all 500ms ease-out;
+}
+#redRectangle {
+  background-color: #700303;
+  transition: all 500ms ease-in-out;
+}
+#turquoise {
+  border-color: #02685a;
+}
+#turquoise:hover {
+  background-color: #00b199;
+  transition: all 500ms ease-out;
+}
+#turquoiseRectangle {
+  background-color: #00b199;
+  transition: all 500ms ease-in-out;
+}
+
+#containerProfil {
+  display: flex;
+  gap: 1vw;
+  position: relative;
+  top: 0%;
+  width: 100vw;
+  height: 40vh;
+  background-color: white;
+  overflow: hidden hidden;
+  align-items: center;
+}
+#textMoi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 5vw;
+  padding: 1vw;
+  width: 40vw;
+  height: 20vh;
+  border: black solid 4px;
+  transition: all 1000ms ease-in-out;
+}
+#containerProfil img {object-fit: cover;}
+#imgMoi {
+ height: 30vh;
+}
+
+#preContainerPhotos {
+  display: flex;
+  gap: 1vw;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0%;
+  width: 100vw;
+  height: 10vh;
+  background-color: black;
+  overflow: hidden;
+}
+#textPhotos {
+  color: white;
+  font-size: 8vw;
+  font-style: oblique;
+}
+#imgAppareilPhoto {
+  width: 16vw;
+}
+
+
+#containerPhotos {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 3vw;
+  padding: 3vw;
+  position: relative;
+  top: 0%;
+  width: 100vw;
+  height: max-content;
+  overflow-x: auto;
+}
+.containedPhoto {
+  width: 90vw;
+  height: max-content;
+  border: white solid 4px;
+  transition: all 1000ms ease-in-out;
+  overflow: hidden;
+  
+}
+.containedPhoto img {
+  object-fit: cover;
+  width: 90vw;
+
+}
+.zeroOpacity {
+  opacity: 0%;
+}
+/* Fin de mobile */
+
+/* Styles pour desktop, min-width: 768px bcz we design MOBILE FIRST!!!!!!! */
+@media only screen and (min-width: 768px) {
+  * {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {font-size: 10px;}
+  body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bgColor);
+    background-size: cover;
+    background-position: center;
+    background-clip: border-box;
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .flexItem {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .spanTwoRows { 
+    position: absolute;
+    left: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #navigationBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 10vh;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    gap: 1vw;
+    overflow: hidden;
+    transition: all 275ms ease-in;
+  }
+  #navigationBar:not(:hover) {
+    background-color: var(--bgColor);
+  }
+  #navigationBar:hover {
+    background-color: var(--bgColorWhiter);
+  }
+
+  #imgLogo {
+    object-fit: contain;
+  }
+  #navigationBar:not(:hover) h1 {
+    color: white;
+    transition: all 500ms ease-in;
+  }
+  #navigationBar:hover h1 {
+    color: var(--bgColor);
+    transition: all 500ms ease-in;
+  }
+  #headerJeremyMasson {
+    font-size: 3vw;
+    font-family: monospace;
+    font-weight: bold;
+  }
+  #headerDev {
+    font-size: 2vw;
+    font-family: Verdana, sans-serif;
+    font-style: italic;
+  }
+
+  #areaForSkills {
+    width: 100vw;
+    height: 90vh;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-image: url("./bgChute3000x2000.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 1vh;
+  }
+  .loadAnimated {
+    opacity: 0;
+    background-color: transparent;
+    color: transparent;
+    transition: all 500ms ease-out;
+  }
+  #wrapperSkills {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(100, 100, 100, 0.55);
+    height: max-content;
+    width: 100vw;
+    padding: 8px;
+    gap: 1vw;
+    transition: all 500ms ease-out;
+    overflow: hidden;
+  }
+  .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 12vw;
+    height: 12vw;
+    overflow: hidden;
+    background-color: rgba(128, 128, 128, 0.5);
+    box-shadow: 0 2vh rgba(0, 0, 0, 0.85);
+    margin-bottom: 2vh;
+    transition: all 500ms ease-out;
+    border-radius: 100%;
+    border-style: inset;
+    border-width: 4px;
+    font-size: 1vw;
+  }
+  .rectangle {
+    width: 90vw;
+    height: max-content;
+    position: absolute;
+    bottom: 5vw;
+    left: -100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 4px;
+    opacity: 0;
+    font-size: 2vw;
+  }
+  .show {
+    left: 0%;
+    opacity: 100;
+    transition: all 1000ms ease-out;
+  }
+  .rectangle p {
+
+  }
+  .rectangle span {
+    font-style: italic;
+  }
+  .rectangle a {
+    all: unset;
+    color: azure;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .circleWhileShown {
+    transform: translateY(2vh);
+    height: 12vw;
+    box-shadow: none;
+    z-index: 1;
+    transition: all 750ms ease-out;
+  }
+  #purple {
+    border-color: #722d80;
+  }
+  #purple:hover {
+    background-color: #44164d;
+    transition: all 500ms ease-in-out;
+  }
+  #purpleRectangle {
+    background-color: #44164d;
+    transition: all 500ms ease-in-out;
+  }
+  #green {
+    font-size: 1vw;
+    border-color: #22692e;
+  }
+  #green:hover {
+    background-color: #17471f;
+    transition: all 500ms ease-out;
+  }
+  #greenRectangle {
+    background-color: #17471f;
+    transition: all 500ms ease-in-out;
+  }
+  #red {
+    border-color: #c75c5c;
+  }
+  #red:hover {
+    background-color: #700303;
+    transition: all 500ms ease-out;
+  }
+  #redRectangle {
+    background-color: #700303;
+    transition: all 500ms ease-in-out;
+  }
+  #turquoise {
+    border-color: #02685a;
+  }
+  #turquoise:hover {
+    background-color: #00b199;
+    transition: all 500ms ease-out;
+  }
+  #turquoiseRectangle {
+    background-color: #00b199;
+    transition: all 500ms ease-in-out;
+  }
+
+  #containerProfil {
+    position: relative;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    gap: 0.5rem;
+    width: 100vw;
+    height: 50vh;
+    padding: auto;
+    background-color: white;
+    overflow: hidden;
+  }
+  #textMoi {
+    position: absolute;
+    right: 25vw;
+    bottom: 5vh;
+    padding: 1vw;
+    width: 35vw;
+    height: 40vh;
+    border: black solid 4px;
+    transition: all 1000ms ease-in-out;
+  }
+  #imgMoi {
+    position: absolute;
+    bottom: 5vh;
+    right: 65vw;
+    width: 30vh;
+    height: 40vh;
+  }
+
+  #preContainerPhotos {
+    display: flex;
+    gap: 0.5in;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 10vh;
+    background-color: black;
+    overflow: hidden;
+  }
+  #textPhotos {
+    color: white;
+    font-size: 6vh;
+    font-style: oblique;
+    margin: 10px;
+  }
+  #imgAppareilPhoto {
+    object-fit: cover;
+    width: 8vh;
+    height: 8vh;
+  }
+
+  #containerPhotos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 3vw;
+    padding: 3vw;
+    position: relative;
+    top: 0%;
+    width: 100vw;
+    height: max-content;
+    overflow-x: auto;
+  }
+  .containedPhoto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    border: white solid 1vw;
+    transition: all 1000ms ease-in-out;
+    overflow: hidden;
+  }
+  .containedPhoto img {
+    object-fit: cover;
+  }
+
+  .zeroOpacity {
+    opacity: 0%;
+  }
+} /* Fin de desktop */
