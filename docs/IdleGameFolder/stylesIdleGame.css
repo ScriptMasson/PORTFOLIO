@@ -75,12 +75,14 @@ body {
   border-style: solid;
   border-width: 4px;
   border-color: white;
-  padding: 2px;
   box-sizing: border-box;
 }
 #levelUpExperienceBarFillingUp {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
   width: 0%;
-  height: 4, 5vh;
+  height: 5vh;
   background-color: white;
   box-sizing: border-box;
 }
@@ -120,10 +122,26 @@ body {
   box-sizing: border-box;
   font-size: 1rem;
 }
+#infoForExpGainContainer {
+  position: absolute;
+  bottom: 0vh;
+  right: 0vw;
+  height: 5vh;
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#infoForExpGain {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
 
 /* Monster Combat Area Styles For Mobile */
 
 #monsterCombatArea {
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
   top: 0vh;
   left: 0vw;
@@ -158,11 +176,18 @@ body {
   height: 23vh;
 
   display: flex;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-size: 2vh;
   border: 0.5vh solid white;
+}
+.monsterExpFontsize {
+  font-size: 1rem;
+}
+.monsterKillFontsize {
+  font-size: 2rem;
 }
 
 .containerMonsterAll {
@@ -201,5 +226,31 @@ body {
   font-size: 5vh;
   border: solid white 0.5rem;
 }
+
+.monsterB { color: blue;}
+.monsterC { color: rgb(0, 110, 255);}
+.monsterD { color: rgb(0, 223, 204);}
+.monsterE { color: rgb(0, 255, 170);}
+.monsterF { color: rgb(0, 194, 48);}
+.monsterG { color: rgb(144, 233, 0);}
+.monsterH { color: rgb(238, 255, 0);}
+.monsterI { color: rgb(255, 196, 0);}
+.monsterJ { color: rgb(255, 123, 0);}
+.monsterK { color: rgb(255, 17, 0);}
+.monsterL { color: rgb(97, 1, 1);}
+.monsterM { color: rgb(136, 3, 58);}
+.monsterN { color: rgb(214, 3, 84);}
+.monsterO { color: rgb(172, 6, 172);}
+.monsterP { color: rgb(132, 0, 255);}
+.monsterQ { color: rgb(45, 0, 128);}
+.monsterR { color: rgb(8, 8, 126);}
+.monsterS { color: rgb(0, 64, 124);}
+.monsterT { color: rgb(0, 92, 104);}
+.monsterU { color: rgb(0, 59, 23);}
+.monsterV { color: rgb(127, 136, 0);}
+.monsterW { color: rgb(117, 63, 0);}
+.monsterX { color: rgb(114, 32, 0);}
+.monsterY { color: rgb(44, 0, 0);}
+.monsterZ { color: rgb(131, 0, 98);}
 
 /* Fin de Styles Mobile */
