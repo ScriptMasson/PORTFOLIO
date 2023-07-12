@@ -11,15 +11,18 @@
 
 let CurrentExp = 0;
 function displayCurrentExperience() {
-  document.getElementById("levelUpCurrentExperience").innerHTML =
-    ": " + CurrentExp;
+  document.getElementById("levelUpCurrentExperience").innerHTML = CurrentExp;
 }
 displayCurrentExperience();
 
 let RequiredExp = 2;
 function displayRequiredExperience() {
-  document.getElementById("levelUpRequiredExperience").innerHTML =
-    ": " + RequiredExp;
+  let ratio = RequiredExp - CurrentExp;
+  if (ratio >= 0) {
+    document.getElementById("levelUpRequiredExperience").innerHTML = ratio;
+  } else {
+    document.getElementById("levelUpRequiredExperience").innerHTML = 0;
+  }
 }
 displayRequiredExperience();
 
@@ -57,14 +60,48 @@ function displayForExpBar() {
 }
 displayForExpBar();
 
-let buttonMonsterAInHTMLdoc = document.getElementById("btnFightMonsterA");
-buttonMonsterAInHTMLdoc.disabled = false;
 let killNumberMonsterA = 0;
 function btnFightMonsterA() {
   if (killNumberMonsterA === 0) {
     setInterval(btnFightMonsterA, 1000);
     killNumberMonsterA++;
-  } else ++CurrentExp;
-  document.getElementById("btnFightMonsterA").disabled = true;
-  killNumberMonsterA++;
+  } else if (killNumberMonsterA >= 100) {
+    CurrentExp = CurrentExp + 2;
+    document.getElementById("monsterAExp").innerHTML = 2;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  } else if (killNumberMonsterA >= 1000) {
+    CurrentExp = CurrentExp + 4;
+    document.getElementById("monsterAExp").innerHTML = 4;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  } else {
+    ++CurrentExp;
+    document.getElementById("monsterAExp").innerHTML = 1;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  }
+}
+
+let killNumberMonsterB = 0;
+function btnFightMonsterB() {
+  if (killNumberMonsterB === 0) {
+    setInterval(btnFightMonsterB, 1000);
+    killNumberMonsterB++;
+  }else if (killNumberMonsterB >= 100) {
+    document.getElementById("monsterBExp").innerHTML = 4;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+    return (CurrentExp = CurrentExp + 4);
+  } else if (killNumberMonsterB >= 1000) {
+    document.getElementById("monsterBExp").innerHTML = 8;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+    return (CurrentExp = CurrentExp + 8);
+  } else {
+    document.getElementById("monsterBExp").innerHTML = 2;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+    return (CurrentExp = CurrentExp + 2);
+  }
 }

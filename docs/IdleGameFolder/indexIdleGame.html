@@ -23,39 +23,46 @@
       </div>
 
       <div id="containerLevelUpCurrentExperience">
-        Current Experience
-        <span id="levelUpCurrentExperience"> </span>
+        <span id="levelUpCurrentExperience">0 </span>&nbsp Exp
       </div>
       <div id="containerLevelUpRequiredExperience">
-        Required Experience
-        <span id="levelUpRequiredExperience"> </span>
+        <span id="levelUpRequiredExperience">0</span> &nbsp Left
       </div>
     </div>
-    <div class="monsterContainer">
-      <div class="containerMonsterAll">
-        <div class="monsterAll">A</div>
+
+    <div id="monsterCombatArea">
+      <div class="monsterContainer">
+        <div class="containerMonsterAll"><div class="monsterAll">A</div></div>
+        <button
+          role="button"
+          id="btnFightMonsterA"
+          class="btnMonsterFight"
+          onclick="btnFightMonsterA()"
+        >
+          Fight
+        </button>
+        <div class="monsterStats">
+          <span> 'Monster A' gives &nbsp <span id="monsterAExp"> 0 </span> &nbsp Exp/sec</span>
+          <span> Killed &nbsp<span id="monsterAKill"> 0 </span> &nbsp times</span>
+        </div>
+        
       </div>
-      <button
-        role="button"
-        id="btnFightMonsterA"
-        class="btnMonsterFight"
-        onclick="btnFightMonsterA()"
-      >
-        Fight
-      </button>
-    </div>
-    <div id="monsterContainerB" class="notUnlocked monsterContainer">
-      <div class="containerMonsterAll">
-        <div class="monsterAll">B</div>
+      <div id="monsterContainerB" class="notUnlocked monsterContainer">
+        <div class="containerMonsterAll"><div class="monsterAll">B</div></div>
+        <button
+          role="button"
+          type="button"
+          id="btnFightFightMonsterB"
+          class="btnMonsterFight"
+          onclick="btnFightMonsterB()"
+        >
+          Fight
+        </button>
+        <div class="monsterStats">
+          <span> 'Monster B' gives &nbsp <span id="monsterBExp"> 0 </span> &nbsp Exp/sec</span>
+          <span> Killed &nbsp<span id="monsterBKill"> 0 </span> &nbsp times</span>
+        </div>
       </div>
-      <button
-        role="button"
-        id="btnFightDummy"
-        class="btnMonsterFight"
-        onclick="btnFightDummy()"
-      >
-        Fight
-      </button>
     </div>
   </body>
 </html>
