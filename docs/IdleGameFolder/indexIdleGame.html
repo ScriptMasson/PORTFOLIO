@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <title>Idle Letter Fighter</title>
     <link rel="stylesheet" href="./stylesIdleGame.css" />
@@ -14,6 +14,9 @@
   </head>
   <body>
     <div class="containerCharacterStats">
+      <div id="saveFooter">
+        <button id="btnSave" onclick="saveProgressFunction()">save</button>
+      </div>
       <button role="button" id="levelUpButton" onClick="LevelUp()">
         Level Up!
       </button>
@@ -21,7 +24,7 @@
       <div id="levelUpExperienceBar">
         <div id="levelUpExperienceBarFillingUp">&nbsp</div>
       </div>
-
+      
       <div id="containerLevelUpCurrentExperience">
         <span id="levelUpCurrentExperience">0 </span>&nbsp Expérience
       </div>
@@ -30,15 +33,15 @@
       </div>
       <div id="infoForExpGainContainer"><span id="infoForExpGain"> Chaque monstre double ses points d'expérience par seconde à chaque pouvoir de 10 de total vaincu!</span></div>
     </div>
-
+    
     <div id="monsterCombatArea">
       <div class="monsterContainer">
         <div class="containerMonsterAll"><div class="monsterAll">A</div></div>
         <button
-          role="button"
-          id="btnFightMonsterA"
-          class="btnMonsterFight"
-          onclick="btnFightMonsterA()"
+        role="button"
+        id="btnFightMonsterA"
+        class="btnMonsterFight"
+        onclick="btnFightMonsterA()"
         >
           Attaque!
         </button>
@@ -147,9 +150,5 @@
       </div>
 
     </div><!-- Fin de Monster Combat Area -->
-    <div id="saveFooter">
-      <button id="btnSave" onclick="saveProgressFunction()">save</button>
-      <button id="btnLoad" onclick="loadProgressFunction()">load</button>
-    </div>
   </body>
 </html>

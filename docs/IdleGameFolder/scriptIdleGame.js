@@ -1,6 +1,3 @@
-
-
-
 //Exp scripts
 
 let CurrentExp = 0;
@@ -68,7 +65,6 @@ function lookForUnlocks() {
     G.classList.add("nowUnlocked");
     document.getElementById("currentLevel").style.color = "rgb(144, 233, 0)";
   }
-
 }
 
 function displayForExpBar() {
@@ -248,31 +244,42 @@ function btnFightMonsterG() {
 }
 
 /* Save system */
-let save;
-
 function saveProgressFunction() {
+  /* Create the "saveProgress" object and create "key: value," pair with something as a key and a variable as a value */
   let saveProgress = {
-    currentexp: CurrentExp,
-    currentlevel: CurrentLevel,
+    KeyCurrentExp: CurrentExp,
+    KeyCurrentLevel: CurrentLevel,
+    KeyRequiredExp: RequiredExp,
   };
+  /* Create a variable "saveSerialized" with the value of "JSON.stringify(objectNameHere)" which will serialize to JSON a given object.*/
   let saveSerialized = JSON.stringify(saveProgress);
-  localStorage.setItem("savedProgress", saveSerialized);
-  let saveDeserialized = JSON.parse(localStorage.getItem("savedProgress"));
-  return saveProgress = saveDeserialized;
-
+  /* Now we can send the serialized version of our object to the storage! Using the method: "localStorage.setItem("nameOfKey", serializedVarHere)" */
+  localStorage.setItem("saveSerialized", saveSerialized);
 }
 
 function loadProgressFunction() {
-  CurrentExp = saveProgress.currentexp;
-  CurrentLevel = saveProgress.currentlevel;
+  /* Create the "saveDeserialized" variable of which the value will be the method to get an item from storage using its "nameOfKey" */
+  /* JSON.parse(localStorage.getItem("nameOfKey")); */
+  let saveDeserialized = JSON.parse(localStorage.getItem("saveSerialized"));
+  /* Reinitialise "saveProgress" as our new "saveDeserialized" to close the loop! */
+  /* loop is: Values -> saveProgress -> saveSerialized -> localStorage -> saveDeserialized -> saveProgress -> Values */
+  saveProgress = saveDeserialized;
+  /* Reinitialised the value of the saved stuff using our saveDeserialized object which is equal to our beginning "saveProgress" */
+  CurrentExp = saveProgress.KeyCurrentExp;
+  CurrentLevel = saveProgress.KeyCurrentLevel;
+  RequiredExp = saveDeserialized.KeyRequiredExp
 }
 
-/* IIFE */
-//(wrap)the function in parentheses and (); immediately invoke it: making it an Immediately Invoked Function Expression
+/*  
+    (Immediately Invoked Function Expression)(); 
+    "(WrapTheFunctionHere)" in parentheses and "();"" immediately invoke it! 
+    Making it an Immediately Invoked Function Expression (*Anonymous and dont take place in the global Scope...) 
+*/
 (function iifeIntervalSetForDisplays() {
   setInterval(displayCurrentExperience, 125);
   setInterval(displayRequiredExperience, 125);
   setInterval(displayForExpBar, 125);
   setInterval(displayCurrentLevel, 125);
   setInterval(lookForUnlocks, 125);
+  setTimeout(loadProgressFunction, 10);
 })();

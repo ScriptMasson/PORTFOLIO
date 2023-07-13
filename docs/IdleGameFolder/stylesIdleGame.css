@@ -1,7 +1,6 @@
 /* Styles Mobile */
 html {
   box-sizing: border-box;
-  font-size: 10px;
   margin: 0px;
   padding: 0px;
 }
@@ -42,6 +41,7 @@ body {
   border-width: 4px;
   border-color: white;
   box-sizing: border-box;
+  font-size: 200%;
 }
 #levelUpButton {
   all: unset;
@@ -60,6 +60,7 @@ body {
   background-color: black;
   color: white;
   box-sizing: border-box;
+  font-size: 75%;
 }
 
 #levelUpExperienceBar {
@@ -102,7 +103,7 @@ body {
   background-color: black;
   color: white;
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 60%;
 }
 #containerLevelUpRequiredExperience {
   position: absolute;
@@ -120,20 +121,20 @@ body {
   background-color: black;
   color: white;
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 60%;
 }
 #infoForExpGainContainer {
   position: absolute;
   bottom: 0vh;
-  right: 0vw;
-  height: 5vh;
-  width: 70vw;
+  right: 5vw;
+  height: 5.5vh;
+  width: 65vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 #infoForExpGain {
-  font-size: 1rem;
+  font-size: 50%;
   margin-left: 1rem;
 }
 
@@ -163,7 +164,7 @@ body {
   height: 24vh;
   box-sizing: border-box;
   border-style: solid;
-  border-width: 0.5rem;
+  border-width: thick;
   border-color: grey;
 }
 .monsterStats {
@@ -171,23 +172,21 @@ body {
   position: absolute;
   right: 0vh;
   top: 0vh;
-
   width: 58vw;
   height: 23vh;
-
   display: flex;
-  gap: 1rem;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 2vh;
-  border: 0.5vh solid white;
+  border-style: solid;
+  border-width: thick;
+  border-color: white;
 }
 .monsterExpFontsize {
-  font-size: 1rem;
+  font-size: 40%;
 }
 .monsterKillFontsize {
-  font-size: 2rem;
+  font-size: 80%;
 }
 
 .containerMonsterAll {
@@ -200,7 +199,9 @@ body {
   width: 40vw;
   padding: 0 5vw 0 5%;
   overflow: hidden;
-  border: 0.5rem solid white;
+  border-style: solid;
+  border-width: thick;
+  border-color: white;
 }
 .monsterAll {
   display: flex;
@@ -208,7 +209,7 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  font-size: 16vh;
+  font-size: 500%;
   width: 100%;
   height: 100%;
 }
@@ -224,33 +225,100 @@ body {
   width: 40vw;
   height: 7vh;
   font-size: 5vh;
-  border: solid white 0.5rem;
+  border-style: solid;
+  border-width: thick;
+  border-color: white;
 }
 
-.monsterB { color: blue;}
-.monsterC { color: rgb(0, 110, 255);}
-.monsterD { color: rgb(0, 223, 204);}
-.monsterE { color: rgb(0, 255, 170);}
-.monsterF { color: rgb(0, 194, 48);}
-.monsterG { color: rgb(144, 233, 0);}
-.monsterH { color: rgb(238, 255, 0);}
-.monsterI { color: rgb(255, 196, 0);}
-.monsterJ { color: rgb(255, 123, 0);}
-.monsterK { color: rgb(255, 17, 0);}
-.monsterL { color: rgb(97, 1, 1);}
-.monsterM { color: rgb(136, 3, 58);}
-.monsterN { color: rgb(214, 3, 84);}
-.monsterO { color: rgb(172, 6, 172);}
-.monsterP { color: rgb(132, 0, 255);}
-.monsterQ { color: rgb(45, 0, 128);}
-.monsterR { color: rgb(8, 8, 126);}
-.monsterS { color: rgb(0, 64, 124);}
-.monsterT { color: rgb(0, 92, 104);}
-.monsterU { color: rgb(0, 59, 23);}
-.monsterV { color: rgb(127, 136, 0);}
-.monsterW { color: rgb(117, 63, 0);}
-.monsterX { color: rgb(114, 32, 0);}
-.monsterY { color: rgb(44, 0, 0);}
-.monsterZ { color: rgb(131, 0, 98);}
+.monsterB {
+  color: blue;
+}
+.monsterC {
+  color: rgb(0, 110, 255);
+}
+.monsterD {
+  color: rgb(0, 223, 204);
+}
+.monsterE {
+  color: rgb(0, 255, 170);
+}
+.monsterF {
+  color: rgb(0, 194, 48);
+}
+.monsterG {
+  color: rgb(144, 233, 0);
+}
+.monsterH {
+  color: rgb(238, 255, 0);
+}
+.monsterI {
+  color: rgb(255, 196, 0);
+}
+.monsterJ {
+  color: rgb(255, 123, 0);
+}
+.monsterK {
+  color: rgb(255, 17, 0);
+}
+.monsterL {
+  color: rgb(97, 1, 1);
+}
+.monsterM {
+  color: rgb(136, 3, 58);
+}
+.monsterN {
+  color: rgb(214, 3, 84);
+}
+.monsterO {
+  color: rgb(172, 6, 172);
+}
+.monsterP {
+  color: rgb(132, 0, 255);
+}
+.monsterQ {
+  color: rgb(45, 0, 128);
+}
+.monsterR {
+  color: rgb(8, 8, 126);
+}
+.monsterS {
+  color: rgb(0, 64, 124);
+}
+.monsterT {
+  color: rgb(0, 92, 104);
+}
+.monsterU {
+  color: rgb(0, 59, 23);
+}
+.monsterV {
+  color: rgb(127, 136, 0);
+}
+.monsterW {
+  color: rgb(117, 63, 0);
+}
+.monsterX {
+  color: rgb(114, 32, 0);
+}
+.monsterY {
+  color: rgb(44, 0, 0);
+}
+.monsterZ {
+  color: rgb(131, 0, 98);
+}
+
+#saveFooter {
+  width: 5vw;
+  height: 5.5vh;
+  position: absolute;
+  bottom: 0vh;
+  right: 0vw;
+  margin-right: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#btnSave {
+  all: unset;
+}
 
 /* Fin de Styles Mobile */
