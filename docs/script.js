@@ -140,5 +140,12 @@ imgMoi.addEventListener('click', () => {
   textMoi.classList.toggle('zeroOpacity');
 });
 
+/* declare a variable and initialise it to our Id using 'document.getElementById('IdHere!') */
+const logoIdleLetterFighter = document.getElementById('logoIdleLetterFighter');
+/* add an event listener to our previous declared variable that listens for clicks and then return a function that executes "window.location.href = 'path/to/image'" */
+logoIdleLetterFighter.addEventListener('click', () => {
+  window.location.href = './IdleGameFolder/indexIdleGame.html';
+});
+
 
 

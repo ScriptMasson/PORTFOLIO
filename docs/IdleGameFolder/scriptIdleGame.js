@@ -85,163 +85,115 @@ displayForExpBar();
 let killNumberMonsterA = 0;
 function btnFightMonsterA() {
   if (killNumberMonsterA === 0) {
+    /* starts the 1sec interval loop when you have never pressed the button before; then add a kill */
     setInterval(btnFightMonsterA, 1000);
     killNumberMonsterA++;
-  } else if (killNumberMonsterA >= 100) {
+  } else if (killNumberMonsterA >= 10) {
+    /* power of 10 one time */
     CurrentExp = CurrentExp + 2;
     document.getElementById("monsterAExp").innerHTML = 2;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
     killNumberMonsterA++;
-  } else if (killNumberMonsterA >= 1000) {
+  } else if (killNumberMonsterA >= 100) {
+    /* power of 10 two times */
     CurrentExp = CurrentExp + 4;
     document.getElementById("monsterAExp").innerHTML = 4;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
     killNumberMonsterA++;
-  } else {
+  } else if (killNumberMonsterA >= 1000) {
+    /* power of 10 three times */
+    CurrentExp = CurrentExp + 8;
+    document.getElementById("monsterAExp").innerHTML = 8;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  } else if (killNumberMonsterA >= 10000) {
+    /* power of 10 four times */
+    CurrentExp = CurrentExp + 16;
+    document.getElementById("monsterAExp").innerHTML = 16;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  } else if (killNumberMonsterA >= 100000) {
+    /* power of 10 four times */
+    CurrentExp = CurrentExp + 32;
+    document.getElementById("monsterAExp").innerHTML = 32;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  }  else {
+    /* initial kill value before doubling... */
     ++CurrentExp;
     document.getElementById("monsterAExp").innerHTML = 1;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
     killNumberMonsterA++;
   }
 }
-
 let killNumberMonsterB = 0;
 function btnFightMonsterB() {
   if (killNumberMonsterB === 0) {
+    /* starts the 1sec interval loop when you have never pressed the button before; then add a kill */
     setInterval(btnFightMonsterB, 1000);
     killNumberMonsterB++;
-  } else if (killNumberMonsterB >= 100) {
+  } else if (killNumberMonsterB >= 10) {
+    /* power of 10 one time */
+    CurrentExp = CurrentExp + 4;
     document.getElementById("monsterBExp").innerHTML = 4;
     document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
     killNumberMonsterB++;
-    return (CurrentExp = CurrentExp + 4);
-  } else if (killNumberMonsterB >= 1000) {
+  } else if (killNumberMonsterB >= 100) {
+    /* power of 10 two times */
+    CurrentExp = CurrentExp + 8;
     document.getElementById("monsterBExp").innerHTML = 8;
     document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
     killNumberMonsterB++;
-    return (CurrentExp = CurrentExp + 8);
-  } else {
+  } else if (killNumberMonsterB >= 1000) {
+    /* power of 10 three times */
+    CurrentExp = CurrentExp + 16;
+    document.getElementById("monsterBExp").innerHTML = 16;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+  } else if (killNumberMonsterB >= 10000) {
+    /* power of 10 four times */
+    CurrentExp = CurrentExp + 32;
+    document.getElementById("monsterBExp").innerHTML = 32;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+  } else if (killNumberMonsterB >= 100000) {
+    /* power of 10 four times */
+    CurrentExp = CurrentExp + 64;
+    document.getElementById("monsterBExp").innerHTML = 64;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+  }  else {
+    /* initial kill value before doubling... */
+    CurrentExp = CurrentExp + 2;
     document.getElementById("monsterBExp").innerHTML = 2;
     document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
     killNumberMonsterB++;
-    return (CurrentExp = CurrentExp + 2);
   }
 }
 
-let killNumberMonsterC = 0;
-function btnFightMonsterC() {
-  if (killNumberMonsterC === 0) {
-    setInterval(btnFightMonsterC, 1000);
-    killNumberMonsterC++;
-  } else if (killNumberMonsterC >= 100) {
-    document.getElementById("monsterCExp").innerHTML = 8;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-    return (CurrentExp = CurrentExp + 8);
-  } else if (killNumberMonsterC >= 1000) {
-    document.getElementById("monsterCExp").innerHTML = 16;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-    return (CurrentExp = CurrentExp + 16);
-  } else {
-    document.getElementById("monsterCExp").innerHTML = 4;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-    return (CurrentExp = CurrentExp + 4);
+/* Anti Double Zoom for mobile by chatGPT */
+let touchStartTime;
+document.addEventListener('touchstart', (event) => {
+  if (event.touches.length > 1) {
+    // If multiple touches occur, reset the timer
+    touchStartTime = null;
+  } else if (!touchStartTime) {
+    // If it's the first touch, set the timer
+    touchStartTime = Date.now();
   }
-}
+});
+document.addEventListener('touchend', (event) => {
+  // Calculate the duration of the touch
+  const touchDuration = Date.now() - touchStartTime;
 
-let killNumberMonsterD = 0;
-function btnFightMonsterD() {
-  if (killNumberMonsterD === 0) {
-    setInterval(btnFightMonsterD, 1000);
-    killNumberMonsterD++;
-  } else if (killNumberMonsterD >= 100) {
-    document.getElementById("monsterDExp").innerHTML = 16;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-    return (CurrentExp = CurrentExp + 16);
-  } else if (killNumberMonsterD >= 1000) {
-    document.getElementById("monsterDExp").innerHTML = 32;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-    return (CurrentExp = CurrentExp + 32);
-  } else {
-    document.getElementById("monsterDExp").innerHTML = 8;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-    return (CurrentExp = CurrentExp + 8);
+  if (touchDuration < 500) {
+    // If the touch duration is less than 500 milliseconds (adjust as needed)
+    event.preventDefault();
   }
-}
 
-let killNumberMonsterE = 0;
-function btnFightMonsterE() {
-  if (killNumberMonsterE === 0) {
-    setInterval(btnFightMonsterE, 1000);
-    killNumberMonsterE++;
-  } else if (killNumberMonsterE >= 100) {
-    document.getElementById("monsterEExp").innerHTML = 32;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-    return (CurrentExp = CurrentExp + 32);
-  } else if (killNumberMonsterE >= 1000) {
-    document.getElementById("monsterEExp").innerHTML = 64;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-    return (CurrentExp = CurrentExp + 64);
-  } else {
-    document.getElementById("monsterEExp").innerHTML = 16;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-    return (CurrentExp = CurrentExp + 16);
-  }
-}
-
-let killNumberMonsterF = 0;
-function btnFightMonsterF() {
-  if (killNumberMonsterF === 0) {
-    setInterval(btnFightMonsterF, 1000);
-    killNumberMonsterF++;
-  } else if (killNumberMonsterF >= 100) {
-    document.getElementById("monsterFExp").innerHTML = 64;
-    document.getElementById("monsterFKill").innerHTML = killNumberMonsterF;
-    killNumberMonsterF++;
-    return (CurrentExp = CurrentExp + 64);
-  } else if (killNumberMonsterF >= 1000) {
-    document.getElementById("monsterFExp").innerHTML = 128;
-    document.getElementById("monsterFKill").innerHTML = killNumberMonsterF;
-    killNumberMonsterF++;
-    return (CurrentExp = CurrentExp + 128);
-  } else {
-    document.getElementById("monsterFExp").innerHTML = 32;
-    document.getElementById("monsterFKill").innerHTML = killNumberMonsterF;
-    killNumberMonsterF++;
-    return (CurrentExp = CurrentExp + 32);
-  }
-}
-
-let killNumberMonsterG = 0;
-function btnFightMonsterG() {
-  if (killNumberMonsterG === 0) {
-    setInterval(btnFightMonsterG, 1000);
-    killNumberMonsterG++;
-  } else if (killNumberMonsterG >= 100) {
-    document.getElementById("monsterGExp").innerHTML = 64;
-    document.getElementById("monsterGKill").innerHTML = killNumberMonsterG;
-    killNumberMonsterG++;
-    return (CurrentExp = CurrentExp + 128);
-  } else if (killNumberMonsterG >= 1000) {
-    document.getElementById("monsterGExp").innerHTML = 128;
-    document.getElementById("monsterGKill").innerHTML = killNumberMonsterG;
-    killNumberMonsterG++;
-    return (CurrentExp = CurrentExp + 256);
-  } else {
-    document.getElementById("monsterGExp").innerHTML = 32;
-    document.getElementById("monsterGKill").innerHTML = killNumberMonsterG;
-    killNumberMonsterG++;
-    return (CurrentExp = CurrentExp + 64);
-  }
-}
+  // Reset the timer
+  touchStartTime = null;
+});
 
 /* Save system */
 function saveProgressFunction() {
@@ -264,10 +216,10 @@ function loadProgressFunction() {
   /* Reinitialise "saveProgress" as our new "saveDeserialized" to close the loop! */
   /* loop is: Values -> saveProgress -> saveSerialized -> localStorage -> saveDeserialized -> saveProgress -> Values */
   saveProgress = saveDeserialized;
-  /* Reinitialised the value of the saved stuff using our saveDeserialized object which is equal to our beginning "saveProgress" */
+  /* Reinitialised the value of the saved object using our saveDeserialized object which is equal to our beginning "saveProgress" */
   CurrentExp = saveProgress.KeyCurrentExp;
   CurrentLevel = saveProgress.KeyCurrentLevel;
-  RequiredExp = saveDeserialized.KeyRequiredExp
+  RequiredExp = saveDeserialized.KeyRequiredExp;
 }
 
 /*  
@@ -276,10 +228,13 @@ function loadProgressFunction() {
     Making it an Immediately Invoked Function Expression (*Anonymous and dont take place in the global Scope...) 
 */
 (function iifeIntervalSetForDisplays() {
+  /* load progress after 10ms of entering website */
+  setTimeout(loadProgressFunction, 10);
+  /* set the interval of auto-saving progress to 30seconds */
+  setInterval(saveProgressFunction, 30000);
   setInterval(displayCurrentExperience, 125);
   setInterval(displayRequiredExperience, 125);
   setInterval(displayForExpBar, 125);
   setInterval(displayCurrentLevel, 125);
   setInterval(lookForUnlocks, 125);
-  setTimeout(loadProgressFunction, 10);
 })();

@@ -72,8 +72,8 @@ body {
 }
 #imgLogo {
   object-fit: contain;
-  width: 5rem;
-  height: 5rem;
+  width: 80px;
+  height: 80px;
 }
 #navigationBar:not(:hover) h1 {
   color: white;
@@ -141,7 +141,6 @@ body {
   width: 20vw;
   height: 20vw;
   overflow: hidden;
-  background-color: rgb(56, 56, 56);
   box-shadow: 0 2vh rgba(0, 0, 0, 0.85);
   margin-bottom: 2vh;
   transition: all 1000ms ease-out;
@@ -152,7 +151,7 @@ body {
 }
 .rectangle {
   width: 90vw;
-  height: max-content;
+  height: 50vh;
   position: absolute;
   bottom: 10%;
   left: -100dvw;
@@ -187,50 +186,65 @@ body {
   z-index: 1;
   transition: all 750ms ease-out;
 }
+
 #purple {
   border-color: #722d80;
-}
-#purple:hover {
   background-color: #44164d;
   transition: all 500ms ease-in-out;
+  font-size: 1rem;
 }
 #purpleRectangle {
   background-color: #44164d;
   transition: all 500ms ease-in-out;
 }
+
 #green {
   border-color: #22692e;
-  font-size: 2vw;
-}
-#green:hover {
   background-color: #17471f;
-  transition: all 500ms ease-out;
+  transition: all 500ms ease-in-out;
+  font-size: 0.8rem;
 }
 #greenRectangle {
   background-color: #17471f;
   transition: all 500ms ease-in-out;
 }
+
 #red {
   border-color: #c75c5c;
-}
-#red:hover {
   background-color: #700303;
-  transition: all 500ms ease-out;
+  transition: all 500ms ease-in-out;
+  font-size: 1.5rem;
 }
 #redRectangle {
   background-color: #700303;
   transition: all 500ms ease-in-out;
 }
+
 #turquoise {
   border-color: #02685a;
-}
-#turquoise:hover {
   background-color: #00b199;
-  transition: all 500ms ease-out;
+  transition: all 500ms ease-in-out;
+  font-size: 1.5rem;
 }
 #turquoiseRectangle {
   background-color: #00b199;
   transition: all 500ms ease-in-out;
+}
+#containerLogoIdleLetterFighter {
+  /* the "object-fit: value;" CSS property is used to control how <img> or <video> behave inside the container */
+  /* "object-fit: none;" means that our content is not resized at all inside our container */
+  /* "object-fit: contain;" means that our image is resized to show ALL OF THE IMAGE while RETAINING ASPECT-RATIO (Letter-box possible)*/
+  /* "object-fit: cover;" means that our image is resized to cover the WHOLE CONTAINER with the same aspect-ratio (cuts possible) */
+  /* "object-fit: fill;" means that our image will cover the whole container and will STRETCH TO FIT (no cuts possible) */
+  object-fit: fill;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 128px;
+  width: 128px;
+  border: white solid 6px;
+  padding: 6px;
+  margin: 6px;
 }
 
 #containerProfil {
@@ -436,7 +450,7 @@ body {
     width: 12vw;
     height: 12vw;
     overflow: hidden;
-    background-color: rgba(128, 128, 128, 0.5);
+    /*background-color: rgba(128, 128, 128, 0.5);*/
     box-shadow: 0 2vh rgba(0, 0, 0, 0.85);
     margin-bottom: 2vh;
     transition: all 500ms ease-out;
@@ -487,10 +501,11 @@ body {
   }
   #purple {
     border-color: #722d80;
-  }
-  #purple:hover {
     background-color: #44164d;
     transition: all 500ms ease-in-out;
+  }
+  #purple:hover {
+    box-shadow: none;
   }
   #purpleRectangle {
     background-color: #44164d;
