@@ -23,18 +23,40 @@ function LevelUp() {
     CurrentLevel++;
     CurrentExp = CurrentExp - RequiredExp;
     RequiredExp = RequiredExp * 2;
-    unlockB();
-  }
+  };
+  if (CurrentLevel >= 3 && CurrentLevel < 5) {
+    let B = document.getElementById("monsterContainerB");
+    B.classList.remove("notUnlocked");
+    B.classList.add("nowUnlocked");
+    document.getElementById("currentLevel").style.color = "blue";
+    if (killNumberMonsterB === 0) {
+      /* starts the 1sec interval loop when you have never pressed the button before; then add a kill */
+      setInterval(btnFightMonsterB, 1000);
+      killNumberMonsterB++;
+    }
+  };
+  if (CurrentLevel >= 5) {
+    let C = document.getElementById("monsterContainerC");
+    C.classList.remove("notUnlocked");
+    C.classList.add("nowUnlocked");
+    document.getElementById("currentLevel").style.color = "rgb(0, 110, 255)";
+    if (killNumberMonsterC === 0) {
+      setInterval(btnFightMonsterC, 1000);
+      killNumberMonsterC++;
+    }
+  };
 }
 function displayCurrentLevel() {
   document.getElementById("currentLevel").innerHTML = CurrentLevel;
 }
 /* interval starter when level is reached */
-/*if (CurrentLevel >= 5) {
-  let C = document.getElementById("monsterContainerC");
-  C.classList.remove("notUnlocked");
-  C.classList.add("nowUnlocked");
-  document.getElementById("currentLevel").style.color = "rgb(0, 110, 255)";
+/*
+if (CurrentLevel >= 3) {
+    let B = document.getElementById("monsterContainerB");
+    B.classList.remove("notUnlocked");
+    B.classList.add("nowUnlocked");
+    document.getElementById("currentLevel").style.color = "blue";
+  }
 }
 if (CurrentLevel >= 7) {
   let D = document.getElementById("monsterContainerD");
@@ -67,10 +89,10 @@ function displayForExpBar() {
   if (currentRatioPercent <= 99) {
     return (document.getElementById(
       "levelUpExperienceBarFillingUp"
-      ).style.width = currentRatioPercent + "%");
-    } else if (currentRatioPercent >= 100) {
-      return (document.getElementById(
-        "levelUpExperienceBarFillingUp"
+    ).style.width = currentRatioPercent + "%");
+  } else if (currentRatioPercent >= 100) {
+    return (document.getElementById(
+      "levelUpExperienceBarFillingUp"
     ).style.width = 100 + "%");
   }
 }
@@ -79,106 +101,141 @@ displayForExpBar();
 let killNumberMonsterA = 0;
 setInterval(btnFightMonsterA, 1000);
 function btnFightMonsterA() {
-  
-    if (killNumberMonsterA >= 10) {
-      /* power of 10 one time */
-      CurrentExp = CurrentExp + 2;
-      document.getElementById("monsterAExp").innerHTML = 2;
-      document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
-      killNumberMonsterA++;
-    } else if (killNumberMonsterA >= 100) {
-      /* power of 10 two times */
-      CurrentExp = CurrentExp + 4;
-      document.getElementById("monsterAExp").innerHTML = 4;
-      document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
-      killNumberMonsterA++;
-    } else if (killNumberMonsterA >= 1000) {
-      /* power of 10 three times */
-      CurrentExp = CurrentExp + 8;
-      document.getElementById("monsterAExp").innerHTML = 8;
-      document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
-      killNumberMonsterA++;
-    } else if (killNumberMonsterA >= 10000) {
-      /* power of 10 four times */
-      CurrentExp = CurrentExp + 16;
-      document.getElementById("monsterAExp").innerHTML = 16;
-      document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
-      killNumberMonsterA++;
-    } else if (killNumberMonsterA >= 100000) {
-      /* power of 10 four times */
-      CurrentExp = CurrentExp + 32;
-      document.getElementById("monsterAExp").innerHTML = 32;
-      document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
-      killNumberMonsterA++;
-    } else {
-      /* initial kill value before doubling... */
-      ++CurrentExp;
-      document.getElementById("monsterAExp").innerHTML = 1;
-      document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
-      killNumberMonsterA++;
-    }
-  
-}
-
-function unlockB() {
-if (CurrentLevel >= 3) {
-  let B = document.getElementById("monsterContainerB");
-  B.classList.remove("notUnlocked");
-  B.classList.add("nowUnlocked");
-  document.getElementById("currentLevel").style.color = "blue";
-  if (killNumberMonsterB === 0) {
-    /* starts the 1sec interval loop when you have never pressed the button before; then add a kill */
-    setInterval(btnFightMonsterB, 1000);
-    killNumberMonsterB++;
+  if (killNumberMonsterA < 10) {
+    /* initial kill value before doubling... */
+    ++CurrentExp;
+    document.getElementById("monsterAExp").innerHTML = 1;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
   }
-};
-}
-let killNumberMonsterB = 0;
-function btnFightMonsterB() {
-  if (killNumberMonsterB === 0) {
-    /* starts the 1sec interval loop when you have never pressed the button before; then add a kill */
-    setInterval(btnFightMonsterB, 1000);
-    killNumberMonsterB++;
-  } else if (killNumberMonsterB >= 10) {
+  if (killNumberMonsterA >= 10 && killNumberMonsterA < 100) {
     /* power of 10 one time */
-    CurrentExp = CurrentExp + 4;
-    document.getElementById("monsterBExp").innerHTML = 4;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  } else if (killNumberMonsterB >= 100) {
+    CurrentExp = CurrentExp + 2;
+    document.getElementById("monsterAExp").innerHTML = 2;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  }
+  if (killNumberMonsterA >= 100 && killNumberMonsterA < 1000) {
     /* power of 10 two times */
-    CurrentExp = CurrentExp + 8;
-    document.getElementById("monsterBExp").innerHTML = 8;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  } else if (killNumberMonsterB >= 1000) {
+    CurrentExp = CurrentExp + 4;
+    document.getElementById("monsterAExp").innerHTML = 4;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  }
+  if (killNumberMonsterA >= 1000 && killNumberMonsterA < 10000) {
     /* power of 10 three times */
+    CurrentExp = CurrentExp + 8;
+    document.getElementById("monsterAExp").innerHTML = 8;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  }
+  if (killNumberMonsterA >= 10000 && killNumberMonsterA < 100000) {
+    /* power of 10 four times */
     CurrentExp = CurrentExp + 16;
-    document.getElementById("monsterBExp").innerHTML = 16;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  } else if (killNumberMonsterB >= 10000) {
+    document.getElementById("monsterAExp").innerHTML = 16;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  }
+  if (killNumberMonsterA >= 100000) {
     /* power of 10 four times */
     CurrentExp = CurrentExp + 32;
-    document.getElementById("monsterBExp").innerHTML = 32;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  } else if (killNumberMonsterB >= 100000) {
-    /* power of 10 four times */
-    CurrentExp = CurrentExp + 64;
-    document.getElementById("monsterBExp").innerHTML = 64;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  } else {
+    document.getElementById("monsterAExp").innerHTML = 32;
+    document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
+    killNumberMonsterA++;
+  }
+}
+
+let killNumberMonsterB = 0;
+function btnFightMonsterB() {
+  if (killNumberMonsterB < 10) {
     /* initial kill value before doubling... */
     CurrentExp = CurrentExp + 2;
     document.getElementById("monsterBExp").innerHTML = 2;
     document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
     killNumberMonsterB++;
   }
+  if (killNumberMonsterB >= 10 && killNumberMonsterB < 100) {
+    /* power of 10 one time */
+    CurrentExp = CurrentExp + 4;
+    document.getElementById("monsterBExp").innerHTML = 4;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+  }
+  if (killNumberMonsterB >= 100 && killNumberMonsterB < 1000) {
+    /* power of 10 two times */
+    CurrentExp = CurrentExp + 8;
+    document.getElementById("monsterBExp").innerHTML = 8;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+  }
+  if (killNumberMonsterB >= 1000 && killNumberMonsterB < 10000) {
+    /* power of 10 three times */
+    CurrentExp = CurrentExp + 16;
+    document.getElementById("monsterBExp").innerHTML = 16;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+  }
+  if (killNumberMonsterB >= 10000 && killNumberMonsterB  < 100000) {
+    /* power of 10 four times */
+    CurrentExp = CurrentExp + 32;
+    document.getElementById("monsterBExp").innerHTML = 32;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+  }
+  if (killNumberMonsterB >= 100000) {
+    /* power of 10 four times */
+    CurrentExp = CurrentExp + 64;
+    document.getElementById("monsterBExp").innerHTML = 64;
+    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
+    killNumberMonsterB++;
+  }
 }
 
-
+let killNumberMonsterC = 0;
+function btnFightMonsterC() {
+  if (killNumberMonsterC < 10) {
+    /* initial kill value before doubling... */
+    CurrentExp = CurrentExp + 4;
+    document.getElementById("monsterCExp").innerHTML = 4;
+    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
+    killNumberMonsterC++;
+  }
+  if (killNumberMonsterC >= 10 && killNumberMonsterC < 100) {
+    /* power of 10 one time */
+    CurrentExp = CurrentExp + 8;
+    document.getElementById("monsterCExp").innerHTML = 8;
+    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
+    killNumberMonsterC++;
+  }
+  if (killNumberMonsterC >= 100 && killNumberMonsterC < 1000) {
+    /* power of 10 two times */
+    CurrentExp = CurrentExp + 16;
+    document.getElementById("monsterCExp").innerHTML = 16;
+    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
+    killNumberMonsterC++;
+  }
+  if (killNumberMonsterC >= 1000 && killNumberMonsterC < 10000) {
+    /* power of 10 three times */
+    CurrentExp = CurrentExp + 32;
+    document.getElementById("monsterCExp").innerHTML = 32;
+    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
+    killNumberMonsterC++;
+  }
+  if (killNumberMonsterC >= 10000 && killNumberMonsterC  < 100000) {
+    /* power of 10 four times */
+    CurrentExp = CurrentExp + 64;
+    document.getElementById("monsterCExp").innerHTML = 64;
+    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
+    killNumberMonsterC++;
+  }
+  if (killNumberMonsterC >= 100000) {
+    /* power of 10 four times */
+    CurrentExp = CurrentExp + 128;
+    document.getElementById("monsterCExp").innerHTML = 128;
+    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
+    killNumberMonsterC++;
+  }
+}
 
 /* Save system */
 function saveProgressFunction() {
