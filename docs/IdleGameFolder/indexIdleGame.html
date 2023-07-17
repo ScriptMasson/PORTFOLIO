@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <title>Idle Letter Fighter</title>
     <link rel="stylesheet" href="./stylesIdleGame.css" />
@@ -24,36 +24,46 @@
       <div id="levelUpExperienceBar">
         <div id="levelUpExperienceBarFillingUp">&nbsp</div>
       </div>
-      
+
       <div id="containerLevelUpCurrentExperience">
         <span id="levelUpCurrentExperience">0</span>&nbsp Expérience
       </div>
       <div id="containerLevelUpRequiredExperience">
         <span id="levelUpRequiredExperience">2</span> &nbsp Manquant
       </div>
-      <div id="infoForExpGainContainer"><span id="infoForExpGain"> Chaque monstre double ses points d'expérience par seconde à chaque pouvoir de 10 de total vaincu!</span></div>
+      <div id="infoForExpGainContainer">
+        <span id="infoForExpGain">
+          Chaque monstre double ses points d'expérience par seconde à chaque
+          pouvoir de 10 de total vaincu!</span
+        >
+      </div>
     </div>
-    
+
     <div id="monsterCombatArea">
       <div class="monsterContainer">
         <div class="containerMonsterAll"><div class="monsterAll">A</div></div>
         <button
-        role="button"
-        id="btnFightMonsterA"
-        class="btnMonsterFight"
-        onclick="btnFightMonsterA()"
+          role="button"
+          id="btnFightMonsterA"
+          class="btnMonsterFight"
+          onclick="btnFightMonsterA()"
         >
           Attaque!
         </button>
         <div class="monsterStats">
-          <span class="monsterExpFontsize"> 'A' donne &nbsp <span id="monsterAExp"> 0 </span> &nbsp points d'expérience par seconde</span>
-          <span class="monsterKillFontsize"> Vaincu &nbsp<span id="monsterAKill"> 0 </span> &nbsp fois</span>
-
+          <span class="monsterExpFontsize">
+            'A' donne &nbsp <span id="monsterAExp"> 0 </span> &nbsp points
+            d'expérience par seconde</span
+          >
+          <span class="monsterKillFontsize">
+            Vaincu &nbsp<span id="monsterAKill"> 0 </span> &nbsp fois</span
+          >
         </div>
-        
       </div>
       <div id="monsterContainerB" class="notUnlocked monsterContainer">
-        <div class="containerMonsterAll"><div class="monsterAll monsterB">B</div></div>
+        <div class="containerMonsterAll">
+          <div class="monsterAll monsterB">B</div>
+        </div>
         <button
           role="button"
           type="button"
@@ -64,12 +74,19 @@
           Attaque!
         </button>
         <div class="monsterStats">
-          <span class="monsterB"> 'B' donne &nbsp <span id="monsterBExp"> 0 </span> &nbsp points d'expérience par seconde</span>
-          <span class="monsterB"> Vaincu &nbsp<span id="monsterBKill"> 0 </span> &nbsp fois</span>
+          <span class="monsterB">
+            'B' donne &nbsp <span id="monsterBExp"> 0 </span> &nbsp points
+            d'expérience par seconde</span
+          >
+          <span class="monsterB">
+            Vaincu &nbsp<span id="monsterBKill"> 0 </span> &nbsp fois</span
+          >
         </div>
       </div>
       <div id="monsterContainerC" class="notUnlocked monsterContainer">
-        <div class="containerMonsterAll"><div class="monsterAll monsterC">C</div></div>
+        <div class="containerMonsterAll">
+          <div class="monsterAll monsterC">C</div>
+        </div>
         <button
           role="button"
           type="button"
@@ -80,13 +97,19 @@
           Attaque!
         </button>
         <div class="monsterStats">
-          <span class="monsterC"> 'C' donne &nbsp <span id="monsterCExp"> 0 </span> &nbsp points d'expérience par seconde</span>
-          <span class="monsterC"> Vaincu &nbsp<span id="monsterCKill"> 0 </span> &nbsp fois</span>
+          <span class="monsterC">
+            'C' donne &nbsp <span id="monsterCExp"> 0 </span> &nbsp points
+            d'expérience par seconde</span
+          >
+          <span class="monsterC">
+            Vaincu &nbsp<span id="monsterCKill"> 0 </span> &nbsp fois</span
+          >
         </div>
       </div>
-      
       <div id="monsterContainerD" class="notUnlocked monsterContainer">
-        <div class="containerMonsterAll"><div class="monsterAll monsterD">D</div></div>
+        <div class="containerMonsterAll">
+          <div class="monsterAll monsterD">D</div>
+        </div>
         <button
           role="button"
           type="button"
@@ -97,12 +120,20 @@
           Attaque!
         </button>
         <div class="monsterStats">
-          <span class="monsterD"> 'D' donne &nbsp <span id="monsterDExp"> 0 </span> &nbsp points d'expérience par seconde</span>
-          <span class="monsterD"> Vaincu &nbsp<span id="monsterDKill"> 0 </span> &nbsp fois</span>
+          <span class="monsterD">
+            'D' donne &nbsp <span id="monsterDExp"> 0 </span> &nbsp points
+            d'expérience par seconde</span
+          >
+          <span class="monsterD">
+            Vaincu &nbsp<span id="monsterDKill"> 0 </span> &nbsp fois</span
+          >
         </div>
       </div>
+
       <div id="monsterContainerE" class="notUnlocked monsterContainer">
-        <div class="containerMonsterAll"><div class="monsterAll monsterE">E</div></div>
+        <div class="containerMonsterAll">
+          <div class="monsterAll monsterE">E</div>
+        </div>
         <button
           role="button"
           type="button"
@@ -113,12 +144,19 @@
           Attaque!
         </button>
         <div class="monsterStats">
-          <span class="monsterE"> 'E' donne &nbsp <span id="monsterEExp"> 0 </span> &nbsp points d'expérience par seconde</span>
-          <span class="monsterE"> Vaincu &nbsp<span id="monsterEKill"> 0 </span> &nbsp fois</span>
+          <span class="monsterE">
+            'E' donne &nbsp <span id="monsterEExp"> 0 </span> &nbsp points
+            d'expérience par seconde</span
+          >
+          <span class="monsterE">
+            Vaincu &nbsp<span id="monsterEKill"> 0 </span> &nbsp fois</span
+          >
         </div>
       </div>
       <div id="monsterContainerF" class="notUnlocked monsterContainer">
-        <div class="containerMonsterAll"><div class="monsterAll monsterF">F</div></div>
+        <div class="containerMonsterAll">
+          <div class="monsterAll monsterF">F</div>
+        </div>
         <button
           role="button"
           type="button"
@@ -129,12 +167,19 @@
           Attaque!
         </button>
         <div class="monsterStats">
-          <span class="monsterF"> 'F' donne &nbsp <span id="monsterFExp"> 0 </span> &nbsp points d'expérience par seconde</span>
-          <span class="monsterF"> Vaincu &nbsp<span id="monsterFKill"> 0 </span> &nbsp fois</span>
+          <span class="monsterF">
+            'F' donne &nbsp <span id="monsterFExp"> 0 </span> &nbsp points
+            d'expérience par seconde</span
+          >
+          <span class="monsterF">
+            Vaincu &nbsp<span id="monsterFKill"> 0 </span> &nbsp fois</span
+          >
         </div>
       </div>
       <div id="monsterContainerG" class="notUnlocked monsterContainer">
-        <div class="containerMonsterAll"><div class="monsterAll monsterG">G</div></div>
+        <div class="containerMonsterAll">
+          <div class="monsterAll monsterG">G</div>
+        </div>
         <button
           role="button"
           type="button"
@@ -145,11 +190,16 @@
           Attaque!
         </button>
         <div class="monsterStats">
-          <span class="monsterG"> 'G' donne &nbsp <span id="monsterGExp"> 0 </span> &nbsp points d'expérience par seconde</span>
-          <span class="monsterG"> Vaincu &nbsp<span id="monsterGKill"> 0 </span> &nbsp fois</span>
+          <span class="monsterG">
+            'G' donne &nbsp <span id="monsterGExp"> 0 </span> &nbsp points
+            d'expérience par seconde</span
+          >
+          <span class="monsterG">
+            Vaincu &nbsp<span id="monsterGKill"> 0 </span> &nbsp fois</span
+          >
         </div>
       </div>
-
-    </div><!-- Fin de Monster Combat Area -->
+    </div>
+    <!-- Fin de Monster Combat Area -->
   </body>
 </html>
