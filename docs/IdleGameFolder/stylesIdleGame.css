@@ -1,3 +1,15 @@
+
+@font-face {
+  font-family: 'vt323regular';
+  src: url('/docs/vt323-regular-webfont.woff2') format('woff2'),
+       url('/docs/vt323-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
 /* Styles Mobile */
 html {
   box-sizing: border-box;
@@ -6,6 +18,7 @@ html {
 }
 
 body {
+  font-family: 'vt323regular', sans-serif, monospace;
   color: white;
   background-color: black;
   margin: 0px;
@@ -16,11 +29,14 @@ body {
 .containerCharacterStats {
   display: block;
   position: sticky;
+  top: 0vh;
+  left: 0vw;
   height: 15vh;
   width: 100vw;
   background-color: black;
   color: white;
   box-sizing: border-box;
+  z-index: 10;
 }
 
 #currentLevel {
@@ -34,14 +50,13 @@ body {
   align-items: center;
   background-color: black;
   color: white;
-  font-size: 5rem;
+  font-size: 3rem;
   font-style: italic;
   font-weight: bolder;
   border-style: solid;
   border-width: 4px;
   border-color: white;
   box-sizing: border-box;
-  font-size: 200%;
 }
 #levelUpButton {
   all: unset;
@@ -60,7 +75,7 @@ body {
   background-color: black;
   color: white;
   box-sizing: border-box;
-  font-size: 75%;
+  font-size: 1rem;
 }
 
 #levelUpExperienceBar {
@@ -103,7 +118,7 @@ body {
   background-color: black;
   color: white;
   box-sizing: border-box;
-  font-size: 60%;
+  font-size: 65%;
 }
 #containerLevelUpRequiredExperience {
   position: absolute;
@@ -121,7 +136,7 @@ body {
   background-color: black;
   color: white;
   box-sizing: border-box;
-  font-size: 60%;
+  font-size: 65%;
 }
 #infoForExpGainContainer {
   position: absolute;
@@ -181,13 +196,10 @@ body {
   border-style: solid;
   border-width: thick;
   border-color: white;
+  font-size: 120%;
+  padding: 5%;
 }
-.monsterExpFontsize {
-  font-size: 40%;
-}
-.monsterKillFontsize {
-  font-size: 80%;
-}
+
 
 .containerMonsterAll {
   box-sizing: border-box;
@@ -228,6 +240,9 @@ body {
   border-style: solid;
   border-width: thick;
   border-color: white;
+}
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
 }
 
 .monsterB {

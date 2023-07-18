@@ -4,6 +4,15 @@
   --bgColorWhiter: rgb(102, 44, 95);
 }
 
+@font-face {
+  font-family: 'roboto_condensedbold';
+  src: url('/docs/robotocondensed-bold-webfont.woff2') format('woff2'),
+       url('/docs/robotocondensed-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 /* Styles for mobile */
 
 * {
@@ -21,7 +30,7 @@ body {
   background-size: cover;
   background-position: center;
   background-clip: border-box;
-  font-family: Verdana, sans-serif;
+  font-family: 'roboto_condensedbold', Verdana, sans-serif;
   font-weight: bold;
   -webkit-appearance: none;
   -moz-appearance: none;
