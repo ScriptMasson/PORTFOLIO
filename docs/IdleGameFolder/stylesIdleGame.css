@@ -1,8 +1,8 @@
 
 @font-face {
   font-family: 'vt323regular';
-  src: url('../docs/vt323-regular-webfont.woff2') format('woff2'),
-       url('../docs/vt323-regular-webfont.woff') format('woff'),
+  src: url('../vt323-regular-webfont.woff2') format('woff2'),
+       url('../vt323-regular-webfont.woff') format('woff'),
        url('https://scriptmasson.github.io/PORTFOLIO/docs/vt323-regular-webfont.woff2') format('woff2'),
        url('https://scriptmasson.github.io/PORTFOLIO/docs/vt323-regular-webfont.woff') format('woff');
   font-weight: bold;
