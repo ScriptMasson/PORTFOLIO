@@ -14,8 +14,11 @@
   </head>
   <body>
     <div class="containerCharacterStats">
-      <div id="saveFooter">
-        <img src="../docsImages/32BIT-SaveProgress-512px.png" id="btnSave" onclick="saveProgressFunction()">
+      <div id="saveContainer">
+        <img src="../docsImages/32BIT-SaveProgress-512px.png" id="btnSave" class="saveFooterContainedButton" onclick="saveProgressFunction()">
+        <span id="spanSave" onclick="saveProgressFunction()">save</span>
+        <img src="../docsImages/SingleCoin.png" id="imgCoins" class="saveFooterContainedButton" >
+        <span id="currentCoins" class="saveFooterContainedButton">0</span>
       </div>
       <button role="button" id="levelUpButton" onClick="LevelUp()">
         Level Up!
@@ -24,7 +27,7 @@
       <div id="levelUpExperienceBar">
         <div id="levelUpExperienceBarFillingUp">&nbsp</div>
       </div>
-
+      
       <div id="containerLevelUpCurrentExperience">
         <span id="levelUpCurrentExperience">0</span>&nbsp Expérience
       </div>
@@ -35,6 +38,7 @@
     
     <div id="monsterCombatArea">
       <div id="infoForExpGainContainer">
+        <img src="../docsImages/64x32BIT-BonusForEachLetterTypeKill-1024x512px-WhiteInk.png" id="btnBonusBoutique" class="saveFooterContainedButton">
         <span id="infoForExpGain">
           Chaque monstre double ses points d'expérience par seconde à chaque
           pouvoir de 10 de total vaincu!</span

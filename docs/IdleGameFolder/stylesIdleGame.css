@@ -322,7 +322,7 @@ body {
   color: rgb(131, 0, 98);
 }
 
-#saveFooter {
+#saveContainer {
   width: 70vw;
   height: 5.5vh;
   position: absolute;
@@ -333,11 +333,44 @@ body {
   align-items: center;
 }
 #btnSave {
-  box-sizing: border-box;
   border: 2px white solid;
+  border-right: 0px;
+}
+#spanSave {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* only specify "height: 100%" and maintain "aspect-ratio: 1 / 1;" to keep it square while filling the height!!!! */
+  height: 100%;
+  /* apsect ratio works like: (width or X) / (height or Y) */
+  aspect-ratio: 1 / 1;
+  border: 2px white solid;
+  border-left: 0px;
+  font-size: 100%;
+}
+.saveFooterContainedButton {
+  box-sizing: border-box;
   /* only specify "height: 100%" and maintain "aspect-ratio: 1 / 1;" to keep it square while filling the height!!!! */
   height: 100%;
   aspect-ratio: 1 / 1;
+  
+}
+#imgCoins {
+  height: 32px;
+  aspect-ratio: 1 / 1;
+
+}
+#currentCoins {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  aspect-ratio: 3 / 1;
+  margin-left: 1%;
+}
+#btnBonusBoutique {
+  aspect-ratio: 2 / 1;
 }
 
 /* Fin de Styles Mobile */
