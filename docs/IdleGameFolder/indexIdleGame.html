@@ -10,12 +10,12 @@
     <title>Idle Letter Fighter</title>
     <link rel="stylesheet" href="./stylesIdleGame.css" />
     <script src="./scriptIdleGame.js" defer></script>
-    <base href="docs" />
+    
   </head>
   <body>
     <div class="containerCharacterStats">
       <div id="saveFooter">
-        <button id="btnSave" onclick="saveProgressFunction()">save</button>
+        <img src="../docsImages/32BIT-SaveProgress-512px.png" id="btnSave" onclick="saveProgressFunction()">
       </div>
       <button role="button" id="levelUpButton" onClick="LevelUp()">
         Level Up!
@@ -31,15 +31,15 @@
       <div id="containerLevelUpRequiredExperience">
         <span id="levelUpRequiredExperience">2</span> &nbsp Manquant
       </div>
+    </div>
+    
+    <div id="monsterCombatArea">
       <div id="infoForExpGainContainer">
         <span id="infoForExpGain">
           Chaque monstre double ses points d'expérience par seconde à chaque
           pouvoir de 10 de total vaincu!</span
         >
       </div>
-    </div>
-
-    <div id="monsterCombatArea">
       <div class="monsterContainer">
         <div class="containerMonsterAll"><div class="monsterAll">A</div></div>
         <button

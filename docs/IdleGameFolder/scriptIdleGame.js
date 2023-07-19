@@ -30,6 +30,7 @@ function LevelUp() {
     B.classList.remove("notUnlocked");
     B.classList.add("nowUnlocked");
     document.getElementById("currentLevel").style.color = "blue";
+    document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "blue";
     if (killNumberMonsterB === 0) {
       /* starts the 1sec interval loop when you have never pressed the button before; then add a kill */
       setInterval(btnFightMonsterB, 1000);
@@ -41,6 +42,7 @@ function LevelUp() {
     C.classList.remove("notUnlocked");
     C.classList.add("nowUnlocked");
     document.getElementById("currentLevel").style.color = "rgb(0, 110, 255)";
+    document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "rgb(0, 110, 255)";
     if (killNumberMonsterC === 0) {
       setInterval(btnFightMonsterC, 1000);
       killNumberMonsterC++;
@@ -51,6 +53,7 @@ function LevelUp() {
       D.classList.remove("notUnlocked");
       D.classList.add("nowUnlocked");
       document.getElementById("currentLevel").style.color = "rgb(0, 223, 204)";
+      document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "rgb(0, 223, 204)";
       if (killNumberMonsterD === 0) {
         setInterval(btnFightMonsterD, 1000);
         killNumberMonsterD++;
@@ -61,6 +64,7 @@ function LevelUp() {
     E.classList.remove("notUnlocked");
     E.classList.add("nowUnlocked");
     document.getElementById("currentLevel").style.color = "rgb(0, 255, 170)";
+    document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "rgb(0, 255, 170)";
     if (killNumberMonsterE === 0) {
       setInterval(btnFightMonsterE, 1000);
       killNumberMonsterE++;

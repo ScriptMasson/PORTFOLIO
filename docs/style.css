@@ -6,11 +6,12 @@
 
 @font-face {
   font-family: 'roboto_condensedbold';
-  src: url('./docs/robotocondensed-bold-webfont.woff2') format('woff2'),
-       url('./docs/robotocondensed-bold-webfont.woff') format('woff');
+  src: url('./robotocondensed-bold-webfont.woff2') format('woff2'),
+       url('./robotocondensed-bold-webfont.woff') format('woff'),
+       url('https://scriptmasson.github.io/PORTFOLIO/robotocondensed-bold-webfont.woff2') format('woff2'),
+       url('https://scriptmasson.github.io/PORTFOLIO/robotocondensed-bold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 /* Styles for mobile */
@@ -200,7 +201,7 @@ body {
   border-color: #722d80;
   background-color: #44164d;
   transition: all 500ms ease-in-out;
-  font-size: 1rem;
+  font-size: 60%;
 }
 #purpleRectangle {
   background-color: #44164d;
@@ -211,7 +212,7 @@ body {
   border-color: #22692e;
   background-color: #17471f;
   transition: all 500ms ease-in-out;
-  font-size: 0.8rem;
+  font-size: 50%;
 }
 #greenRectangle {
   background-color: #17471f;
@@ -222,7 +223,7 @@ body {
   border-color: #c75c5c;
   background-color: #700303;
   transition: all 500ms ease-in-out;
-  font-size: 1.5rem;
+  font-size: 70%;
 }
 #redRectangle {
   background-color: #700303;
@@ -233,7 +234,7 @@ body {
   border-color: #02685a;
   background-color: #00b199;
   transition: all 500ms ease-in-out;
-  font-size: 1.5rem;
+  font-size: 70%;
 }
 #turquoiseRectangle {
   background-color: #00b199;

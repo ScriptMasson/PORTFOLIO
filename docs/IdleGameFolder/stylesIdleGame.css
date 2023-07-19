@@ -3,8 +3,8 @@
   font-family: 'vt323regular';
   src: url('../vt323-regular-webfont.woff2') format('woff2'),
        url('../vt323-regular-webfont.woff') format('woff'),
-       url('https://scriptmasson.github.io/PORTFOLIO/docs/vt323-regular-webfont.woff2') format('woff2'),
-       url('https://scriptmasson.github.io/PORTFOLIO/docs/vt323-regular-webfont.woff') format('woff');
+       url('https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff2') format('woff2'),
+       url('https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -100,7 +100,7 @@ body {
   top: 0vh;
   left: 0vw;
   width: 0%;
-  height: 5vh;
+  height: 100%;
   background-color: white;
   box-sizing: border-box;
 }
@@ -141,11 +141,10 @@ body {
   font-size: 65%;
 }
 #infoForExpGainContainer {
-  position: absolute;
-  bottom: 0vh;
-  right: 5vw;
+  position: relative;
+  top: 0%;
   height: 5.5vh;
-  width: 65vw;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -324,18 +323,21 @@ body {
 }
 
 #saveFooter {
-  width: 5vw;
+  width: 70vw;
   height: 5.5vh;
   position: absolute;
   bottom: 0vh;
   right: 0vw;
-  margin-right: 2px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 #btnSave {
-  all: unset;
+  box-sizing: border-box;
+  border: 2px white solid;
+  /* only specify "height: 100%" and maintain "aspect-ratio: 1 / 1;" to keep it square while filling the height!!!! */
+  height: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 /* Fin de Styles Mobile */
