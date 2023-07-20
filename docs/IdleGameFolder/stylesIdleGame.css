@@ -356,27 +356,20 @@ body {
   
 }
 
-#toggleButton {
-  all: unset;
-  justify-content: center;
-    display: flex;
-    padding: 1%;
-    border: white 4px solid;
-}
 #coinsBonusBoutique {
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
   top: 0vh;
   left: 0vw;
-
+  
   flex-direction: column;
 }
 #imgCoins {
   margin-left: 1%;
   height: 32px;
   aspect-ratio: 1 / 1;
-
+  
 }
 #currentCoins {
   display: flex;
@@ -389,11 +382,68 @@ body {
 #btnBonusBoutique {
   aspect-ratio: 2 / 1;
 }
-.active {
+.openFlex {
   display: flex;
 }
-.hidden {
+.closed {
   display: none;
 }
+#btnReturn {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0%;
+  left: 0%;
+  padding: 1%;
+  border: white 4px solid;
+  box-sizing: border-box;
+}
+#btnReturn > span {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  padding: 1%;
+  border-right: white 4px solid;
+  box-sizing: border-box;
+  width: calc(20vw + 4px);
+}
+
+.containerForAllUpgrades {
+  display: flex;
+  height: 10vh;
+  width: 100vw;
+
+}
+.allButtonsForUpgrades {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  font-size: 6vh;
+  border: white solid 4px;
+  box-sizing: border-box;
+}
+.allSpansForUpgrades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 70%;
+  padding: 0.5vh;
+  box-sizing: border-box;
+  border: white solid 4px;
+  
+
+}
+
 
 /* Fin de Styles Mobile */

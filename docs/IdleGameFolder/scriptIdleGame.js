@@ -2,8 +2,6 @@
 let currentCoins = 0;
 let coinsGivenByAllMonster = 1;
 
-
-
 //Exp scripts
 
 let currentExp = 0;
@@ -36,7 +34,9 @@ function LevelUp() {
     B.classList.remove("notUnlocked");
     B.classList.add("nowUnlocked");
     document.getElementById("currentLevel").style.color = "blue";
-    document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "blue";
+    document.getElementById(
+      "levelUpExperienceBarFillingUp"
+    ).style.backgroundColor = "blue";
     if (killNumberMonsterB === 0) {
       /* starts the 1sec interval loop when you have never pressed the button before; then add a kill */
       setInterval(btnFightMonsterB, 1000);
@@ -48,34 +48,40 @@ function LevelUp() {
     C.classList.remove("notUnlocked");
     C.classList.add("nowUnlocked");
     document.getElementById("currentLevel").style.color = "rgb(0, 110, 255)";
-    document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "rgb(0, 110, 255)";
+    document.getElementById(
+      "levelUpExperienceBarFillingUp"
+    ).style.backgroundColor = "rgb(0, 110, 255)";
     if (killNumberMonsterC === 0) {
       setInterval(btnFightMonsterC, 1000);
       killNumberMonsterC++;
     }
   }
   if (currentLevel >= 7 && currentLevel < 10) {
-      let D = document.getElementById("monsterContainerD");
-      D.classList.remove("notUnlocked");
-      D.classList.add("nowUnlocked");
-      document.getElementById("currentLevel").style.color = "rgb(0, 223, 204)";
-      document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "rgb(0, 223, 204)";
-      if (killNumberMonsterD === 0) {
-        setInterval(btnFightMonsterD, 1000);
-        killNumberMonsterD++;
-      }
+    let D = document.getElementById("monsterContainerD");
+    D.classList.remove("notUnlocked");
+    D.classList.add("nowUnlocked");
+    document.getElementById("currentLevel").style.color = "rgb(0, 223, 204)";
+    document.getElementById(
+      "levelUpExperienceBarFillingUp"
+    ).style.backgroundColor = "rgb(0, 223, 204)";
+    if (killNumberMonsterD === 0) {
+      setInterval(btnFightMonsterD, 1000);
+      killNumberMonsterD++;
+    }
   }
   if (currentLevel >= 10 && currentLevel < 13) {
     let E = document.getElementById("monsterContainerE");
     E.classList.remove("notUnlocked");
     E.classList.add("nowUnlocked");
     document.getElementById("currentLevel").style.color = "rgb(0, 255, 170)";
-    document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "rgb(0, 255, 170)";
+    document.getElementById(
+      "levelUpExperienceBarFillingUp"
+    ).style.backgroundColor = "rgb(0, 255, 170)";
     if (killNumberMonsterE === 0) {
       setInterval(btnFightMonsterE, 1000);
       killNumberMonsterE++;
     }
-}
+  }
 }
 
 function displayCurrentLevel() {
@@ -101,6 +107,29 @@ displayForExpBar();
 let killNumberMonsterA = 0;
 killNumberMonsterA++;
 let expGivenByMonsterA = 1;
+let button = document.getElementById("btnUpgradeMonsterA");
+button.addEventListener('click', () => {upgradesForMonsterA();});
+let upgradeNumberMonsterA = 0;
+let costForUpgradeNumberA = 1;
+function upgradesForMonsterA() {
+  if (upgradeNumberMonsterA < 10 && currentCoins >= costForUpgradeNumberA) {
+    expGivenByMonsterA = expGivenByMonsterA + 1;
+    currentCoins = currentCoins - costForUpgradeNumberA;
+    upgradeNumberMonsterA++;
+    costForUpgradeNumberA++;
+    document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeNumberA;
+    document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
+  }
+  if (upgradeNumberMonsterA >= 10 && upgradeNumberMonsterA < 100 && currentCoins >= costForUpgradeNumberA) {
+    expGivenByMonsterA = expGivenByMonsterA + 1;
+    currentCoins = currentCoins - costForUpgradeNumberA;
+    upgradeNumberMonsterA++;
+    costForUpgradeNumberA = costForUpgradeNumberA + 2;
+    document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeNumberA;
+    document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
+  }
+
+}
 function btnFightMonsterA() {
   if (killNumberMonsterA <= 10) {
     /* initial kill value before doubling... */
@@ -123,7 +152,8 @@ function btnFightMonsterA() {
     /* power of 10 two times */
     let expGivenByMonsterQuadrupled = expGivenByMonsterA * 4;
     currentExp = currentExp + expGivenByMonsterQuadrupled;
-    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterQuadrupled;
+    document.getElementById("monsterAExp").innerHTML =
+      expGivenByMonsterQuadrupled;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
@@ -132,7 +162,8 @@ function btnFightMonsterA() {
     /* power of 10 three times */
     let expGivenByMonsterTimesEight = expGivenByMonsterA * 8;
     currentExp = currentExp + expGivenByMonsterTimesEight;
-    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterTimesEight;
+    document.getElementById("monsterAExp").innerHTML =
+      expGivenByMonsterTimesEight;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
@@ -141,7 +172,8 @@ function btnFightMonsterA() {
     /* power of 10 four times */
     let expGivenByMonsterTimesSixteen = expGivenByMonsterA * 16;
     currentExp = currentExp + expGivenByMonsterTimesSixteen;
-    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterTimesSixteen;
+    document.getElementById("monsterAExp").innerHTML =
+      expGivenByMonsterTimesSixteen;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
@@ -150,7 +182,8 @@ function btnFightMonsterA() {
     /* power of 10 four times */
     let expGivenByMonsterTimesThirtyTwo = expGivenByMonsterA * 32;
     currentExp = currentExp + expGivenByMonsterTimesThirtyTwo;
-    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterTimesThirtyTwo;
+    document.getElementById("monsterAExp").innerHTML =
+      expGivenByMonsterTimesThirtyTwo;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
@@ -355,38 +388,44 @@ function saveProgressFunction() {
     KeyCurrentCoins: currentCoins,
     KeyCoinsGivenByAllMonster: coinsGivenByAllMonster,
     KeyKillNumberMonsterA: killNumberMonsterA,
+    KeyExpGivenByMonsterA: expGivenByMonsterA,
+    KeyCostForUpgradeNumberA: costForUpgradeNumberA,
+    KeyUpgradeNumberMonsterA: upgradeNumberMonsterA,
     KeyKillNumberMonsterB: killNumberMonsterB,
     KeyKillNumberMonsterC: killNumberMonsterC,
     KeyKillNumberMonsterD: killNumberMonsterD,
     KeyKillNumberMonsterE: killNumberMonsterE,
-    
   };
   /* Create a variable "saveSerialized" with the value of "JSON.stringify(objectNameHere)" which will serialize to JSON a given object.*/
   let saveSerialized = JSON.stringify(saveProgress);
   /* Now we can send the serialized version of our object to the storage! Using the method: "localStorage.setItem("nameOfKey", serializedVarHere)" */
   localStorage.setItem("saveSerialized", saveSerialized);
 }
+/* Boolean "saveExists" to verify if it is present inside localStorage... */
 let saveExists = localStorage.getItem("saveSerialized");
 function loadProgressFunction() {
   if (saveExists) {
-  /* Create the "saveDeserialized" variable of which the value will be the method to get an item from storage using its "nameOfKey" */
-  /* JSON.parse(localStorage.getItem("nameOfKey")); */
-  let saveDeserialized = JSON.parse(localStorage.getItem("saveSerialized"));
-  /* Reinitialise "saveProgress" as our new "saveDeserialized" to close the loop! */
-  /* loop is: Values -> saveProgress -> saveSerialized -> localStorage -> saveDeserialized -> saveProgress -> Values */
-  saveProgress = saveDeserialized;
-  /* Reinitialised the value of the saved object using our saveDeserialized object which is equal to our beginning "saveProgress" */
-  currentExp = saveProgress.KeyCurrentExp;
-  currentLevel = saveProgress.KeyCurrentLevel;
-  requiredExp = saveProgress.KeyCurrentRequiredExp;
-  currentCoins = saveProgress.KeyCurrentCoins;
-  coinsGivenByAllMonster = saveProgress.KeyCoinsGivenByAllMonster;
-  killNumberMonsterA = saveProgress.KeyKillNumberMonsterA;
-  killNumberMonsterB = saveProgress.KeyKillNumberMonsterB;
-  killNumberMonsterC = saveProgress.KeyKillNumberMonsterC;
-  killNumberMonsterD = saveProgress.KeyKillNumberMonsterD;
-  killNumberMonsterE = saveProgress.KeyKillNumberMonsterE;
-  }else {return saveProgressFunction();}
+    /* Create the "saveDeserialized" variable of which the value will be the method to get an item from storage using its "nameOfKey" */
+    /* JSON.parse(localStorage.getItem("nameOfKey")); */
+    let saveDeserialized = JSON.parse(localStorage.getItem("saveSerialized"));
+    /* Reinitialise "saveProgress" as our new "saveDeserialized" to close the loop! */
+    /* loop is: Values -> saveProgress -> saveSerialized -> localStorage -> saveDeserialized -> saveProgress -> Values */
+    saveProgress = saveDeserialized;
+    /* Reinitialised the value of the saved object using our saveDeserialized object which is equal to our beginning "saveProgress" */
+    currentExp = saveProgress.KeyCurrentExp;
+    currentLevel = saveProgress.KeyCurrentLevel;
+    requiredExp = saveProgress.KeyCurrentRequiredExp;
+    currentCoins = saveProgress.KeyCurrentCoins;
+    coinsGivenByAllMonster = saveProgress.KeyCoinsGivenByAllMonster;
+    costForUpgradeNumberA = saveProgress.KeyCostForUpgradeNumberA;
+    upgradeNumberMonsterA = saveProgress.KeyCostForUpgradeNumberA;
+    expGivenByMonsterA = saveProgress.KeyExpGivenByMonsterA;
+    killNumberMonsterA = saveProgress.KeyKillNumberMonsterA;
+    killNumberMonsterB = saveProgress.KeyKillNumberMonsterB;
+    killNumberMonsterC = saveProgress.KeyKillNumberMonsterC;
+    killNumberMonsterD = saveProgress.KeyKillNumberMonsterD;
+    killNumberMonsterE = saveProgress.KeyKillNumberMonsterE;
+  } else {return saveProgressFunction();}
 }
 function attackAllAvailableMonsters() {
   /* Interval starter when the level is reached via loadProgressFunction(); */
@@ -424,23 +463,28 @@ function attackAllAvailableMonsters() {
 /* Area for boutique */
 let coinsBonusBoutique = document.getElementById("coinsBonusBoutique");
 let monsterCombatArea = document.getElementById("monsterCombatArea");
-let toggleButton = document.getElementById("toggleButton");
+let btnReturn = document.getElementById("btnReturn");
 let btnBonusBoutique = document.getElementById("btnBonusBoutique");
-toggleButton.addEventListener('click', function () {
-  // Toggle 1
-  monsterCombatArea.classList.add('active');
-  monsterCombatArea.classList.remove('hidden');
-  coinsBonusBoutique.classList.remove('active');
-  coinsBonusBoutique.classList.add('hidden');
+btnReturn.addEventListener("click", function () {
+  // BtnReturn inside Boutique
+  monsterCombatArea.classList.remove("closed");
+  monsterCombatArea.classList.add("openFlex");
+  coinsBonusBoutique.classList.remove("openFlex");
+  coinsBonusBoutique.classList.add("closed");
 });
-btnBonusBoutique.addEventListener('click', function () {
-  // Toggle 2
-  monsterCombatArea.classList.remove('active');
-  monsterCombatArea.classList.add('hidden');
-  coinsBonusBoutique.classList.remove('hidden');
-  coinsBonusBoutique.classList.add('active');
+btnBonusBoutique.addEventListener("click", function () {
+  // BtnBoutiqueForUpgrades
+  monsterCombatArea.classList.remove("openFlex");
+  monsterCombatArea.classList.add("closed");
+  coinsBonusBoutique.classList.remove("closed");
+  coinsBonusBoutique.classList.add("openFlex");
 });
 
+function displayUpgradesStats() {
+  /* MonsterA */
+  document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeNumberA;
+  document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
+}
 /*  
     (Immediately Invoked Function Expression)(); 
     "(WrapTheFunctionHere)" in parentheses and "();"" immediately invoke it! 
@@ -450,12 +494,13 @@ btnBonusBoutique.addEventListener('click', function () {
   /* load progress after 10ms of entering website */
   setTimeout(loadProgressFunction, 10);
   setTimeout(attackAllAvailableMonsters, 20);
+  setTimeout(displayUpgradesStats, 20);
   /* set the interval of auto-saving progress to 30seconds */
   setInterval(saveProgressFunction, 15000);
   /* set the interval of the various display function for character stats in the html doc */
-  setInterval(displayCurrentExperience, 125);
-  setInterval(displayRequiredExperience, 125);
-  setInterval(displayForExpBar, 125);
-  setInterval(displayCurrentLevel, 125);
-  setInterval(LevelUp, 125);
+  setInterval(displayCurrentExperience, 500);
+  setInterval(displayRequiredExperience, 500);
+  setInterval(displayForExpBar, 500);
+  setInterval(displayCurrentLevel, 500);
+  setInterval(LevelUp, 500);
 })();

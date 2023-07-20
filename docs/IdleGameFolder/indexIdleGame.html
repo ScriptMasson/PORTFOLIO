@@ -36,9 +36,9 @@
       </div>
     </div>
     
-    <div id="monsterCombatArea" class="active">
+    <div id="monsterCombatArea" class="openFlex">
       <div id="infoForExpGainContainer">
-        <img src="../docsImages/64x32BIT-BonusForEachLetterTypeKill-1024x512px-WhiteInk.png" id="btnBonusBoutique" class="saveFooterContainedButton">
+        <img src="../docsImages/64x32BIT-CoinsBonusBoutique-1024x512px.png" id="btnBonusBoutique" class="saveFooterContainedButton">
         <span id="infoForExpGain">
           Chaque monstre double ses points d'expérience par seconde à chaque
           pouvoir de 10 de total vaincu!</span
@@ -205,8 +205,12 @@
       </div>
     </div>
 
-    <div id="coinsBonusBoutique" class="hidden">
-      <button id="toggleButton">Return</button>
+    <div id="coinsBonusBoutique" class="closed">
+      <button id="btnReturn"><span>Cost</span>Return</button>
+      <div class="containerForAllUpgrades">
+        <button id="btnUpgradeMonsterA" class="allButtonsForUpgrades disable-dbl-tap-zoom">1</button>
+        <span class="allSpansForUpgrades"> 'A' a &nbsp<span id="monsterAUpgrade"> 0 </span>&nbsp expérience de base supplémentaire </span>
+      </div>
     </div>
     <!-- Fin de Monster Combat Area -->
   </body>
