@@ -421,6 +421,26 @@ function attackAllAvailableMonsters() {
   }
 }
 
+/* Area for boutique */
+let coinsBonusBoutique = document.getElementById("coinsBonusBoutique");
+let monsterCombatArea = document.getElementById("monsterCombatArea");
+let toggleButton = document.getElementById("toggleButton");
+let btnBonusBoutique = document.getElementById("btnBonusBoutique");
+toggleButton.addEventListener('click', function () {
+  // Toggle 1
+  monsterCombatArea.classList.add('active');
+  monsterCombatArea.classList.remove('hidden');
+  coinsBonusBoutique.classList.remove('active');
+  coinsBonusBoutique.classList.add('hidden');
+});
+btnBonusBoutique.addEventListener('click', function () {
+  // Toggle 2
+  monsterCombatArea.classList.remove('active');
+  monsterCombatArea.classList.add('hidden');
+  coinsBonusBoutique.classList.remove('hidden');
+  coinsBonusBoutique.classList.add('active');
+});
+
 /*  
     (Immediately Invoked Function Expression)(); 
     "(WrapTheFunctionHere)" in parentheses and "();"" immediately invoke it! 

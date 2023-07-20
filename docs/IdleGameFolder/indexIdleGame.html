@@ -13,11 +13,11 @@
     
   </head>
   <body>
-    <div class="containerCharacterStats">
+    <div id="containerCharacterStats">
       <div id="saveContainer">
         <img src="../docsImages/32BIT-SaveProgress-512px.png" id="btnSave" class="saveFooterContainedButton" onclick="saveProgressFunction()">
         <span id="spanSave" onclick="saveProgressFunction()">save</span>
-        <img src="../docsImages/SingleCoin.png" id="imgCoins" class="saveFooterContainedButton" >
+        <img src="../docsImages/32BIT-GoldStack-512px.png" id="imgCoins" class="saveFooterContainedButton" >
         <span id="currentCoins" class="saveFooterContainedButton">0</span>
       </div>
       <button role="button" id="levelUpButton" onClick="LevelUp()">
@@ -36,7 +36,7 @@
       </div>
     </div>
     
-    <div id="monsterCombatArea">
+    <div id="monsterCombatArea" class="active">
       <div id="infoForExpGainContainer">
         <img src="../docsImages/64x32BIT-BonusForEachLetterTypeKill-1024x512px-WhiteInk.png" id="btnBonusBoutique" class="saveFooterContainedButton">
         <span id="infoForExpGain">
@@ -203,6 +203,10 @@
           >
         </div>
       </div>
+    </div>
+
+    <div id="coinsBonusBoutique" class="hidden">
+      <button id="toggleButton">Return</button>
     </div>
     <!-- Fin de Monster Combat Area -->
   </body>

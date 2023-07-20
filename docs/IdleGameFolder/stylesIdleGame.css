@@ -28,7 +28,7 @@ body {
   overflow-x: hidden;
 }
 
-.containerCharacterStats {
+#containerCharacterStats {
   display: block;
   position: sticky;
   top: 0vh;
@@ -162,7 +162,6 @@ body {
   position: relative;
   top: 0vh;
   left: 0vw;
-  display: flex;
   flex-direction: column;
 }
 .nowUnlocked {
@@ -356,7 +355,25 @@ body {
   aspect-ratio: 1 / 1;
   
 }
+
+#toggleButton {
+  all: unset;
+  justify-content: center;
+    display: flex;
+    padding: 1%;
+    border: white 4px solid;
+}
+#coinsBonusBoutique {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  top: 0vh;
+  left: 0vw;
+
+  flex-direction: column;
+}
 #imgCoins {
+  margin-left: 1%;
   height: 32px;
   aspect-ratio: 1 / 1;
 
@@ -371,6 +388,12 @@ body {
 }
 #btnBonusBoutique {
   aspect-ratio: 2 / 1;
+}
+.active {
+  display: flex;
+}
+.hidden {
+  display: none;
 }
 
 /* Fin de Styles Mobile */
