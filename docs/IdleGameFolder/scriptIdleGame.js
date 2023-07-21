@@ -403,6 +403,11 @@ function saveProgressFunction() {
 }
 /* Boolean "saveExists" to verify if it is present inside localStorage... */
 let saveExists = localStorage.getItem("saveSerialized");
+try {
+  loadProgressFunction();
+} catch (error) {
+  saveProgressFunction
+}
 function loadProgressFunction() {
   if (saveExists) {
     /* Create the "saveDeserialized" variable of which the value will be the method to get an item from storage using its "nameOfKey" */
@@ -425,7 +430,7 @@ function loadProgressFunction() {
     killNumberMonsterC = saveProgress.KeyKillNumberMonsterC;
     killNumberMonsterD = saveProgress.KeyKillNumberMonsterD;
     killNumberMonsterE = saveProgress.KeyKillNumberMonsterE;
-  } else {return saveProgressFunction();}
+  } else {return saveProgressFunction();}  {saveProgressFunction();}
 }
 function attackAllAvailableMonsters() {
   /* Interval starter when the level is reached via loadProgressFunction(); */
