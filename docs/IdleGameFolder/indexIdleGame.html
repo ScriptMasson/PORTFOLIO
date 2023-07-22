@@ -10,14 +10,22 @@
     <title>Idle Letter Fighter</title>
     <link rel="stylesheet" href="./stylesIdleGame.css" />
     <script src="./scriptIdleGame.js" defer></script>
-    
   </head>
   <body>
     <div id="containerCharacterStats">
       <div id="saveContainer">
-        <img src="../docsImages/32BIT-SaveProgress-512px.png" id="btnSave" class="saveFooterContainedButton" onclick="saveProgressFunction()">
+        <img
+          src="../docsImages/32BIT-SaveProgress-512px.png"
+          id="btnSave"
+          class="saveFooterContainedButton"
+          onclick="saveProgressFunction()"
+        />
         <span id="spanSave" onclick="saveProgressFunction()">save</span>
-        <img src="../docsImages/32BIT-GoldStack-512px.png" id="imgCoins" class="saveFooterContainedButton" >
+        <img
+          src="../docsImages/32BIT-GoldStack-512px.png"
+          id="imgCoins"
+          class="saveFooterContainedButton"
+        />
         <span id="currentCoins" class="saveFooterContainedButton">0</span>
       </div>
       <button role="button" id="levelUpButton" onClick="LevelUp()">
@@ -27,7 +35,7 @@
       <div id="levelUpExperienceBar">
         <div id="levelUpExperienceBarFillingUp">&nbsp</div>
       </div>
-      
+
       <div id="containerLevelUpCurrentExperience">
         <span id="levelUpCurrentExperience">0</span>&nbsp Expérience
       </div>
@@ -35,10 +43,14 @@
         <span id="levelUpRequiredExperience">2</span> &nbsp Manquant
       </div>
     </div>
-    
+
     <div id="monsterCombatArea" class="openFlex">
       <div id="infoForExpGainContainer">
-        <img src="../docsImages/64x32BIT-CoinsBonusBoutique-1024x512px.png" id="btnBonusBoutique" class="saveFooterContainedButton">
+        <img
+          src="../docsImages/64x32BIT-CoinsBonusBoutique-1024x512px.png"
+          id="btnBonusBoutique"
+          class="saveFooterContainedButton"
+        />
         <span id="infoForExpGain">
           Chaque monstre double ses points d'expérience par seconde à chaque
           pouvoir de 10 de total vaincu!</span
@@ -208,8 +220,16 @@
     <div id="coinsBonusBoutique" class="closed">
       <button id="btnReturn"><span>Cost</span>Return</button>
       <div class="containerForAllUpgrades">
-        <button id="btnUpgradeMonsterA" class="allButtonsForUpgrades disable-dbl-tap-zoom">1</button>
-        <span class="allSpansForUpgrades"> 'A' a &nbsp<span id="monsterAUpgrade"> 0 </span>&nbsp expérience de base supplémentaire </span>
+        <button
+          id="btnUpgradeMonsterA"
+          class="allButtonsForUpgrades disable-dbl-tap-zoom"
+        >
+          1
+        </button>
+        <span class="allSpansForUpgrades">
+          'A' a &nbsp<span id="monsterAUpgrade"> 0 </span>&nbsp expérience de
+          base supplémentaire
+        </span>
       </div>
     </div>
     <!-- Fin de Monster Combat Area -->

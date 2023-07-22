@@ -3,14 +3,35 @@ let currentCoins = 0;
 let coinsGivenByAllMonster = 1;
 
 //Exp scripts
-
+let currentLevel = 1;
 let currentExp = 0;
+let requiredExp = 2;
+
+function displayCurrentLevel() {
+  document.getElementById("currentLevel").innerHTML = currentLevel;
+  document.getElementById("currentCoins").innerHTML = currentCoins;
+}
+displayCurrentLevel();
+function displayForExpBar() {
+  let currentRatio = currentExp / requiredExp;
+  let currentRatioPercent = currentRatio * 100;
+  if (currentRatioPercent <= 99) {
+    return (document.getElementById(
+      "levelUpExperienceBarFillingUp"
+    ).style.width = currentRatioPercent + "%");
+  } else if (currentRatioPercent >= 100) {
+    return (document.getElementById(
+      "levelUpExperienceBarFillingUp"
+    ).style.width = 100 + "%");
+  }
+}
+displayForExpBar();
+
 function displayCurrentExperience() {
   document.getElementById("levelUpCurrentExperience").innerHTML = currentExp;
 }
 displayCurrentExperience();
 
-let requiredExp = 2;
 function displayRequiredExperience() {
   let ratio = requiredExp - currentExp;
   if (ratio >= 0) {
@@ -21,7 +42,6 @@ function displayRequiredExperience() {
 }
 displayRequiredExperience();
 
-let currentLevel = 1;
 function LevelUp() {
   if (currentExp >= requiredExp) {
     currentLevel++;
@@ -84,64 +104,86 @@ function LevelUp() {
   }
 }
 
-function displayCurrentLevel() {
-  document.getElementById("currentLevel").innerHTML = currentLevel;
-  document.getElementById("currentCoins").innerHTML = currentCoins;
-}
-displayCurrentLevel();
-function displayForExpBar() {
-  let currentRatio = currentExp / requiredExp;
-  let currentRatioPercent = currentRatio * 100;
-  if (currentRatioPercent <= 99) {
-    return (document.getElementById(
-      "levelUpExperienceBarFillingUp"
-    ).style.width = currentRatioPercent + "%");
-  } else if (currentRatioPercent >= 100) {
-    return (document.getElementById(
-      "levelUpExperienceBarFillingUp"
-    ).style.width = 100 + "%");
-  }
-}
-displayForExpBar();
-
+/* Monsters Script */
+/* Monster A */
 let killNumberMonsterA = 0;
-killNumberMonsterA++;
-let expGivenByMonsterA = 1;
-let button = document.getElementById("btnUpgradeMonsterA");
-button.addEventListener('click', () => {upgradesForMonsterA();});
+let baseExpGivenByMonsterA = 1;
 let upgradeNumberMonsterA = 0;
-let costForUpgradeNumberA = 1;
+let costForUpgradeMonsterA = 1;
+let monsterAUpgrade = document.getElementById("monsterAUpgrade");
+let btnUpgradeMonsterA = document.getElementById("btnUpgradeMonsterA");
+btnUpgradeMonsterA.addEventListener("click", () => {
+  upgradesForMonsterA();
+});
 function upgradesForMonsterA() {
-  if (upgradeNumberMonsterA < 10 && currentCoins >= costForUpgradeNumberA) {
-    expGivenByMonsterA = expGivenByMonsterA + 1;
-    currentCoins = currentCoins - costForUpgradeNumberA;
+  if (upgradeNumberMonsterA <= 10 && currentCoins >= costForUpgradeMonsterA) {
+    //add one to the base experience given by this monster
+    baseExpGivenByMonsterA = baseExpGivenByMonsterA + 1;
+    //substract the cost from gold pile
+    currentCoins = currentCoins - costForUpgradeMonsterA;
+    //add one to the upgrade number and the cost of an upgrade
     upgradeNumberMonsterA++;
-    costForUpgradeNumberA++;
-    document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeNumberA;
-    document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
+    costForUpgradeMonsterA++;
+    //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
-  if (upgradeNumberMonsterA >= 10 && upgradeNumberMonsterA < 100 && currentCoins >= costForUpgradeNumberA) {
-    expGivenByMonsterA = expGivenByMonsterA + 1;
-    currentCoins = currentCoins - costForUpgradeNumberA;
+  if (
+    upgradeNumberMonsterA > 10 &&
+    upgradeNumberMonsterA <= 100 &&
+    currentCoins >= costForUpgradeMonsterA
+  ) {
+    baseExpGivenByMonsterA = baseExpGivenByMonsterA + 1;
+    currentCoins = currentCoins - costForUpgradeMonsterA;
     upgradeNumberMonsterA++;
-    costForUpgradeNumberA = costForUpgradeNumberA + 2;
-    document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeNumberA;
-    document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
+    costForUpgradeMonsterA = costForUpgradeMonsterA + 2;
+    btnUpgradeMonsterA.innerHTML = costForUpgradeMonsterA;
+    monsterAUpgrade.innerHTML = upgradeNumberMonsterA;
   }
+  if (
+    upgradeNumberMonsterA > 100 &&
+    upgradeNumberMonsterA <= 1000 &&
+    currentCoins >= costForUpgradeMonsterA
+  ) {
+    baseExpGivenByMonsterA = baseExpGivenByMonsterA + 1;
+    currentCoins = currentCoins - costForUpgradeMonsterA;
+    upgradeNumberMonsterA++;
+    costForUpgradeMonsterA = costForUpgradeMonsterA + 4;
+    btnUpgradeMonsterA.innerHTML = costForUpgradeMonsterA;
+    monsterAUpgrade.innerHTML = upgradeNumberMonsterA;
+  }
+}
+function saveForMonsterA() {
+  let saveForMonsterA = {
+    KeyKillNumberMonsterA: killNumberMonsterA,
+    KeyBaseExpGivenByMonsterA: baseExpGivenByMonsterA,
+    KeyCostForUpgradeNumberA: costForUpgradeMonsterA,
+    KeyUpgradeNumberMonsterA: upgradeNumberMonsterA,
+  };
+  let saveForMonsterASerialized = JSON.stringify(saveForMonsterA);
+  localStorage.setItem("saveForMonsterA", saveForMonsterASerialized);
+}
+function loadForMonsterA() {
+  let saveForMonsterADeserialized = JSON.parse(
+    localStorage.getItem("saveForMonsterA")
+  );
+  saveForMonsterA = saveForMonsterADeserialized;
 
+  killNumberMonsterA = saveForMonsterA.KeyKillNumberMonsterA;
+  baseExpGivenByMonsterA = saveForMonsterA.KeyBaseExpGivenByMonsterA;
+  costForUpgradeMonsterA = saveForMonsterA.KeyCostForUpgradeMonsterA;
+  upgradeNumberMonsterA = saveForMonsterA.KeyUpgradeNumberMonsterA;
 }
 function btnFightMonsterA() {
   if (killNumberMonsterA <= 10) {
     /* initial kill value before doubling... */
-    currentExp = currentExp + expGivenByMonsterA;
-    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterA;
+    currentExp = currentExp + baseExpGivenByMonsterA;
+    document.getElementById("monsterAExp").innerHTML = baseExpGivenByMonsterA;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
   if (killNumberMonsterA > 10 && killNumberMonsterA <= 100) {
     /* power of 10 one time */
-    let expGivenByMonsterDoubled = expGivenByMonsterA * 2;
+    let expGivenByMonsterDoubled = baseExpGivenByMonsterA * 2;
     currentExp = currentExp + expGivenByMonsterDoubled;
     document.getElementById("monsterAExp").innerHTML = expGivenByMonsterDoubled;
     document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
@@ -150,7 +192,7 @@ function btnFightMonsterA() {
   }
   if (killNumberMonsterA > 100 && killNumberMonsterA <= 1000) {
     /* power of 10 two times */
-    let expGivenByMonsterQuadrupled = expGivenByMonsterA * 4;
+    let expGivenByMonsterQuadrupled = baseExpGivenByMonsterA * 4;
     currentExp = currentExp + expGivenByMonsterQuadrupled;
     document.getElementById("monsterAExp").innerHTML =
       expGivenByMonsterQuadrupled;
@@ -160,7 +202,7 @@ function btnFightMonsterA() {
   }
   if (killNumberMonsterA > 1000 && killNumberMonsterA <= 10000) {
     /* power of 10 three times */
-    let expGivenByMonsterTimesEight = expGivenByMonsterA * 8;
+    let expGivenByMonsterTimesEight = baseExpGivenByMonsterA * 8;
     currentExp = currentExp + expGivenByMonsterTimesEight;
     document.getElementById("monsterAExp").innerHTML =
       expGivenByMonsterTimesEight;
@@ -170,7 +212,7 @@ function btnFightMonsterA() {
   }
   if (killNumberMonsterA > 10000 && killNumberMonsterA <= 100000) {
     /* power of 10 four times */
-    let expGivenByMonsterTimesSixteen = expGivenByMonsterA * 16;
+    let expGivenByMonsterTimesSixteen = baseExpGivenByMonsterA * 16;
     currentExp = currentExp + expGivenByMonsterTimesSixteen;
     document.getElementById("monsterAExp").innerHTML =
       expGivenByMonsterTimesSixteen;
@@ -180,7 +222,7 @@ function btnFightMonsterA() {
   }
   if (killNumberMonsterA > 100000) {
     /* power of 10 four times */
-    let expGivenByMonsterTimesThirtyTwo = expGivenByMonsterA * 32;
+    let expGivenByMonsterTimesThirtyTwo = baseExpGivenByMonsterA * 32;
     currentExp = currentExp + expGivenByMonsterTimesThirtyTwo;
     document.getElementById("monsterAExp").innerHTML =
       expGivenByMonsterTimesThirtyTwo;
@@ -189,193 +231,10 @@ function btnFightMonsterA() {
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
 }
-
-let killNumberMonsterB = 0;
-let expGivenByMonsterB = 2;
-function btnFightMonsterB() {
-  if (killNumberMonsterB <= 10) {
-    /* initial kill value before doubling... */
-    currentExp = currentExp + 2;
-    document.getElementById("monsterBExp").innerHTML = 2;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  }
-  if (killNumberMonsterB > 10 && killNumberMonsterB <= 100) {
-    /* power of 10 one time */
-    currentExp = currentExp + 4;
-    document.getElementById("monsterBExp").innerHTML = 4;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  }
-  if (killNumberMonsterB > 100 && killNumberMonsterB <= 1000) {
-    /* power of 10 two times */
-    currentExp = currentExp + 8;
-    document.getElementById("monsterBExp").innerHTML = 8;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  }
-  if (killNumberMonsterB > 1000 && killNumberMonsterB <= 10000) {
-    /* power of 10 three times */
-    currentExp = currentExp + 16;
-    document.getElementById("monsterBExp").innerHTML = 16;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  }
-  if (killNumberMonsterB > 10000 && killNumberMonsterB <= 100000) {
-    /* power of 10 four times */
-    currentExp = currentExp + 32;
-    document.getElementById("monsterBExp").innerHTML = 32;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  }
-  if (killNumberMonsterB > 100000) {
-    /* power of 10 four times */
-    currentExp = currentExp + 64;
-    document.getElementById("monsterBExp").innerHTML = 64;
-    document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-    killNumberMonsterB++;
-  }
-}
-
-let expGivenByMonsterC = 4;
-let killNumberMonsterC = 0;
-function btnFightMonsterC() {
-  if (killNumberMonsterC <= 10) {
-    /* initial kill value before doubling... */
-    currentExp = currentExp + 4;
-    document.getElementById("monsterCExp").innerHTML = 4;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-  }
-  if (killNumberMonsterC > 10 && killNumberMonsterC <= 100) {
-    /* power of 10 one time */
-    currentExp = currentExp + 8;
-    document.getElementById("monsterCExp").innerHTML = 8;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-  }
-  if (killNumberMonsterC > 100 && killNumberMonsterC <= 1000) {
-    /* power of 10 two times */
-    currentExp = currentExp + 16;
-    document.getElementById("monsterCExp").innerHTML = 16;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-  }
-  if (killNumberMonsterC > 1000 && killNumberMonsterC <= 10000) {
-    /* power of 10 three times */
-    currentExp = currentExp + 32;
-    document.getElementById("monsterCExp").innerHTML = 32;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-  }
-  if (killNumberMonsterC > 10000 && killNumberMonsterC <= 100000) {
-    /* power of 10 four times */
-    currentExp = currentExp + 64;
-    document.getElementById("monsterCExp").innerHTML = 64;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-  }
-  if (killNumberMonsterC > 100000) {
-    /* power of 10 four times */
-    currentExp = currentExp + 128;
-    document.getElementById("monsterCExp").innerHTML = 128;
-    document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
-    killNumberMonsterC++;
-  }
-}
-
-let expGivenByMonsterD = 8;
-let killNumberMonsterD = 0;
-function btnFightMonsterD() {
-  if (killNumberMonsterD <= 10) {
-    /* initial kill value before doubling... */
-    currentExp = currentExp + 8;
-    document.getElementById("monsterDExp").innerHTML = 8;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-  }
-  if (killNumberMonsterD > 10 && killNumberMonsterD <= 100) {
-    /* power of 10 one time */
-    currentExp = currentExp + 16;
-    document.getElementById("monsterDExp").innerHTML = 16;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-  }
-  if (killNumberMonsterD > 100 && killNumberMonsterD <= 1000) {
-    /* power of 10 two times */
-    currentExp = currentExp + 32;
-    document.getElementById("monsterDExp").innerHTML = 32;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-  }
-  if (killNumberMonsterD > 1000 && killNumberMonsterD <= 10000) {
-    /* power of 10 three times */
-    currentExp = currentExp + 64;
-    document.getElementById("monsterDExp").innerHTML = 64;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-  }
-  if (killNumberMonsterD > 10000 && killNumberMonsterD <= 100000) {
-    /* power of 10 four times */
-    currentExp = currentExp + 128;
-    document.getElementById("monsterDExp").innerHTML = 128;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-  }
-  if (killNumberMonsterD > 100000) {
-    /* power of 10 four times */
-    currentExp = currentExp + 256;
-    document.getElementById("monsterDExp").innerHTML = 256;
-    document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
-    killNumberMonsterD++;
-  }
-}
-
-let expGivenByMonsterE = 16;
-let killNumberMonsterE = 0;
-function btnFightMonsterE() {
-  if (killNumberMonsterE <= 10) {
-    /* initial kill value before doubling... */
-    currentExp = currentExp + 16;
-    document.getElementById("monsterEExp").innerHTML = 16;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-  }
-  if (killNumberMonsterE > 10 && killNumberMonsterE <= 100) {
-    /* power of 10 one time */
-    currentExp = currentExp + 32;
-    document.getElementById("monsterEExp").innerHTML = 32;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-  }
-  if (killNumberMonsterE > 100 && killNumberMonsterE <= 1000) {
-    /* power of 10 two times */
-    currentExp = currentExp + 64;
-    document.getElementById("monsterEExp").innerHTML = 64;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-  }
-  if (killNumberMonsterE > 1000 && killNumberMonsterE <= 10000) {
-    /* power of 10 three times */
-    currentExp = currentExp + 128;
-    document.getElementById("monsterEExp").innerHTML = 128;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-  }
-  if (killNumberMonsterE > 10000 && killNumberMonsterE <= 100000) {
-    /* power of 10 four times */
-    currentExp = currentExp + 256;
-    document.getElementById("monsterEExp").innerHTML = 256;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-  }
-  if (killNumberMonsterE > 100000) {
-    /* power of 10 four times */
-    currentExp = currentExp + 512;
-    document.getElementById("monsterEExp").innerHTML = 512;
-    document.getElementById("monsterEKill").innerHTML = killNumberMonsterE;
-    killNumberMonsterE++;
-  }
+if (currentLevel >= 1) {
+  setInterval(btnFightMonsterA, 1000);
+  setInterval(saveForMonsterA, 1000);
+  
 }
 
 /* Save system */
@@ -387,26 +246,19 @@ function saveProgressFunction() {
     KeyCurrentRequiredExp: requiredExp,
     KeyCurrentCoins: currentCoins,
     KeyCoinsGivenByAllMonster: coinsGivenByAllMonster,
-    KeyKillNumberMonsterA: killNumberMonsterA,
-    KeyExpGivenByMonsterA: expGivenByMonsterA,
-    KeyCostForUpgradeNumberA: costForUpgradeNumberA,
-    KeyUpgradeNumberMonsterA: upgradeNumberMonsterA,
-    KeyKillNumberMonsterB: killNumberMonsterB,
-    KeyKillNumberMonsterC: killNumberMonsterC,
-    KeyKillNumberMonsterD: killNumberMonsterD,
-    KeyKillNumberMonsterE: killNumberMonsterE,
   };
   /* Create a variable "saveSerialized" with the value of "JSON.stringify(objectNameHere)" which will serialize to JSON a given object.*/
   let saveSerialized = JSON.stringify(saveProgress);
   /* Now we can send the serialized version of our object to the storage! Using the method: "localStorage.setItem("nameOfKey", serializedVarHere)" */
   localStorage.setItem("saveSerialized", saveSerialized);
 }
+
 /* Boolean "saveExists" to verify if it is present inside localStorage... */
 let saveExists = localStorage.getItem("saveSerialized");
 try {
   loadProgressFunction();
 } catch (error) {
-  saveProgressFunction
+  saveProgressFunction();
 }
 function loadProgressFunction() {
   if (saveExists) {
@@ -417,51 +269,14 @@ function loadProgressFunction() {
     /* loop is: Values -> saveProgress -> saveSerialized -> localStorage -> saveDeserialized -> saveProgress -> Values */
     saveProgress = saveDeserialized;
     /* Reinitialised the value of the saved object using our saveDeserialized object which is equal to our beginning "saveProgress" */
+    /* Recall Global Values */
     currentExp = saveProgress.KeyCurrentExp;
     currentLevel = saveProgress.KeyCurrentLevel;
     requiredExp = saveProgress.KeyCurrentRequiredExp;
     currentCoins = saveProgress.KeyCurrentCoins;
     coinsGivenByAllMonster = saveProgress.KeyCoinsGivenByAllMonster;
-    costForUpgradeNumberA = saveProgress.KeyCostForUpgradeNumberA;
-    upgradeNumberMonsterA = saveProgress.KeyCostForUpgradeNumberA;
-    expGivenByMonsterA = saveProgress.KeyExpGivenByMonsterA;
-    killNumberMonsterA = saveProgress.KeyKillNumberMonsterA;
-    killNumberMonsterB = saveProgress.KeyKillNumberMonsterB;
-    killNumberMonsterC = saveProgress.KeyKillNumberMonsterC;
-    killNumberMonsterD = saveProgress.KeyKillNumberMonsterD;
-    killNumberMonsterE = saveProgress.KeyKillNumberMonsterE;
-  } else {return saveProgressFunction();}  {saveProgressFunction();}
-}
-function attackAllAvailableMonsters() {
-  /* Interval starter when the level is reached via loadProgressFunction(); */
-  setInterval(btnFightMonsterA, 1000);
-  if (currentLevel >= 3) {
-    let B = document.getElementById("monsterContainerB");
-    B.classList.remove("notUnlocked");
-    B.classList.add("nowUnlocked");
-    document.getElementById("currentLevel").style.color = "blue";
-    setInterval(btnFightMonsterB, 1000);
-  }
-  if (currentLevel >= 5) {
-    let C = document.getElementById("monsterContainerC");
-    C.classList.remove("notUnlocked");
-    C.classList.add("nowUnlocked");
-    document.getElementById("currentLevel").style.color = "rgb(0, 110, 255)";
-    setInterval(btnFightMonsterC, 1000);
-  }
-  if (currentLevel >= 7) {
-    let D = document.getElementById("monsterContainerD");
-    D.classList.remove("notUnlocked");
-    D.classList.add("nowUnlocked");
-    document.getElementById("currentLevel").style.color = "rgb(0, 223, 204)";
-    setInterval(btnFightMonsterD, 1000);
-  }
-  if (currentLevel >= 10) {
-    let E = document.getElementById("monsterContainerE");
-    E.classList.remove("notUnlocked");
-    E.classList.add("nowUnlocked");
-    document.getElementById("currentLevel").style.color = "rgb(0, 255, 170)";
-    setInterval(btnFightMonsterE, 1000);
+  } else {
+    return saveProgressFunction();
   }
 }
 
@@ -487,9 +302,11 @@ btnBonusBoutique.addEventListener("click", function () {
 
 function displayUpgradesStats() {
   /* MonsterA */
-  document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeNumberA;
+  document.getElementById("btnUpgradeMonsterA").innerHTML =
+    costForUpgradeMonsterA;
   document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
 }
+
 /*  
     (Immediately Invoked Function Expression)(); 
     "(WrapTheFunctionHere)" in parentheses and "();"" immediately invoke it! 
@@ -498,8 +315,8 @@ function displayUpgradesStats() {
 (function iifeIntervalSetForDisplays() {
   /* load progress after 10ms of entering website */
   setTimeout(loadProgressFunction, 10);
-  setTimeout(attackAllAvailableMonsters, 20);
-  setTimeout(displayUpgradesStats, 20);
+
+  setInterval(displayUpgradesStats, 500);
   /* set the interval of auto-saving progress to 30seconds */
   setInterval(saveProgressFunction, 15000);
   /* set the interval of the various display function for character stats in the html doc */

@@ -1,16 +1,14 @@
-
 @font-face {
-  font-family: 'vt323regular';
-  src: url('../vt323-regular-webfont.woff2') format('woff2'),
-       url('../vt323-regular-webfont.woff') format('woff'),
-       url('https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff2') format('woff2'),
-       url('https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff') format('woff');
+  font-family: "vt323regular";
+  src: url("../vt323-regular-webfont.woff2") format("woff2"),
+    url("../vt323-regular-webfont.woff") format("woff"),
+    url("https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff2")
+      format("woff2"),
+    url("https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff")
+      format("woff");
   font-weight: bold;
   font-style: normal;
 }
-
-
-
 
 /* Styles Mobile */
 html {
@@ -20,7 +18,7 @@ html {
 }
 
 body {
-  font-family: 'vt323regular', sans-serif, monospace;
+  font-family: "vt323regular", sans-serif, monospace;
   color: white;
   background-color: black;
   margin: 0px;
@@ -200,7 +198,6 @@ body {
   padding: 5%;
 }
 
-
 .containerMonsterAll {
   box-sizing: border-box;
   position: absolute;
@@ -353,7 +350,6 @@ body {
   /* only specify "height: 100%" and maintain "aspect-ratio: 1 / 1;" to keep it square while filling the height!!!! */
   height: 100%;
   aspect-ratio: 1 / 1;
-  
 }
 
 #coinsBonusBoutique {
@@ -362,14 +358,13 @@ body {
   position: relative;
   top: 0vh;
   left: 0vw;
-  
+
   flex-direction: column;
 }
 #imgCoins {
   margin-left: 1%;
   height: 32px;
   aspect-ratio: 1 / 1;
-  
 }
 #currentCoins {
   display: flex;
@@ -418,7 +413,6 @@ body {
   display: flex;
   height: 10vh;
   width: 100vw;
-
 }
 .allButtonsForUpgrades {
   all: unset;
@@ -441,9 +435,6 @@ body {
   padding: 0.5vh;
   box-sizing: border-box;
   border: white solid 4px;
-  
-
 }
-
 
 /* Fin de Styles Mobile */
