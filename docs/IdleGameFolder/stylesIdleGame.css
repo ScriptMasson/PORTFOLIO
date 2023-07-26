@@ -243,79 +243,79 @@ body {
 }
 
 .monsterB {
-  color: blue;
+  color: rgb(32, 0, 92);
 }
 .monsterC {
-  color: rgb(0, 110, 255);
+  color: rgb(145, 0, 150);
 }
 .monsterD {
-  color: rgb(0, 223, 204);
+  color: rgb(133, 0, 0);
 }
 .monsterE {
-  color: rgb(0, 255, 170);
+  color: rgb(168, 76, 0);
 }
 .monsterF {
-  color: rgb(0, 194, 48);
+  color: rgb(255, 224, 87);
 }
 .monsterG {
-  color: rgb(144, 233, 0);
+  color: rgb(0, 88, 0);
 }
 .monsterH {
-  color: rgb(238, 255, 0);
+  color: rgb(0, 217, 255);
 }
 .monsterI {
-  color: rgb(255, 196, 0);
+  color: rgb(47, 0, 255);
 }
 .monsterJ {
-  color: rgb(255, 123, 0);
+  color: rgb(255, 0, 234);
 }
 .monsterK {
   color: rgb(255, 17, 0);
 }
 .monsterL {
-  color: rgb(97, 1, 1);
+  color: rgb(255, 145, 0);
 }
 .monsterM {
-  color: rgb(136, 3, 58);
+  color: rgb(255, 238, 0);
 }
 .monsterN {
-  color: rgb(214, 3, 84);
+  color: rgb(81, 255, 0);
 }
 .monsterO {
-  color: rgb(172, 6, 172);
+  color: rgb(0, 114, 129);
 }
 .monsterP {
-  color: rgb(132, 0, 255);
+  color: rgb(27, 0, 77);
 }
 .monsterQ {
-  color: rgb(45, 0, 128);
+  color: rgb(53, 0, 46);
 }
 .monsterR {
-  color: rgb(8, 8, 126);
+  color: rgb(131, 71, 71);
 }
 .monsterS {
-  color: rgb(0, 64, 124);
+  color: rgb(158, 100, 73);
 }
 .monsterT {
-  color: rgb(0, 92, 104);
+  color: rgb(137, 156, 158);
 }
 .monsterU {
-  color: rgb(0, 59, 23);
+  color: rgb(190, 165, 22);
 }
 .monsterV {
-  color: rgb(127, 136, 0);
+  color: rgb(21, 255, 0);
 }
 .monsterW {
-  color: rgb(117, 63, 0);
+  color: rgb(0, 204, 255);
 }
 .monsterX {
-  color: rgb(114, 32, 0);
+  color: rgb(47, 0, 255);
 }
 .monsterY {
-  color: rgb(44, 0, 0);
+  color: rgb(255, 0, 0);
 }
 .monsterZ {
-  color: rgb(131, 0, 98);
+  color: rgb(255, 251, 0);
 }
 
 #saveContainer {
