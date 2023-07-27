@@ -166,7 +166,7 @@ body {
   display: flex;
 }
 .notUnlocked {
-  display: none;
+  visibility: hidden;
 }
 .monsterContainer {
   overflow: hidden;
