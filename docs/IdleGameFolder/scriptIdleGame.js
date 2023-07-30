@@ -17,22 +17,25 @@ levelUpButton.addEventListener("click", () => {
   levelUp();
 });
 
-setInterval(function displayCurrentLevel() {
+function displayCurrentLevel() {
   document.getElementById("currentLevel").innerHTML = currentLevel;
-}, 325);
+}
+setInterval(displayCurrentLevel, 325);
 
-setInterval(function displayCurrentExperience() {
+function displayCurrentExperience() {
   document.getElementById("levelUpCurrentExperience").innerHTML = currentExp;
-}, 325);
+}
+setInterval(displayCurrentExperience, 325);
 
-setInterval(function displayRequiredExperience() {
+function displayRequiredExperience() {
   let ratio = requiredExp - currentExp;
   if (ratio >= 0) {
     document.getElementById("levelUpRequiredExperience").innerHTML = ratio;
   } else {
     document.getElementById("levelUpRequiredExperience").innerHTML = 0;
   }
-}, 325);
+}
+setInterval(displayRequiredExperience, 325);
 
 setInterval(function displayExpBar() {
   let currentRatio = currentExp / requiredExp;
@@ -96,6 +99,11 @@ function loadForMonsterA() {
 }
 setTimeout(loadForMonsterA, 250);
 
+let btnUpgradeMonsterAInHTML = document.getElementById("btnUpgradeMonsterA");
+btnUpgradeMonsterAInHTML.addEventListener("click", () => {
+  upgradesForMonsterA();
+});
+
 setInterval(function displayForStatsMonsterA() {
   document.getElementById("btnUpgradeMonsterA").innerHTML =
     costForUpgradeMonsterA;
@@ -103,10 +111,6 @@ setInterval(function displayForStatsMonsterA() {
   document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
 }, 325);
 
-let btnUpgradeMonsterAInHTML = document.getElementById("btnUpgradeMonsterA");
-btnUpgradeMonsterAInHTML.addEventListener("click", () => {
-  upgradesForMonsterA();
-});
 function upgradesForMonsterA() {
   if (upgradeNumberMonsterA <= 10 && currentCoins >= costForUpgradeMonsterA) {
     //add one to the base experience given by this monster
@@ -207,9 +211,9 @@ function btnFightMonsterA() {
 
 /* Monster B */
 var killNumberMonsterB = 0;
-var baseExpGivenByMonsterB = 1;
+var baseExpGivenByMonsterB = 2;
 var upgradeNumberMonsterB = 0;
-var costForUpgradeMonsterB = 1;
+var costForUpgradeMonsterB = 2;
 
 function saveForMonsterB() {
   let saveForMonsterB = {
@@ -221,9 +225,11 @@ function saveForMonsterB() {
   let saveForMonsterBSerialized = JSON.stringify(saveForMonsterB);
   localStorage.setItem("saveForMonsterB", saveForMonsterBSerialized);
 }
+
 setInterval(saveForMonsterB, 15000);
 
 let saveExistsForMonsterB = localStorage.getItem("saveForMonsterB");
+
 function loadForMonsterB() {
   if (saveExistsForMonsterB) {
     let saveForMonsterBDeserialized = JSON.parse(
@@ -237,11 +243,18 @@ function loadForMonsterB() {
       saveForMonsterBDeserialized.KeyCostForUpgradeMonsterB;
     upgradeNumberMonsterB =
       saveForMonsterBDeserialized.KeyUpgradeNumberMonsterB;
-  } else {
+  }
+  if (!saveExistsForMonsterB) {
     saveForMonsterB();
   }
 }
+
 setTimeout(loadForMonsterB, 250);
+
+let btnUpgradeMonsterBInHTML = document.getElementById("btnUpgradeMonsterB");
+btnUpgradeMonsterBInHTML.addEventListener("click", () => {
+  upgradesForMonsterB();
+});
 
 setInterval(function displayForStatsMonsterB() {
   document.getElementById("btnUpgradeMonsterB").innerHTML =
@@ -250,10 +263,6 @@ setInterval(function displayForStatsMonsterB() {
   document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
 }, 325);
 
-let btnUpgradeMonsterBInHTML = document.getElementById("btnUpgradeMonsterB");
-btnUpgradeMonsterBInHTML.addEventListener("click", () => {
-  upgradesForMonsterB();
-});
 function upgradesForMonsterB() {
   if (upgradeNumberMonsterB <= 10 && currentCoins >= costForUpgradeMonsterB) {
     //add one to the base experience given by this monster
@@ -295,9 +304,10 @@ function upgradesForMonsterB() {
   }
 }
 
-if (killNumberMonsterB == 0) {
+if (currentLevel >= 3) {
   document.getElementById("monsterBExp").innerHTML = baseExpGivenByMonsterB;
 }
+
 function btnFightMonsterB() {
   if (killNumberMonsterB <= 10) {
     /* initial kill value before doubling... */
@@ -352,10 +362,6 @@ function btnFightMonsterB() {
   }
 }
 
-
-
-
-
 /*Unlock Monsters Code */
 let boolForMonsterAUnlock = false;
 let boolForMonsterBUnlock = false;
@@ -372,8 +378,13 @@ setInterval(function intervalUnlockForMonsters() {
     let B = document.getElementById("monsterContainerB");
     B.classList.remove("notUnlocked");
     B.classList.add("nowUnlocked");
+
+    document.getElementById("monsterBUpgrade").classList.remove("notUnlocked");
+    document.getElementById("monsterBUpgrade").classList.add("nowUnlocked");
     document.getElementById("currentLevel").style.color = "rgb(32, 0, 92)";
-    document.getElementById("levelUpExperienceBarFillingUp").style.backgroundColor = "rgb(32, 0, 92)";
+    document.getElementById(
+      "levelUpExperienceBarFillingUp"
+    ).style.backgroundColor = "rgb(32, 0, 92)";
   }
 }, 325);
 

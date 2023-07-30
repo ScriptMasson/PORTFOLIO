@@ -9,7 +9,6 @@
     />
     <title>Idle Letter Fighter</title>
     <link rel="stylesheet" href="./stylesIdleGame.css" />
-    <script src="./scriptIdleGame.js" defer></script>
   </head>
   <body>
     <div id="containerCharacterStats">
@@ -28,9 +27,7 @@
         />
         <span id="currentCoins" class="saveFooterContainedButton">0</span>
       </div>
-      <button role="button" id="levelUpButton">
-        Level Up!
-      </button>
+      <button role="button" id="levelUpButton">Level Up!</button>
       <div id="currentLevel">1</div>
       <div id="levelUpExperienceBar">
         <div id="levelUpExperienceBarFillingUp">&nbsp</div>
@@ -122,9 +119,6 @@
           >
         </div>
       </div>
-
-
-
     </div>
 
     <div id="coinsBonusBoutique" class="closed">
@@ -141,20 +135,22 @@
           base supplémentaire
         </span>
       </div>
-      <div class="monsterB containerForAllUpgrades disable-dbl-tap-zoom">
+      <div
+        class="notUnlocked monsterB containerForAllUpgrades disable-dbl-tap-zoom"
+      >
         <button
           id="btnUpgradeMonsterB"
           class="allButtonsForUpgrades disable-dbl-tap-zoom"
         >
           2
         </button>
-        <span class="allSpansForUpgrades">
-          'B' a &nbsp<span id="monsterBUpgrade"> 0 </span>&nbsp expérience de
-          base supplémentaire
-        </span>
+        <span class="allSpansForUpgrades"
+          >'B' a &nbsp<span id="monsterBUpgrade"> 0 </span>&nbsp expérience de
+          base supplémentaire</span
+        >
       </div>
-
     </div>
     <!-- Fin de Monster Combat Area -->
+    <script src="./scriptIdleGame.js" defer></script>
   </body>
 </html>
