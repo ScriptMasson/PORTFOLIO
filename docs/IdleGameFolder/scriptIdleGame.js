@@ -256,12 +256,14 @@ btnUpgradeMonsterBInHTML.addEventListener("click", () => {
   upgradesForMonsterB();
 });
 
-setInterval(function displayForStatsMonsterB() {
+function displayForStatsMonsterB() {
   document.getElementById("btnUpgradeMonsterB").innerHTML =
     costForUpgradeMonsterB;
   document.getElementById("monsterBUpgrade").innerHTML = upgradeNumberMonsterB;
   document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
-}, 325);
+}
+
+setInterval(displayForStatsMonsterB,  325);
 
 function upgradesForMonsterB() {
   if (upgradeNumberMonsterB <= 10 && currentCoins >= costForUpgradeMonsterB) {
@@ -304,9 +306,13 @@ function upgradesForMonsterB() {
   }
 }
 
+function displayUnlockForMonsterB() {
 if (currentLevel >= 3) {
-  document.getElementById("monsterBExp").innerHTML = baseExpGivenByMonsterB;
+  document.getElementById("monsterContainerB").classList.remove("notUnlocked");
+  document.getElementById("containerForMonsterBUpgrade").classList.remove("notUnlocked");
 }
+}
+setInterval(displayUnlockForMonsterB, 300);
 
 function btnFightMonsterB() {
   if (killNumberMonsterB <= 10) {
@@ -375,9 +381,7 @@ setInterval(function intervalUnlockForMonsters() {
     setInterval(btnFightMonsterB, 1000);
     setInterval(saveForMonsterB, 12000);
     boolForMonsterBUnlock = true;
-    let B = document.getElementById("monsterContainerB");
-    B.classList.remove("notUnlocked");
-    B.classList.add("nowUnlocked");
+    document.getElementById("monsterContainerB").classList.add("nowUnlocked");
 
     document.getElementById("monsterBUpgrade").classList.remove("notUnlocked");
     document.getElementById("monsterBUpgrade").classList.add("nowUnlocked");

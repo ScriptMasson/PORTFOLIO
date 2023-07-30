@@ -163,7 +163,7 @@ body {
   flex-direction: column;
 }
 .nowUnlocked {
-  display: flex;
+  visibility: visible;
 }
 .notUnlocked {
   visibility: hidden;
@@ -415,6 +415,7 @@ body {
   width: 100vw;
 }
 .allButtonsForUpgrades {
+  visibility: inherit;
   all: unset;
   display: flex;
   justify-content: center;
@@ -426,6 +427,7 @@ body {
   box-sizing: border-box;
 }
 .allSpansForUpgrades {
+  visibility: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
