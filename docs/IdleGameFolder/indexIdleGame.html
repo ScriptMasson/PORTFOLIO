@@ -3,154 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <title>Idle Letter Fighter</title>
     <link rel="stylesheet" href="./stylesIdleGame.css" />
   </head>
   <body>
-    <div id="containerCharacterStats">
-      <div id="saveContainer">
-        <img
-          src="../docsImages/32BIT-SaveProgress-512px.png"
-          id="btnSave"
-          class="saveFooterContainedButton"
-          onclick="saveProgressForCommonStats()"
-        />
-        <span id="spanSave" onclick="saveProgressForCommonStats()">save</span>
-        <img
-          src="../docsImages/32BIT-GoldStack-512px.png"
-          id="imgCoins"
-          class="saveFooterContainedButton"
-        />
-        <span id="currentCoins" class="saveFooterContainedButton">0</span>
+
+    <div id="containerForStatsAndOtherStuff">
+
+      <div id="containerForSave">
+        <img src="../docsImages/32BIT-SaveProgress-512px.png" id="imgToSave" class="saveSquares" onclick="saveProgressForCommonStats()" />
+        <span id="spanToSave" onclick="saveProgressForCommonStats()">save</span>
+        <img src="../docsImages/32BIT-GoldStack-512px.png" id="imgCoins" class="saveSquares" />
+        <span id="currentCoins">0</span>
       </div>
-      <button role="button" id="levelUpButton">Level Up!</button>
+
       <div id="currentLevel">1</div>
-      <div id="levelUpExperienceBar">
-        <div id="levelUpExperienceBarFillingUp">&nbsp</div>
+      <button role="button" id="levelUpButton">Level Up!</button>
+      
+      <div id="experienceBar">
+        <div id="experienceBarFillingUp">&nbsp</div>
       </div>
 
-      <div id="containerLevelUpCurrentExperience">
-        <span id="levelUpCurrentExperience">0</span>&nbsp Expérience
-      </div>
-      <div id="containerLevelUpRequiredExperience">
-        <span id="levelUpRequiredExperience">2</span> &nbsp Manquant
-      </div>
+      <div id="containerForCurrentExperience"><span id="currentExperience">0</span>&nbsp Expérience</div>
+      <div id="containerForRequiredExperience"><span id="requiredExperience">2</span> &nbsp Manquant</div>
     </div>
 
-    <div id="monsterCombatArea" class="openFlex">
+    <div id="containerForMonsters" class="displayFlex">
+
       <div id="infoForExpGainContainer">
-        <img
-          src="../docsImages/64x32BIT-CoinsBonusBoutique-1024x512px.png"
-          id="btnBonusBoutique"
-          class="saveFooterContainedButton"
-        />
-        <span id="infoForExpGain">
-          Chaque monstre double ses points d'expérience par seconde à chaque
-          pouvoir de 10 de total vaincu!</span
-        >
+        <img src="../docsImages/64x32BIT-CoinsBonusBoutique-1024x512px.png" id="buttonToUpgradeShop" />
+        <span id="infoForExpGain"> Chaque monstre double ses points d'expérience par seconde à chaque pouvoir de 10 de total vaincu!</span>
       </div>
-      <div class="monsterContainer">
-        <div class="containerMonsterAll"><div class="monsterAll">A</div></div>
-        <button
-          role="button"
-          id="btnFightMonsterA"
-          class="btnMonsterFight disable-dbl-tap-zoom"
-          onclick="btnFightMonsterA()"
-        >
-          Attaque!
-        </button>
-        <div class="monsterStats">
-          <span>
-            'A' donne &nbsp <span id="monsterAExp"> 0 </span> &nbsp points
-            d'expérience par seconde</span
-          >
-          <span>
-            Vaincu &nbsp<span id="monsterAKill"> 0 </span> &nbsp fois</span
-          >
+
+      <div class="individualMonsterContainer">
+        <div class="containerForMonsterPortrait"><div class="monsterPortrait">A</div></div>
+        <button role="button" id="btnFightMonsterA" class="buttonToFightMonster disable-dbl-tap-zoom" onclick="btnFightMonsterA()">Attaque!</button>
+        <div class="containerForMonsterStats">
+          <span> 'A' donne &nbsp <span id="monsterAExp"> 0 </span> &nbsp points d'expérience par seconde</span>
+          <span> Vaincu &nbsp<span id="monsterAKill"> 0 </span> &nbsp fois</span>
         </div>
       </div>
-      <div id="monsterContainerB" class="notUnlocked monsterContainer">
-        <div class="containerMonsterAll">
-          <div class="monsterAll monsterB">B</div>
-        </div>
-        <button
-          role="button"
-          type="button"
-          id="btnFightFightMonsterB"
-          class="btnMonsterFight monsterB disable-dbl-tap-zoom"
-          onclick="btnFightMonsterB()"
-        >
-          Attaque!
-        </button>
-        <div class="monsterStats">
-          <span class="monsterB">
-            'B' donne &nbsp <span id="monsterBExp"> 0 </span> &nbsp points
-            d'expérience par seconde</span
-          >
-          <span class="monsterB">
-            Vaincu &nbsp<span id="monsterBKill"> 0 </span> &nbsp fois</span
-          >
+
+      <div id="monsterContainerB" class="visibilityHidden individualMonsterContainer">
+        <div class="containerForMonsterPortrait"><div class="monsterPortrait monsterB">B</div></div>
+        <button role="button" id="btnFightFightMonsterB" class="buttonToFightMonster monsterB disable-dbl-tap-zoom" onclick="btnFightMonsterB()">Attaque!</button>
+        <div class="containerForMonsterStats">
+          <span class="monsterB"> 'B' donne &nbsp <span id="monsterBExp"> 0 </span> &nbsp points d'expérience par seconde</span>
+          <span class="monsterB"> Vaincu &nbsp<span id="monsterBKill"> 0 </span> &nbsp fois</span>
         </div>
       </div>
-      <div id="monsterContainerC" class="notUnlocked monsterContainer">
-        <div class="containerMonsterAll">
-          <div class="monsterAll monsterC">C</div>
-        </div>
-        <button
-          role="button"
-          type="button"
-          id="btnFightFightMonsterC"
-          class="btnMonsterFight monsterC disable-dbl-tap-zoom"
-          onclick="btnFightMonsterC()"
-        >
-          Attaque!
-        </button>
-        <div class="monsterStats">
-          <span class="monsterC">
-            'C' donne &nbsp <span id="monsterCExp"> 0 </span> &nbsp points
-            d'expérience par seconde</span
-          >
-          <span class="monsterC">
-            Vaincu &nbsp<span id="monsterCKill"> 0 </span> &nbsp fois</span
-          >
+
+      <div id="monsterContainerC" class="visibilityHidden individualMonsterContainer">
+        <div class="containerForMonsterPortrait"><div class="monsterPortrait monsterC">C</div></div>
+        <button role="button" id="btnFightFightMonsterC" class="buttonToFightMonster monsterC disable-dbl-tap-zoom" onclick="btnFightMonsterC()">Attaque!</button>
+        <div class="containerForMonsterStats">
+          <span class="monsterC"> 'C' donne &nbsp <span id="monsterCExp"> 0 </span> &nbsp points d'expérience par seconde</span>
+          <span class="monsterC"> Vaincu &nbsp<span id="monsterCKill"> 0 </span> &nbsp fois</span>
         </div>
       </div>
+
     </div>
 
-    <div id="coinsBonusBoutique" class="closed">
-      <button id="btnReturn"><span>Cost</span>Return</button>
+    <div id="upgradeShop" class="displayNone">
+
+      <button id="buttonToReturn"><span>Cost</span>Return</button>
+
       <div class="containerForAllUpgrades disable-dbl-tap-zoom">
-        <button
-          id="btnUpgradeMonsterA"
-          class="allButtonsForUpgrades disable-dbl-tap-zoom"
-        >
-          1
-        </button>
-        <span class="allSpansForUpgrades">
-          'A' a &nbsp<span id="monsterAUpgrade"> 0 </span>&nbsp expérience de
-          base supplémentaire
-        </span>
+        <button id="btnUpgradeMonsterA" class="allButtonsForUpgrades disable-dbl-tap-zoom">1</button>
+        <span class="allSpansForUpgrades"> 'A' a &nbsp<span id="monsterAUpgrade"> 0 </span>&nbsp expérience de base supplémentaire </span>
       </div>
-      <div
-        id="containerForMonsterBUpgrade"
-        class="notUnlocked monsterB containerForAllUpgrades disable-dbl-tap-zoom"
-      >
-        <button
-          id="btnUpgradeMonsterB"
-          class="allButtonsForUpgrades disable-dbl-tap-zoom"
-        >
-          2
-        </button>
-        <span class="allSpansForUpgrades"
-          >'B' a &nbsp<span id="monsterBUpgrade"> 0 </span>&nbsp expérience de
-          base supplémentaire</span
-        >
+
+      <div id="containerForMonsterBUpgrade" class="visibilityHidden monsterB containerForAllUpgrades disable-dbl-tap-zoom">
+        <button id="btnUpgradeMonsterB" class="allButtonsForUpgrades disable-dbl-tap-zoom">2</button>
+        <span class="allSpansForUpgrades">'B' a &nbsp<span id="monsterBUpgrade"> 0 </span>&nbsp expérience de base supplémentaire</span>
       </div>
+
     </div>
+
     <!-- Fin de Monster Combat Area -->
     <script src="./scriptIdleGame.js" defer></script>
   </body>

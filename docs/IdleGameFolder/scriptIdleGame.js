@@ -1,63 +1,167 @@
 /* Global Required Code Here */
 /*level code */
 let currentLevel = 1;
-let currentExp = 0;
+let currentExperience = 0;
 let requiredExp = 2;
 
 function levelUp() {
-  if (currentExp >= requiredExp) {
+  if (currentExperience >= requiredExp) {
     currentLevel++;
-    currentExp = currentExp - requiredExp;
+    currentExperience = currentExperience - requiredExp;
     requiredExp = requiredExp * 2;
   }
 }
 
 let levelUpButton = document.getElementById("levelUpButton");
+
 levelUpButton.addEventListener("click", () => {
   levelUp();
 });
 
+
+
 function displayCurrentLevel() {
   document.getElementById("currentLevel").innerHTML = currentLevel;
 }
+
 setInterval(displayCurrentLevel, 325);
 
+function displayExpBar() {
+  let currentRatio = currentExperience / requiredExp;
+  let currentRatioPercent = currentRatio * 100;
+  if (currentRatioPercent <= 99) {
+    return (document.getElementById(
+      "experienceBarFillingUp"
+    ).style.width = currentRatioPercent + "%");
+  } else if (currentRatioPercent >= 100) {
+    return (document.getElementById(
+      "experienceBarFillingUp"
+    ).style.width = 100 + "%");
+  }
+}
+setInterval(displayExpBar, 325);
+
 function displayCurrentExperience() {
-  document.getElementById("levelUpCurrentExperience").innerHTML = currentExp;
+  document.getElementById("currentExperience").innerHTML = currentExperience;
 }
 setInterval(displayCurrentExperience, 325);
 
 function displayRequiredExperience() {
-  let ratio = requiredExp - currentExp;
+  let ratio = requiredExp - currentExperience;
   if (ratio >= 0) {
-    document.getElementById("levelUpRequiredExperience").innerHTML = ratio;
+    document.getElementById("requiredExperience").innerHTML = ratio;
   } else {
-    document.getElementById("levelUpRequiredExperience").innerHTML = 0;
+    document.getElementById("requiredExperience").innerHTML = 0;
   }
 }
 setInterval(displayRequiredExperience, 325);
 
-setInterval(function displayExpBar() {
-  let currentRatio = currentExp / requiredExp;
-  let currentRatioPercent = currentRatio * 100;
-  if (currentRatioPercent <= 99) {
-    return (document.getElementById(
-      "levelUpExperienceBarFillingUp"
-    ).style.width = currentRatioPercent + "%");
-  } else if (currentRatioPercent >= 100) {
-    return (document.getElementById(
-      "levelUpExperienceBarFillingUp"
-    ).style.width = 100 + "%");
-  }
-}, 325);
 
 /*coins code */
 let currentCoins = 0;
 let coinsGivenByAllMonster = 1;
 
-setInterval(function displayCurrentCoins() {
+function displayCurrentCoins() {
   document.getElementById("currentCoins").innerHTML = currentCoins;
-}, 325);
+}
+setInterval(displayCurrentCoins, 325);
+
+/*Unlock Monsters Code */
+let boolForMonsterAUnlock = false;
+let boolForMonsterBUnlock = false;
+function intervalUnlockForMonsters() {
+  if (currentLevel >= 1 && !boolForMonsterAUnlock) {
+    setInterval(btnFightMonsterA, 1000);
+    setInterval(saveForMonsterA, 12000);
+    boolForMonsterAUnlock = true;
+  }
+  if (currentLevel >= 3 && !boolForMonsterBUnlock) {
+    setInterval(btnFightMonsterB, 1000);
+    setInterval(saveForMonsterB, 12000);
+    
+    document.getElementById("monsterContainerB").classList.remove("visibilityHidden");
+    document.getElementById("monsterContainerB").classList.add("visibilityVisible");
+    
+    document.getElementById("containerForMonsterBUpgrade").classList.remove("visibilityHidden");
+    document.getElementById("containerForMonsterBUpgrade").classList.add("visibilityVisible");
+    
+    document.getElementById("currentLevel").style.color = "rgb(32, 0, 92)";
+    document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(32, 0, 92)";
+
+    boolForMonsterBUnlock = true;
+  }
+}
+setInterval(intervalUnlockForMonsters, 325);
+
+
+
+/* Save system */
+function saveProgressForCommonStats() {
+  /* Create the "saveProgress" object and create "key: value," pair with something as a key and a variable as a value */
+  let saveProgress = {
+    KeyCurrentExp: currentExperience,
+    KeyCurrentLevel: currentLevel,
+    KeyCurrentRequiredExp: requiredExp,
+    KeyCurrentCoins: currentCoins,
+    KeyCoinsGivenByAllMonster: coinsGivenByAllMonster,
+  };
+  /* Create a variable "saveSerialized" with the value of "JSON.stringify(objectNameHere)" which will serialize to JSON a given object.*/
+  let saveSerialized = JSON.stringify(saveProgress);
+  /* Now we can send the serialized version of our object to the storage! Using the method: "localStorage.setItem("nameOfKey", serializedVarHere)" */
+  localStorage.setItem("saveForCommonStats", saveSerialized);
+}
+
+/* Boolean "saveExists" to verify if it is present inside localStorage... */
+let saveExistsForCommonStats = localStorage.getItem("saveForCommonStats");
+
+function loadProgressForCommonStats() {
+  if (saveExistsForCommonStats) {
+    /* Create the "saveDeserialized" variable of which the value will be the method to get an item from storage using its "nameOfKey" */
+    /* JSON.parse(localStorage.getItem("nameOfKey")); */
+    let saveDeserialized = JSON.parse(
+      localStorage.getItem("saveForCommonStats")
+    );
+    /* Reinitialise "saveProgress" as our new "saveDeserialized" to close the loop! */
+    /* loop is: Values -> saveProgress -> saveSerialized -> localStorage -> saveDeserialized -> saveProgress -> Values */
+    saveProgress = saveDeserialized;
+    /* Reinitialised the value of the saved object using our saveDeserialized object which is equal to our beginning "saveProgress" */
+    /* Recall Global Values For Common Stats from localStorage*/
+    currentExperience = saveProgress.KeyCurrentExp;
+    currentLevel = saveProgress.KeyCurrentLevel;
+    requiredExp = saveProgress.KeyCurrentRequiredExp;
+    currentCoins = saveProgress.KeyCurrentCoins;
+    coinsGivenByAllMonster = saveProgress.KeyCoinsGivenByAllMonster;
+  }
+}
+if (saveExistsForCommonStats) {
+  setTimeout(function loadSaveIfItExists() {
+    loadProgressForCommonStats();
+  }, 100);
+}
+if (!saveExistsForCommonStats) {
+  saveProgressForCommonStats();
+}
+
+/* Area for boutique */
+let upgradeShop = document.getElementById("upgradeShop");
+let containerForMonsters = document.getElementById("containerForMonsters");
+let buttonToReturn = document.getElementById("buttonToReturn");
+let buttonToUpgradeShop = document.getElementById("buttonToUpgradeShop");
+
+buttonToReturn.addEventListener("click", function () {
+  containerForMonsters.classList.remove("displayNone");
+  containerForMonsters.classList.add("displayFlex");
+  upgradeShop.classList.remove("displayFlex");
+  upgradeShop.classList.add("displayNone");
+});
+
+buttonToUpgradeShop.addEventListener("click", function () {
+  // BtnBoutiqueForUpgrades
+  containerForMonsters.classList.remove("displayFlex");
+  containerForMonsters.classList.add("displayNone");
+  upgradeShop.classList.remove("displayNone");
+  upgradeShop.classList.add("displayFlex");
+});
 
 /* Monsters Script */
 
@@ -80,6 +184,7 @@ function saveForMonsterA() {
 setInterval(saveForMonsterA, 15000);
 
 let saveExistsForMonsterA = localStorage.getItem("saveForMonsterA");
+
 function loadForMonsterA() {
   if (saveExistsForMonsterA) {
     let saveForMonsterADeserialized = JSON.parse(
@@ -104,12 +209,13 @@ btnUpgradeMonsterAInHTML.addEventListener("click", () => {
   upgradesForMonsterA();
 });
 
-setInterval(function displayForStatsMonsterA() {
+function displayForStatsMonsterA() {
   document.getElementById("btnUpgradeMonsterA").innerHTML =
     costForUpgradeMonsterA;
   document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
   document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
-}, 325);
+}
+setInterval(displayForStatsMonsterA, 325);
 
 function upgradesForMonsterA() {
   if (upgradeNumberMonsterA <= 10 && currentCoins >= costForUpgradeMonsterA) {
@@ -158,7 +264,7 @@ if (killNumberMonsterA == 0) {
 function btnFightMonsterA() {
   if (killNumberMonsterA <= 10) {
     /* initial kill value before doubling... */
-    currentExp = currentExp + baseExpGivenByMonsterA;
+    currentExperience = currentExperience + baseExpGivenByMonsterA;
     killNumberMonsterA++;
     document.getElementById("monsterAExp").innerHTML = baseExpGivenByMonsterA;
     currentCoins = currentCoins + coinsGivenByAllMonster;
@@ -166,7 +272,7 @@ function btnFightMonsterA() {
   if (killNumberMonsterA > 10 && killNumberMonsterA <= 100) {
     /* power of 10 one time */
     let expGivenByMonsterDoubled = baseExpGivenByMonsterA * 2;
-    currentExp = currentExp + expGivenByMonsterDoubled;
+    currentExperience = currentExperience + expGivenByMonsterDoubled;
     document.getElementById("monsterAExp").innerHTML = expGivenByMonsterDoubled;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
@@ -174,7 +280,7 @@ function btnFightMonsterA() {
   if (killNumberMonsterA > 100 && killNumberMonsterA <= 1000) {
     /* power of 10 two times */
     let expGivenByMonsterQuadrupled = baseExpGivenByMonsterA * 4;
-    currentExp = currentExp + expGivenByMonsterQuadrupled;
+    currentExperience = currentExperience + expGivenByMonsterQuadrupled;
     document.getElementById("monsterAExp").innerHTML =
       expGivenByMonsterQuadrupled;
     killNumberMonsterA++;
@@ -183,7 +289,7 @@ function btnFightMonsterA() {
   if (killNumberMonsterA > 1000 && killNumberMonsterA <= 10000) {
     /* power of 10 three times */
     let expGivenByMonsterTimesEight = baseExpGivenByMonsterA * 8;
-    currentExp = currentExp + expGivenByMonsterTimesEight;
+    currentExperience = currentExperience + expGivenByMonsterTimesEight;
     document.getElementById("monsterAExp").innerHTML =
       expGivenByMonsterTimesEight;
     killNumberMonsterA++;
@@ -192,7 +298,7 @@ function btnFightMonsterA() {
   if (killNumberMonsterA > 10000 && killNumberMonsterA <= 100000) {
     /* power of 10 four times */
     let expGivenByMonsterTimesSixteen = baseExpGivenByMonsterA * 16;
-    currentExp = currentExp + expGivenByMonsterTimesSixteen;
+    currentExperience = currentExperience + expGivenByMonsterTimesSixteen;
     document.getElementById("monsterAExp").innerHTML =
       expGivenByMonsterTimesSixteen;
     killNumberMonsterA++;
@@ -201,7 +307,7 @@ function btnFightMonsterA() {
   if (killNumberMonsterA > 100000) {
     /* power of 10 four times */
     let expGivenByMonsterTimesThirtyTwo = baseExpGivenByMonsterA * 32;
-    currentExp = currentExp + expGivenByMonsterTimesThirtyTwo;
+    currentExperience = currentExperience + expGivenByMonsterTimesThirtyTwo;
     document.getElementById("monsterAExp").innerHTML =
       expGivenByMonsterTimesThirtyTwo;
     killNumberMonsterA++;
@@ -306,18 +412,12 @@ function upgradesForMonsterB() {
   }
 }
 
-function displayUnlockForMonsterB() {
-if (currentLevel >= 3) {
-  document.getElementById("monsterContainerB").classList.remove("notUnlocked");
-  document.getElementById("containerForMonsterBUpgrade").classList.remove("notUnlocked");
-}
-}
-setInterval(displayUnlockForMonsterB, 300);
+
 
 function btnFightMonsterB() {
   if (killNumberMonsterB <= 10) {
     /* initial kill value before doubling... */
-    currentExp = currentExp + baseExpGivenByMonsterB;
+    currentExperience = currentExperience + baseExpGivenByMonsterB;
     killNumberMonsterB++;
     document.getElementById("monsterBExp").innerHTML = baseExpGivenByMonsterB;
     currentCoins = currentCoins + coinsGivenByAllMonster;
@@ -325,7 +425,7 @@ function btnFightMonsterB() {
   if (killNumberMonsterB > 10 && killNumberMonsterB <= 100) {
     /* power of 10 one time */
     let expGivenByMonsterDoubled = baseExpGivenByMonsterB * 2;
-    currentExp = currentExp + expGivenByMonsterDoubled;
+    currentExperience = currentExperience + expGivenByMonsterDoubled;
     document.getElementById("monsterBExp").innerHTML = expGivenByMonsterDoubled;
     killNumberMonsterB++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
@@ -333,7 +433,7 @@ function btnFightMonsterB() {
   if (killNumberMonsterB > 100 && killNumberMonsterB <= 1000) {
     /* power of 10 two times */
     let expGivenByMonsterQuadrupled = baseExpGivenByMonsterB * 4;
-    currentExp = currentExp + expGivenByMonsterQuadrupled;
+    currentExperience = currentExperience + expGivenByMonsterQuadrupled;
     document.getElementById("monsterBExp").innerHTML =
       expGivenByMonsterQuadrupled;
     killNumberMonsterB++;
@@ -342,7 +442,7 @@ function btnFightMonsterB() {
   if (killNumberMonsterB > 1000 && killNumberMonsterB <= 10000) {
     /* power of 10 three times */
     let expGivenByMonsterTimesEight = baseExpGivenByMonsterB * 8;
-    currentExp = currentExp + expGivenByMonsterTimesEight;
+    currentExperience = currentExperience + expGivenByMonsterTimesEight;
     document.getElementById("monsterBExp").innerHTML =
       expGivenByMonsterTimesEight;
     killNumberMonsterB++;
@@ -351,7 +451,7 @@ function btnFightMonsterB() {
   if (killNumberMonsterB > 10000 && killNumberMonsterB <= 100000) {
     /* power of 10 four times */
     let expGivenByMonsterTimesSixteen = baseExpGivenByMonsterB * 16;
-    currentExp = currentExp + expGivenByMonsterTimesSixteen;
+    currentExperience = currentExperience + expGivenByMonsterTimesSixteen;
     document.getElementById("monsterBExp").innerHTML =
       expGivenByMonsterTimesSixteen;
     killNumberMonsterB++;
@@ -360,7 +460,7 @@ function btnFightMonsterB() {
   if (killNumberMonsterB > 100000) {
     /* power of 10 four times */
     let expGivenByMonsterTimesThirtyTwo = baseExpGivenByMonsterB * 32;
-    currentExp = currentExp + expGivenByMonsterTimesThirtyTwo;
+    currentExperience = currentExperience + expGivenByMonsterTimesThirtyTwo;
     document.getElementById("monsterBExp").innerHTML =
       expGivenByMonsterTimesThirtyTwo;
     killNumberMonsterB++;
@@ -368,96 +468,6 @@ function btnFightMonsterB() {
   }
 }
 
-/*Unlock Monsters Code */
-let boolForMonsterAUnlock = false;
-let boolForMonsterBUnlock = false;
-setInterval(function intervalUnlockForMonsters() {
-  if (currentLevel >= 1 && !boolForMonsterAUnlock) {
-    setInterval(btnFightMonsterA, 1000);
-    setInterval(saveForMonsterA, 12000);
-    boolForMonsterAUnlock = true;
-  }
-  if (currentLevel >= 3 && !boolForMonsterBUnlock) {
-    setInterval(btnFightMonsterB, 1000);
-    setInterval(saveForMonsterB, 12000);
-    boolForMonsterBUnlock = true;
-    document.getElementById("monsterContainerB").classList.add("nowUnlocked");
-
-    document.getElementById("monsterBUpgrade").classList.remove("notUnlocked");
-    document.getElementById("monsterBUpgrade").classList.add("nowUnlocked");
-    document.getElementById("currentLevel").style.color = "rgb(32, 0, 92)";
-    document.getElementById(
-      "levelUpExperienceBarFillingUp"
-    ).style.backgroundColor = "rgb(32, 0, 92)";
-  }
-}, 325);
-
-/* Save system */
-function saveProgressForCommonStats() {
-  /* Create the "saveProgress" object and create "key: value," pair with something as a key and a variable as a value */
-  let saveProgress = {
-    KeyCurrentExp: currentExp,
-    KeyCurrentLevel: currentLevel,
-    KeyCurrentRequiredExp: requiredExp,
-    KeyCurrentCoins: currentCoins,
-    KeyCoinsGivenByAllMonster: coinsGivenByAllMonster,
-  };
-  /* Create a variable "saveSerialized" with the value of "JSON.stringify(objectNameHere)" which will serialize to JSON a given object.*/
-  let saveSerialized = JSON.stringify(saveProgress);
-  /* Now we can send the serialized version of our object to the storage! Using the method: "localStorage.setItem("nameOfKey", serializedVarHere)" */
-  localStorage.setItem("saveForCommonStats", saveSerialized);
-}
-
-/* Boolean "saveExists" to verify if it is present inside localStorage... */
-let saveExistsForCommonStats = localStorage.getItem("saveForCommonStats");
-
-function loadProgressForCommonStats() {
-  if (saveExistsForCommonStats) {
-    /* Create the "saveDeserialized" variable of which the value will be the method to get an item from storage using its "nameOfKey" */
-    /* JSON.parse(localStorage.getItem("nameOfKey")); */
-    let saveDeserialized = JSON.parse(
-      localStorage.getItem("saveForCommonStats")
-    );
-    /* Reinitialise "saveProgress" as our new "saveDeserialized" to close the loop! */
-    /* loop is: Values -> saveProgress -> saveSerialized -> localStorage -> saveDeserialized -> saveProgress -> Values */
-    saveProgress = saveDeserialized;
-    /* Reinitialised the value of the saved object using our saveDeserialized object which is equal to our beginning "saveProgress" */
-    /* Recall Global Values For Common Stats from localStorage*/
-    currentExp = saveProgress.KeyCurrentExp;
-    currentLevel = saveProgress.KeyCurrentLevel;
-    requiredExp = saveProgress.KeyCurrentRequiredExp;
-    currentCoins = saveProgress.KeyCurrentCoins;
-    coinsGivenByAllMonster = saveProgress.KeyCoinsGivenByAllMonster;
-  }
-}
-if (saveExistsForCommonStats) {
-  setTimeout(function loadSaveIfItExists() {
-    loadProgressForCommonStats();
-  }, 100);
-}
-if (!saveExistsForCommonStats) {
-  saveProgressForCommonStats();
-}
-
-/* Area for boutique */
-let coinsBonusBoutique = document.getElementById("coinsBonusBoutique");
-let monsterCombatArea = document.getElementById("monsterCombatArea");
-let btnReturn = document.getElementById("btnReturn");
-let btnBonusBoutique = document.getElementById("btnBonusBoutique");
-btnReturn.addEventListener("click", function () {
-  // BtnReturn inside Boutique
-  monsterCombatArea.classList.remove("closed");
-  monsterCombatArea.classList.add("openFlex");
-  coinsBonusBoutique.classList.remove("openFlex");
-  coinsBonusBoutique.classList.add("closed");
-});
-btnBonusBoutique.addEventListener("click", function () {
-  // BtnBoutiqueForUpgrades
-  monsterCombatArea.classList.remove("openFlex");
-  monsterCombatArea.classList.add("closed");
-  coinsBonusBoutique.classList.remove("closed");
-  coinsBonusBoutique.classList.add("openFlex");
-});
 
 /*  
     (Immediately Invoked Function Expression)(); 

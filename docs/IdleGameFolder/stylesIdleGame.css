@@ -1,11 +1,11 @@
 @font-face {
   font-family: "vt323regular";
   src: url("../vt323-regular-webfont.woff2") format("woff2"),
-    url("../vt323-regular-webfont.woff") format("woff"),
-    url("https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff2")
-      format("woff2"),
-    url("https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff")
-      format("woff");
+  url("../vt323-regular-webfont.woff") format("woff"),
+  url("https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff2")
+  format("woff2"),
+  url("https://scriptmasson.github.io/PORTFOLIO/vt323-regular-webfont.woff")
+  format("woff");
   font-weight: bold;
   font-style: normal;
 }
@@ -26,7 +26,7 @@ body {
   overflow-x: hidden;
 }
 
-#containerCharacterStats {
+#containerForStatsAndOtherStuff {
   display: block;
   position: sticky;
   top: 0vh;
@@ -37,6 +37,58 @@ body {
   color: white;
   box-sizing: border-box;
   z-index: 10;
+}
+
+#containerForSave {
+  width: 70vw;
+  height: 5.5vh;
+  position: absolute;
+  bottom: 0vh;
+  right: 0vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#imgToSave {
+  border: 2px white solid;
+  border-right: 0px;
+}
+
+#spanToSave {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* only specify "height: 100%" and maintain "aspect-ratio: 1 / 1;" to keep it square while filling the height!!!! */
+  height: 100%;
+  /* apsect ratio works like: (width or X) / (height or Y) */
+  aspect-ratio: 1 / 1;
+  border: 2px white solid;
+  border-left: 0px;
+  font-size: 100%;
+}
+
+.saveSquares {
+  box-sizing: border-box;
+  /* only specify "height: 100%" and maintain "aspect-ratio: 1 / 1;" to keep it square while filling the height!!!! */
+  height: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+#imgCoins {
+  margin-left: 1%;
+  height: 32px;
+  aspect-ratio: 1 / 1;
+}
+
+#currentCoins {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  aspect-ratio: 3 / 1;
+  margin-left: 1%;
 }
 
 #currentLevel {
@@ -58,6 +110,7 @@ body {
   border-color: white;
   box-sizing: border-box;
 }
+
 #levelUpButton {
   all: unset;
   position: absolute;
@@ -78,7 +131,7 @@ body {
   font-size: 1rem;
 }
 
-#levelUpExperienceBar {
+#experienceBar {
   position: absolute;
   top: 0vh;
   right: 0vw;
@@ -93,7 +146,8 @@ body {
   border-color: white;
   box-sizing: border-box;
 }
-#levelUpExperienceBarFillingUp {
+
+#experienceBarFillingUp {
   position: absolute;
   top: 0vh;
   left: 0vw;
@@ -102,7 +156,8 @@ body {
   background-color: white;
   box-sizing: border-box;
 }
-#containerLevelUpCurrentExperience {
+
+#containerForCurrentExperience {
   position: absolute;
   top: 5vh;
   left: 30vw;
@@ -120,7 +175,8 @@ body {
   box-sizing: border-box;
   font-size: 65%;
 }
-#containerLevelUpRequiredExperience {
+
+#containerForRequiredExperience {
   position: absolute;
   top: 5vh;
   right: 0vw;
@@ -138,6 +194,33 @@ body {
   box-sizing: border-box;
   font-size: 65%;
 }
+
+/* Monster Combat Area Styles For Mobile */
+
+#containerForMonsters {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  top: 0vh;
+  left: 0vw;
+  flex-direction: column;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+.displayNone {
+  display: none;
+}
+
+.visibilityVisible {
+  visibility: visible;
+}
+.visibilityHidden {
+  visibility: hidden;
+}
+
 #infoForExpGainContainer {
   position: relative;
   top: 0%;
@@ -147,28 +230,18 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#buttonToUpgradeShop {
+  height: 100%;
+  aspect-ratio: 2 / 1;
+}
+
 #infoForExpGain {
   font-size: 50%;
   margin-left: 1rem;
 }
 
-/* Monster Combat Area Styles For Mobile */
-
-#monsterCombatArea {
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  top: 0vh;
-  left: 0vw;
-  flex-direction: column;
-}
-.nowUnlocked {
-  visibility: visible;
-}
-.notUnlocked {
-  visibility: hidden;
-}
-.monsterContainer {
+.individualMonsterContainer {
   overflow: hidden;
   position: relative;
   top: 0vh;
@@ -180,25 +253,8 @@ body {
   border-width: thick;
   border-color: grey;
 }
-.monsterStats {
-  box-sizing: border-box;
-  position: absolute;
-  right: 0vh;
-  top: 0vh;
-  width: 58vw;
-  height: 23vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-style: solid;
-  border-width: thick;
-  border-color: white;
-  font-size: 120%;
-  padding: 5%;
-}
 
-.containerMonsterAll {
+.containerForMonsterPortrait {
   box-sizing: border-box;
   position: absolute;
   left: 0vw;
@@ -212,7 +268,8 @@ body {
   border-width: thick;
   border-color: white;
 }
-.monsterAll {
+
+.monsterPortrait {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,7 +279,8 @@ body {
   width: 100%;
   height: 100%;
 }
-.btnMonsterFight {
+
+.buttonToFightMonster {
   all: unset;
   box-sizing: border-box;
   position: absolute;
@@ -238,8 +296,27 @@ body {
   border-width: thick;
   border-color: white;
 }
+
 .disable-dbl-tap-zoom {
   touch-action: manipulation;
+}
+
+.containerForMonsterStats {
+  box-sizing: border-box;
+  position: absolute;
+  right: 0vh;
+  top: 0vh;
+  width: 58vw;
+  height: 23vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-style: solid;
+  border-width: thick;
+  border-color: white;
+  font-size: 120%;
+  padding: 5%;
 }
 
 .monsterB {
@@ -318,72 +395,16 @@ body {
   color: rgb(255, 251, 0);
 }
 
-#saveContainer {
-  width: 70vw;
-  height: 5.5vh;
-  position: absolute;
-  bottom: 0vh;
-  right: 0vw;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-#btnSave {
-  border: 2px white solid;
-  border-right: 0px;
-}
-#spanSave {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* only specify "height: 100%" and maintain "aspect-ratio: 1 / 1;" to keep it square while filling the height!!!! */
-  height: 100%;
-  /* apsect ratio works like: (width or X) / (height or Y) */
-  aspect-ratio: 1 / 1;
-  border: 2px white solid;
-  border-left: 0px;
-  font-size: 100%;
-}
-.saveFooterContainedButton {
-  box-sizing: border-box;
-  /* only specify "height: 100%" and maintain "aspect-ratio: 1 / 1;" to keep it square while filling the height!!!! */
-  height: 100%;
-  aspect-ratio: 1 / 1;
-}
-
-#coinsBonusBoutique {
+#upgradeShop {
   overflow-y: auto;
   overflow-x: hidden;
-  position: relative;
-  top: 0vh;
+  position: absolute;
+  top: 15vh;
   left: 0vw;
-
   flex-direction: column;
 }
-#imgCoins {
-  margin-left: 1%;
-  height: 32px;
-  aspect-ratio: 1 / 1;
-}
-#currentCoins {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%;
-  aspect-ratio: 3 / 1;
-  margin-left: 1%;
-}
-#btnBonusBoutique {
-  aspect-ratio: 2 / 1;
-}
-.openFlex {
-  display: flex;
-}
-.closed {
-  display: none;
-}
-#btnReturn {
+
+#buttonToReturn {
   all: unset;
   display: flex;
   justify-content: center;
@@ -395,7 +416,8 @@ body {
   border: white 4px solid;
   box-sizing: border-box;
 }
-#btnReturn > span {
+
+#buttonToReturn > span {
   all: unset;
   display: flex;
   justify-content: center;
@@ -410,10 +432,13 @@ body {
 }
 
 .containerForAllUpgrades {
+  position: relative;
+  top: 0%;
   display: flex;
   height: 10vh;
   width: 100vw;
 }
+
 .allButtonsForUpgrades {
   visibility: inherit;
   all: unset;
@@ -426,6 +451,7 @@ body {
   border: white solid 4px;
   box-sizing: border-box;
 }
+
 .allSpansForUpgrades {
   visibility: inherit;
   display: flex;
