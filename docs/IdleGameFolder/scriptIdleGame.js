@@ -18,8 +18,6 @@ levelUpButton.addEventListener("click", () => {
   levelUp();
 });
 
-
-
 function displayCurrentLevel() {
   document.getElementById("currentLevel").innerHTML = currentLevel;
 }
@@ -30,13 +28,9 @@ function displayExpBar() {
   let currentRatio = currentExperience / requiredExp;
   let currentRatioPercent = currentRatio * 100;
   if (currentRatioPercent <= 99) {
-    return (document.getElementById(
-      "experienceBarFillingUp"
-    ).style.width = currentRatioPercent + "%");
+    return (document.getElementById("experienceBarFillingUp").style.width = currentRatioPercent + "%");
   } else if (currentRatioPercent >= 100) {
-    return (document.getElementById(
-      "experienceBarFillingUp"
-    ).style.width = 100 + "%");
+    return (document.getElementById("experienceBarFillingUp").style.width = 100 + "%");
   }
 }
 setInterval(displayExpBar, 325);
@@ -56,7 +50,6 @@ function displayRequiredExperience() {
 }
 setInterval(displayRequiredExperience, 325);
 
-
 /*coins code */
 let currentCoins = 0;
 let coinsGivenByAllMonster = 1;
@@ -67,33 +60,64 @@ function displayCurrentCoins() {
 setInterval(displayCurrentCoins, 325);
 
 /*Unlock Monsters Code */
-let boolForMonsterAUnlock = false;
-let boolForMonsterBUnlock = false;
-function intervalUnlockForMonsters() {
-  if (currentLevel >= 1 && !boolForMonsterAUnlock) {
+let IsMonsterAUnlocked = false;
+let IsMonsterBUnlocked = false;
+let IsMonsterCUnlocked = false;
+let IsMonsterDUnlocked = false;
+function lookIfAnyUnlockForMonsters() {
+  if (currentLevel >= 1 && !IsMonsterAUnlocked) {
     setInterval(btnFightMonsterA, 1000);
     setInterval(saveForMonsterA, 12000);
-    boolForMonsterAUnlock = true;
+
+    IsMonsterAUnlocked = true;
   }
-  if (currentLevel >= 3 && !boolForMonsterBUnlock) {
+  if (currentLevel >= 3 && !IsMonsterBUnlocked) {
     setInterval(btnFightMonsterB, 1000);
     setInterval(saveForMonsterB, 12000);
-    
+
     document.getElementById("monsterContainerB").classList.remove("visibilityHidden");
     document.getElementById("monsterContainerB").classList.add("visibilityVisible");
-    
+
     document.getElementById("containerForMonsterBUpgrade").classList.remove("visibilityHidden");
     document.getElementById("containerForMonsterBUpgrade").classList.add("visibilityVisible");
-    
+
     document.getElementById("currentLevel").style.color = "rgb(32, 0, 92)";
     document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(32, 0, 92)";
 
-    boolForMonsterBUnlock = true;
+    IsMonsterBUnlocked = true;
+  }
+  if (currentLevel >= 5 && !IsMonsterCUnlocked) {
+    setInterval(btnFightMonsterC, 1000);
+    setInterval(saveForMonsterC, 12000);
+
+    document.getElementById("monsterContainerC").classList.remove("visibilityHidden");
+    document.getElementById("monsterContainerC").classList.add("visibilityVisible");
+
+    document.getElementById("containerForMonsterCUpgrade").classList.remove("visibilityHidden");
+    document.getElementById("containerForMonsterCUpgrade").classList.add("visibilityVisible");
+
+    document.getElementById("currentLevel").style.color = "rgb(145, 0, 150)";
+    document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(145, 0, 150)";
+
+    IsMonsterCUnlocked = true;
+  }
+  if (currentLevel >= 8 && !IsMonsterDUnlocked) {
+    setInterval(btnFightMonsterD, 1000);
+    setInterval(saveForMonsterD, 12000);
+
+    document.getElementById("monsterContainerD").classList.remove("visibilityHidden");
+    document.getElementById("monsterContainerD").classList.add("visibilityVisible");
+
+    document.getElementById("containerForMonsterDUpgrade").classList.remove("visibilityHidden");
+    document.getElementById("containerForMonsterDUpgrade").classList.add("visibilityVisible");
+
+    document.getElementById("currentLevel").style.color = "rgb(133, 0, 0)";
+    document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(133, 0, 0)";
+
+    IsMonsterDUnlocked = true;
   }
 }
-setInterval(intervalUnlockForMonsters, 325);
-
-
+setInterval(lookIfAnyUnlockForMonsters, 325);
 
 /* Save system */
 function saveProgressForCommonStats() {
@@ -118,9 +142,7 @@ function loadProgressForCommonStats() {
   if (saveExistsForCommonStats) {
     /* Create the "saveDeserialized" variable of which the value will be the method to get an item from storage using its "nameOfKey" */
     /* JSON.parse(localStorage.getItem("nameOfKey")); */
-    let saveDeserialized = JSON.parse(
-      localStorage.getItem("saveForCommonStats")
-    );
+    let saveDeserialized = JSON.parse(localStorage.getItem("saveForCommonStats"));
     /* Reinitialise "saveProgress" as our new "saveDeserialized" to close the loop! */
     /* loop is: Values -> saveProgress -> saveSerialized -> localStorage -> saveDeserialized -> saveProgress -> Values */
     saveProgress = saveDeserialized;
@@ -141,6 +163,7 @@ if (saveExistsForCommonStats) {
 if (!saveExistsForCommonStats) {
   saveProgressForCommonStats();
 }
+setInterval(saveProgressForCommonStats, 15000);
 
 /* Area for boutique */
 let upgradeShop = document.getElementById("upgradeShop");
@@ -187,17 +210,12 @@ let saveExistsForMonsterA = localStorage.getItem("saveForMonsterA");
 
 function loadForMonsterA() {
   if (saveExistsForMonsterA) {
-    let saveForMonsterADeserialized = JSON.parse(
-      localStorage.getItem("saveForMonsterA")
-    );
+    let saveForMonsterADeserialized = JSON.parse(localStorage.getItem("saveForMonsterA"));
 
     killNumberMonsterA = saveForMonsterADeserialized.KeyKillNumberMonsterA;
-    baseExpGivenByMonsterA =
-      saveForMonsterADeserialized.KeyBaseExpGivenByMonsterA;
-    costForUpgradeMonsterA =
-      saveForMonsterADeserialized.KeyCostForUpgradeMonsterA;
-    upgradeNumberMonsterA =
-      saveForMonsterADeserialized.KeyUpgradeNumberMonsterA;
+    baseExpGivenByMonsterA = saveForMonsterADeserialized.KeyBaseExpGivenByMonsterA;
+    costForUpgradeMonsterA = saveForMonsterADeserialized.KeyCostForUpgradeMonsterA;
+    upgradeNumberMonsterA = saveForMonsterADeserialized.KeyUpgradeNumberMonsterA;
   } else {
     saveForMonsterA();
   }
@@ -210,8 +228,7 @@ btnUpgradeMonsterAInHTML.addEventListener("click", () => {
 });
 
 function displayForStatsMonsterA() {
-  document.getElementById("btnUpgradeMonsterA").innerHTML =
-    costForUpgradeMonsterA;
+  document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeMonsterA;
   document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
   document.getElementById("monsterAKill").innerHTML = killNumberMonsterA;
 }
@@ -228,33 +245,21 @@ function upgradesForMonsterA() {
     costForUpgradeMonsterA = costForUpgradeMonsterA + 1;
     //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
-  if (
-    upgradeNumberMonsterA > 10 &&
-    upgradeNumberMonsterA <= 100 &&
-    currentCoins >= costForUpgradeMonsterA
-  ) {
+  if (upgradeNumberMonsterA > 10 && upgradeNumberMonsterA <= 100 && currentCoins >= costForUpgradeMonsterA) {
     baseExpGivenByMonsterA = baseExpGivenByMonsterA + 1;
     currentCoins = currentCoins - costForUpgradeMonsterA;
     upgradeNumberMonsterA++;
     costForUpgradeMonsterA = costForUpgradeMonsterA + 2;
-    document.getElementById("btnUpgradeMonsterA").innerHTML =
-      costForUpgradeMonsterA;
-    document.getElementById("monsterAUpgrade").innerHTML =
-      upgradeNumberMonsterA;
+    document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeMonsterA;
+    document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
   }
-  if (
-    upgradeNumberMonsterA > 100 &&
-    upgradeNumberMonsterA <= 1000 &&
-    currentCoins >= costForUpgradeMonsterA
-  ) {
+  if (upgradeNumberMonsterA > 100 && upgradeNumberMonsterA <= 1000 && currentCoins >= costForUpgradeMonsterA) {
     baseExpGivenByMonsterA = baseExpGivenByMonsterA + 1;
     currentCoins = currentCoins - costForUpgradeMonsterA;
     upgradeNumberMonsterA++;
     costForUpgradeMonsterA = costForUpgradeMonsterA + 4;
-    document.getElementById("btnUpgradeMonsterA").innerHTML =
-      costForUpgradeMonsterA;
-    document.getElementById("monsterAUpgrade").innerHTML =
-      upgradeNumberMonsterA;
+    document.getElementById("btnUpgradeMonsterA").innerHTML = costForUpgradeMonsterA;
+    document.getElementById("monsterAUpgrade").innerHTML = upgradeNumberMonsterA;
   }
 }
 
@@ -281,8 +286,7 @@ function btnFightMonsterA() {
     /* power of 10 two times */
     let expGivenByMonsterQuadrupled = baseExpGivenByMonsterA * 4;
     currentExperience = currentExperience + expGivenByMonsterQuadrupled;
-    document.getElementById("monsterAExp").innerHTML =
-      expGivenByMonsterQuadrupled;
+    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterQuadrupled;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
@@ -290,8 +294,7 @@ function btnFightMonsterA() {
     /* power of 10 three times */
     let expGivenByMonsterTimesEight = baseExpGivenByMonsterA * 8;
     currentExperience = currentExperience + expGivenByMonsterTimesEight;
-    document.getElementById("monsterAExp").innerHTML =
-      expGivenByMonsterTimesEight;
+    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterTimesEight;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
@@ -299,8 +302,7 @@ function btnFightMonsterA() {
     /* power of 10 four times */
     let expGivenByMonsterTimesSixteen = baseExpGivenByMonsterA * 16;
     currentExperience = currentExperience + expGivenByMonsterTimesSixteen;
-    document.getElementById("monsterAExp").innerHTML =
-      expGivenByMonsterTimesSixteen;
+    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterTimesSixteen;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
@@ -308,8 +310,7 @@ function btnFightMonsterA() {
     /* power of 10 four times */
     let expGivenByMonsterTimesThirtyTwo = baseExpGivenByMonsterA * 32;
     currentExperience = currentExperience + expGivenByMonsterTimesThirtyTwo;
-    document.getElementById("monsterAExp").innerHTML =
-      expGivenByMonsterTimesThirtyTwo;
+    document.getElementById("monsterAExp").innerHTML = expGivenByMonsterTimesThirtyTwo;
     killNumberMonsterA++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
@@ -338,17 +339,12 @@ let saveExistsForMonsterB = localStorage.getItem("saveForMonsterB");
 
 function loadForMonsterB() {
   if (saveExistsForMonsterB) {
-    let saveForMonsterBDeserialized = JSON.parse(
-      localStorage.getItem("saveForMonsterB")
-    );
+    let saveForMonsterBDeserialized = JSON.parse(localStorage.getItem("saveForMonsterB"));
 
     killNumberMonsterB = saveForMonsterBDeserialized.KeyKillNumberMonsterB;
-    baseExpGivenByMonsterB =
-      saveForMonsterBDeserialized.KeyBaseExpGivenByMonsterB;
-    costForUpgradeMonsterB =
-      saveForMonsterBDeserialized.KeyCostForUpgradeMonsterB;
-    upgradeNumberMonsterB =
-      saveForMonsterBDeserialized.KeyUpgradeNumberMonsterB;
+    baseExpGivenByMonsterB = saveForMonsterBDeserialized.KeyBaseExpGivenByMonsterB;
+    costForUpgradeMonsterB = saveForMonsterBDeserialized.KeyCostForUpgradeMonsterB;
+    upgradeNumberMonsterB = saveForMonsterBDeserialized.KeyUpgradeNumberMonsterB;
   }
   if (!saveExistsForMonsterB) {
     saveForMonsterB();
@@ -363,13 +359,12 @@ btnUpgradeMonsterBInHTML.addEventListener("click", () => {
 });
 
 function displayForStatsMonsterB() {
-  document.getElementById("btnUpgradeMonsterB").innerHTML =
-    costForUpgradeMonsterB;
+  document.getElementById("btnUpgradeMonsterB").innerHTML = costForUpgradeMonsterB;
   document.getElementById("monsterBUpgrade").innerHTML = upgradeNumberMonsterB;
   document.getElementById("monsterBKill").innerHTML = killNumberMonsterB;
 }
 
-setInterval(displayForStatsMonsterB,  325);
+setInterval(displayForStatsMonsterB, 325);
 
 function upgradesForMonsterB() {
   if (upgradeNumberMonsterB <= 10 && currentCoins >= costForUpgradeMonsterB) {
@@ -382,37 +377,23 @@ function upgradesForMonsterB() {
     costForUpgradeMonsterB = costForUpgradeMonsterB + 2;
     //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
-  if (
-    upgradeNumberMonsterB > 10 &&
-    upgradeNumberMonsterB <= 100 &&
-    currentCoins >= costForUpgradeMonsterB
-  ) {
+  if (upgradeNumberMonsterB > 10 && upgradeNumberMonsterB <= 100 && currentCoins >= costForUpgradeMonsterB) {
     baseExpGivenByMonsterB = baseExpGivenByMonsterB + 1;
     currentCoins = currentCoins - costForUpgradeMonsterB;
     upgradeNumberMonsterB++;
     costForUpgradeMonsterB = costForUpgradeMonsterB + 4;
-    document.getElementById("btnUpgradeMonsterB").innerHTML =
-      costForUpgradeMonsterB;
-    document.getElementById("monsterBUpgrade").innerHTML =
-      upgradeNumberMonsterB;
+    document.getElementById("btnUpgradeMonsterB").innerHTML = costForUpgradeMonsterB;
+    document.getElementById("monsterBUpgrade").innerHTML = upgradeNumberMonsterB;
   }
-  if (
-    upgradeNumberMonsterB > 100 &&
-    upgradeNumberMonsterB <= 1000 &&
-    currentCoins >= costForUpgradeMonsterB
-  ) {
+  if (upgradeNumberMonsterB > 100 && upgradeNumberMonsterB <= 1000 && currentCoins >= costForUpgradeMonsterB) {
     baseExpGivenByMonsterB = baseExpGivenByMonsterB + 1;
     currentCoins = currentCoins - costForUpgradeMonsterB;
     upgradeNumberMonsterB++;
     costForUpgradeMonsterB = costForUpgradeMonsterB + 8;
-    document.getElementById("btnUpgradeMonsterB").innerHTML =
-      costForUpgradeMonsterB;
-    document.getElementById("monsterBUpgrade").innerHTML =
-      upgradeNumberMonsterB;
+    document.getElementById("btnUpgradeMonsterB").innerHTML = costForUpgradeMonsterB;
+    document.getElementById("monsterBUpgrade").innerHTML = upgradeNumberMonsterB;
   }
 }
-
-
 
 function btnFightMonsterB() {
   if (killNumberMonsterB <= 10) {
@@ -434,8 +415,7 @@ function btnFightMonsterB() {
     /* power of 10 two times */
     let expGivenByMonsterQuadrupled = baseExpGivenByMonsterB * 4;
     currentExperience = currentExperience + expGivenByMonsterQuadrupled;
-    document.getElementById("monsterBExp").innerHTML =
-      expGivenByMonsterQuadrupled;
+    document.getElementById("monsterBExp").innerHTML = expGivenByMonsterQuadrupled;
     killNumberMonsterB++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
@@ -443,8 +423,7 @@ function btnFightMonsterB() {
     /* power of 10 three times */
     let expGivenByMonsterTimesEight = baseExpGivenByMonsterB * 8;
     currentExperience = currentExperience + expGivenByMonsterTimesEight;
-    document.getElementById("monsterBExp").innerHTML =
-      expGivenByMonsterTimesEight;
+    document.getElementById("monsterBExp").innerHTML = expGivenByMonsterTimesEight;
     killNumberMonsterB++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
@@ -452,8 +431,7 @@ function btnFightMonsterB() {
     /* power of 10 four times */
     let expGivenByMonsterTimesSixteen = baseExpGivenByMonsterB * 16;
     currentExperience = currentExperience + expGivenByMonsterTimesSixteen;
-    document.getElementById("monsterBExp").innerHTML =
-      expGivenByMonsterTimesSixteen;
+    document.getElementById("monsterBExp").innerHTML = expGivenByMonsterTimesSixteen;
     killNumberMonsterB++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
@@ -461,16 +439,271 @@ function btnFightMonsterB() {
     /* power of 10 four times */
     let expGivenByMonsterTimesThirtyTwo = baseExpGivenByMonsterB * 32;
     currentExperience = currentExperience + expGivenByMonsterTimesThirtyTwo;
-    document.getElementById("monsterBExp").innerHTML =
-      expGivenByMonsterTimesThirtyTwo;
+    document.getElementById("monsterBExp").innerHTML = expGivenByMonsterTimesThirtyTwo;
     killNumberMonsterB++;
     currentCoins = currentCoins + coinsGivenByAllMonster;
   }
 }
 
+/* Monster C */
+var killNumberMonsterC = 0;
+var baseExpGivenByMonsterC = 4;
+var upgradeNumberMonsterC = 0;
+var costForUpgradeMonsterC = 4;
+
+function saveForMonsterC() {
+  let saveForMonsterC = {
+    KeyKillNumberMonsterC: killNumberMonsterC,
+    KeyBaseExpGivenByMonsterC: baseExpGivenByMonsterC,
+    KeyCostForUpgradeMonsterC: costForUpgradeMonsterC,
+    KeyUpgradeNumberMonsterC: upgradeNumberMonsterC,
+  };
+  let saveForMonsterCSerialized = JSON.stringify(saveForMonsterC);
+  localStorage.setItem("saveForMonsterC", saveForMonsterCSerialized);
+}
+
+setInterval(saveForMonsterC, 15000);
+
+let saveExistsForMonsterC = localStorage.getItem("saveForMonsterC");
+
+function loadForMonsterC() {
+  if (saveExistsForMonsterC) {
+    let saveForMonsterCDeserialized = JSON.parse(localStorage.getItem("saveForMonsterC"));
+
+    killNumberMonsterC = saveForMonsterCDeserialized.KeyKillNumberMonsterC;
+    baseExpGivenByMonsterC = saveForMonsterCDeserialized.KeyBaseExpGivenByMonsterC;
+    costForUpgradeMonsterC = saveForMonsterCDeserialized.KeyCostForUpgradeMonsterC;
+    upgradeNumberMonsterC = saveForMonsterCDeserialized.KeyUpgradeNumberMonsterC;
+  }
+  if (!saveExistsForMonsterC) {
+    saveForMonsterC();
+  }
+}
+
+setTimeout(loadForMonsterC, 250);
+
+let btnUpgradeMonsterCInHTML = document.getElementById("btnUpgradeMonsterC");
+btnUpgradeMonsterCInHTML.addEventListener("click", () => {
+  upgradesForMonsterC();
+});
+
+function displayForStatsMonsterC() {
+  document.getElementById("btnUpgradeMonsterC").innerHTML = costForUpgradeMonsterC;
+  document.getElementById("monsterCUpgrade").innerHTML = upgradeNumberMonsterC;
+  document.getElementById("monsterCKill").innerHTML = killNumberMonsterC;
+}
+
+setInterval(displayForStatsMonsterC, 325);
+
+function upgradesForMonsterC() {
+  if (upgradeNumberMonsterC <= 10 && currentCoins >= costForUpgradeMonsterC) {
+    //add one to the base experience given by this monster
+    baseExpGivenByMonsterC = baseExpGivenByMonsterC + 1;
+    //substract the cost from gold pile
+    currentCoins = currentCoins - costForUpgradeMonsterC;
+    //add one to the upgrade number and the cost of an upgrade
+    upgradeNumberMonsterC = upgradeNumberMonsterC + 1;
+    costForUpgradeMonsterC = costForUpgradeMonsterC + 4;
+    //update the displays of the cost and the number of upgrades (refers to base experience boost)
+  }
+  if (upgradeNumberMonsterC > 10 && upgradeNumberMonsterC <= 100 && currentCoins >= costForUpgradeMonsterC) {
+    baseExpGivenByMonsterC = baseExpGivenByMonsterC + 1;
+    currentCoins = currentCoins - costForUpgradeMonsterC;
+    upgradeNumberMonsterC++;
+    costForUpgradeMonsterC = costForUpgradeMonsterC + 8;
+  }
+  if (upgradeNumberMonsterC > 100 && upgradeNumberMonsterC <= 1000 && currentCoins >= costForUpgradeMonsterC) {
+    baseExpGivenByMonsterC = baseExpGivenByMonsterC + 1;
+    currentCoins = currentCoins - costForUpgradeMonsterC;
+    upgradeNumberMonsterC++;
+    costForUpgradeMonsterC = costForUpgradeMonsterC + 16;
+  }
+}
+
+function btnFightMonsterC() {
+  if (killNumberMonsterC <= 10) {
+    /* initial kill value before doubling... */
+    currentExperience = currentExperience + baseExpGivenByMonsterC;
+    killNumberMonsterC++;
+    document.getElementById("monsterCExp").innerHTML = baseExpGivenByMonsterC;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterC > 10 && killNumberMonsterC <= 100) {
+    /* power of 10 one time */
+    let expGivenByMonsterDoubled = baseExpGivenByMonsterC * 2;
+    currentExperience = currentExperience + expGivenByMonsterDoubled;
+    document.getElementById("monsterCExp").innerHTML = expGivenByMonsterDoubled;
+    killNumberMonsterC++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterC > 100 && killNumberMonsterC <= 1000) {
+    /* power of 10 two times */
+    let expGivenByMonsterQuadrupled = baseExpGivenByMonsterC * 4;
+    currentExperience = currentExperience + expGivenByMonsterQuadrupled;
+    document.getElementById("monsterCExp").innerHTML = expGivenByMonsterQuadrupled;
+    killNumberMonsterC++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterC > 1000 && killNumberMonsterC <= 10000) {
+    /* power of 10 three times */
+    let expGivenByMonsterTimesEight = baseExpGivenByMonsterC * 8;
+    currentExperience = currentExperience + expGivenByMonsterTimesEight;
+    document.getElementById("monsterCExp").innerHTML = expGivenByMonsterTimesEight;
+    killNumberMonsterC++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterC > 10000 && killNumberMonsterC <= 100000) {
+    /* power of 10 four times */
+    let expGivenByMonsterTimesSixteen = baseExpGivenByMonsterC * 16;
+    currentExperience = currentExperience + expGivenByMonsterTimesSixteen;
+    document.getElementById("monsterCExp").innerHTML = expGivenByMonsterTimesSixteen;
+    killNumberMonsterC++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterC > 100000) {
+    /* power of 10 four times */
+    let expGivenByMonsterTimesThirtyTwo = baseExpGivenByMonsterC * 32;
+    currentExperience = currentExperience + expGivenByMonsterTimesThirtyTwo;
+    document.getElementById("monsterCExp").innerHTML = expGivenByMonsterTimesThirtyTwo;
+    killNumberMonsterC++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+}
+
+/* Monster D */
+var killNumberMonsterD = 0;
+var baseExpGivenByMonsterD = 8;
+var upgradeNumberMonsterD = 0;
+var costForUpgradeMonsterD = 8;
+
+function saveForMonsterD() {
+  let saveForMonsterD = {
+    KeyKillNumberMonsterD: killNumberMonsterD,
+    KeyBaseExpGivenByMonsterD: baseExpGivenByMonsterD,
+    KeyCostForUpgradeMonsterD: costForUpgradeMonsterD,
+    KeyUpgradeNumberMonsterD: upgradeNumberMonsterD,
+  };
+  let saveForMonsterDSerialized = JSON.stringify(saveForMonsterD);
+  localStorage.setItem("saveForMonsterD", saveForMonsterDSerialized);
+}
+
+setInterval(saveForMonsterD, 15000);
+
+let saveExistsForMonsterD = localStorage.getItem("saveForMonsterD");
+
+function loadForMonsterD() {
+  if (saveExistsForMonsterD) {
+    let saveForMonsterDDeserialized = JSON.parse(localStorage.getItem("saveForMonsterD"));
+
+    killNumberMonsterD = saveForMonsterDDeserialized.KeyKillNumberMonsterD;
+    baseExpGivenByMonsterD = saveForMonsterDDeserialized.KeyBaseExpGivenByMonsterD;
+    costForUpgradeMonsterD = saveForMonsterDDeserialized.KeyCostForUpgradeMonsterD;
+    upgradeNumberMonsterD = saveForMonsterDDeserialized.KeyUpgradeNumberMonsterD;
+  }
+  if (!saveExistsForMonsterD) {
+    saveForMonsterD();
+  }
+}
+
+setTimeout(loadForMonsterD, 250);
+
+let btnUpgradeMonsterDInHTML = document.getElementById("btnUpgradeMonsterD");
+btnUpgradeMonsterDInHTML.addEventListener("click", () => {
+  upgradesForMonsterD();
+});
+
+function displayForStatsMonsterD() {
+  document.getElementById("btnUpgradeMonsterD").innerHTML = costForUpgradeMonsterD;
+  document.getElementById("monsterDUpgrade").innerHTML = upgradeNumberMonsterD;
+  document.getElementById("monsterDKill").innerHTML = killNumberMonsterD;
+}
+
+setInterval(displayForStatsMonsterD, 325);
+
+function upgradesForMonsterD() {
+  if (upgradeNumberMonsterD <= 10 && currentCoins >= costForUpgradeMonsterD) {
+    //add one to the base experience given by this monster
+    baseExpGivenByMonsterC = baseExpGivenByMonsterC + 1;
+    //substract the cost from gold pile
+    currentCoins = currentCoins - costForUpgradeMonsterD;
+    //add one to the upgrade number and the cost of an upgrade
+    upgradeNumberMonsterD = upgradeNumberMonsterD + 1;
+    costForUpgradeMonsterD = costForUpgradeMonsterD + 8;
+    //update the displays of the cost and the number of upgrades (refers to base experience boost)
+  }
+  if (upgradeNumberMonsterD > 10 && upgradeNumberMonsterD <= 100 && currentCoins >= costForUpgradeMonsterD) {
+    baseExpGivenByMonsterD = baseExpGivenByMonsterD + 1;
+    currentCoins = currentCoins - costForUpgradeMonsterD;
+    upgradeNumberMonsterD++;
+    costForUpgradeMonsterD = costForUpgradeMonsterD + 16;
+  }
+  if (upgradeNumberMonsterD > 100 && upgradeNumberMonsterD <= 1000 && currentCoins >= costForUpgradeMonsterD) {
+    baseExpGivenByMonsterD = baseExpGivenByMonsterD + 1;
+    currentCoins = currentCoins - costForUpgradeMonsterD;
+    upgradeNumberMonsterD++;
+    costForUpgradeMonsterD = costForUpgradeMonsterD + 32;
+  }
+}
+
+function btnFightMonsterD() {
+  if (killNumberMonsterD <= 10) {
+    /* initial kill value before doubling... */
+    currentExperience = currentExperience + baseExpGivenByMonsterD;
+    killNumberMonsterD++;
+    document.getElementById("monsterDExp").innerHTML = baseExpGivenByMonsterD;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterD > 10 && killNumberMonsterD <= 100) {
+    /* power of 10 one time */
+    let expGivenByMonsterDoubled = baseExpGivenByMonsterD * 2;
+    currentExperience = currentExperience + expGivenByMonsterDoubled;
+    document.getElementById("monsterDExp").innerHTML = expGivenByMonsterDoubled;
+    killNumberMonsterD++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterD > 100 && killNumberMonsterD <= 1000) {
+    /* power of 10 two times */
+    let expGivenByMonsterQuadrupled = baseExpGivenByMonsterD * 4;
+    currentExperience = currentExperience + expGivenByMonsterQuadrupled;
+    document.getElementById("monsterDExp").innerHTML = expGivenByMonsterQuadrupled;
+    killNumberMonsterD++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterD > 1000 && killNumberMonsterD <= 10000) {
+    /* power of 10 three times */
+    let expGivenByMonsterTimesEight = baseExpGivenByMonsterD * 8;
+    currentExperience = currentExperience + expGivenByMonsterTimesEight;
+    document.getElementById("monsterDExp").innerHTML = expGivenByMonsterTimesEight;
+    killNumberMonsterD++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterD > 10000 && killNumberMonsterD <= 100000) {
+    /* power of 10 four times */
+    let expGivenByMonsterTimesSixteen = baseExpGivenByMonsterD * 16;
+    currentExperience = currentExperience + expGivenByMonsterTimesSixteen;
+    document.getElementById("monsterDExp").innerHTML = expGivenByMonsterTimesSixteen;
+    killNumberMonsterD++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+  if (killNumberMonsterD > 100000) {
+    /* power of 10 four times */
+    let expGivenByMonsterTimesThirtyTwo = baseExpGivenByMonsterD * 32;
+    currentExperience = currentExperience + expGivenByMonsterTimesThirtyTwo;
+    document.getElementById("monsterDExp").innerHTML = expGivenByMonsterTimesThirtyTwo;
+    killNumberMonsterD++;
+    currentCoins = currentCoins + coinsGivenByAllMonster;
+  }
+}
 
 /*  
     (Immediately Invoked Function Expression)(); 
     "(WrapTheFunctionHere)" in parentheses and "();"" immediately invoke it! 
     Making it an Immediately Invoked Function Expression (*Anonymous and dont take place in the global Scope...) 
 */
+function saveEverything() {
+  saveProgressForCommonStats();
+  saveForMonsterA();
+  saveForMonsterB();
+  saveForMonsterC();
+  saveForMonsterD();
+}

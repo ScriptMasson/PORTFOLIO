@@ -12,7 +12,7 @@
     <div id="containerForStatsAndOtherStuff">
 
       <div id="containerForSave">
-        <img src="../docsImages/32BIT-SaveProgress-512px.png" id="imgToSave" class="saveSquares" onclick="saveProgressForCommonStats()" />
+        <img src="../docsImages/32BIT-SaveProgress-512px.png" id="imgToSave" class="saveSquares" onclick="saveEverything()" />
         <span id="spanToSave" onclick="saveProgressForCommonStats()">save</span>
         <img src="../docsImages/32BIT-GoldStack-512px.png" id="imgCoins" class="saveSquares" />
         <span id="currentCoins">0</span>
@@ -32,7 +32,7 @@
     <div id="containerForMonsters" class="displayFlex">
 
       <div id="infoForExpGainContainer">
-        <img src="../docsImages/64x32BIT-CoinsBonusBoutique-1024x512px.png" id="buttonToUpgradeShop" />
+        <img src="../docsImages/64x32BIT-UpgradeShop-1024x512px.png" id="buttonToUpgradeShop" />
         <span id="infoForExpGain"> Chaque monstre double ses points d'expérience par seconde à chaque pouvoir de 10 de total vaincu!</span>
       </div>
 
@@ -63,6 +63,15 @@
         </div>
       </div>
 
+      <div id="monsterContainerD" class="visibilityHidden individualMonsterContainer">
+        <div class="containerForMonsterPortrait"><div class="monsterPortrait monsterD">D</div></div>
+        <button role="button" id="btnFightFightMonsterD" class="buttonToFightMonster monsterD disable-dbl-tap-zoom" onclick="btnFightMonsterD()">Attaque!</button>
+        <div class="containerForMonsterStats">
+          <span class="monsterD"> 'D' donne &nbsp <span id="monsterDExp"> 0 </span> &nbsp points d'expérience par seconde</span>
+          <span class="monsterD"> Vaincu &nbsp<span id="monsterDKill"> 0 </span> &nbsp fois</span>
+        </div>
+      </div>
+
     </div>
 
     <div id="upgradeShop" class="displayNone">
@@ -77,6 +86,16 @@
       <div id="containerForMonsterBUpgrade" class="visibilityHidden monsterB containerForAllUpgrades disable-dbl-tap-zoom">
         <button id="btnUpgradeMonsterB" class="allButtonsForUpgrades disable-dbl-tap-zoom">2</button>
         <span class="allSpansForUpgrades">'B' a &nbsp<span id="monsterBUpgrade"> 0 </span>&nbsp expérience de base supplémentaire</span>
+      </div>
+
+      <div id="containerForMonsterCUpgrade" class="visibilityHidden monsterC containerForAllUpgrades disable-dbl-tap-zoom">
+        <button id="btnUpgradeMonsterC" class="allButtonsForUpgrades disable-dbl-tap-zoom">4</button>
+        <span class="allSpansForUpgrades">'C' a &nbsp<span id="monsterCUpgrade"> 0 </span>&nbsp expérience de base supplémentaire</span>
+      </div>
+
+      <div id="containerForMonsterDUpgrade" class="visibilityHidden monsterD containerForAllUpgrades disable-dbl-tap-zoom">
+        <button id="btnUpgradeMonsterD" class="allButtonsForUpgrades disable-dbl-tap-zoom">4</button>
+        <span class="allSpansForUpgrades">'D' a &nbsp<span id="monsterDUpgrade"> 0 </span>&nbsp expérience de base supplémentaire</span>
       </div>
 
     </div>
