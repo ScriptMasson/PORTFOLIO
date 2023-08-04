@@ -72,11 +72,31 @@
         </div>
       </div>
 
+      <div id="monsterContainerE" class="visibilityHidden individualMonsterContainer">
+        <div class="containerForMonsterPortrait"><div class="monsterPortrait monsterE">E</div></div>
+        <button role="button" id="btnFightFightMonsterE" class="buttonToFightMonster monsterE disable-dbl-tap-zoom" onclick="btnFightMonsterE()">Attaque!</button>
+        <div class="containerForMonsterStats">
+          <span class="monsterE"> 'E' donne &nbsp <span id="monsterEExp"> 0 </span> &nbsp points d'expérience par seconde</span>
+          <span class="monsterE"> Vaincu &nbsp<span id="monsterEKill"> 0 </span> &nbsp fois</span>
+        </div>
+      </div>
+
+      <div id="monsterContainerF" class="visibilityHidden individualMonsterContainer">
+        <div class="containerForMonsterPortrait"><div class="monsterPortrait monsterF">F</div></div>
+        <button role="button" id="btnFightFightMonsterF" class="buttonToFightMonster monsterF disable-dbl-tap-zoom" onclick="btnFightMonsterF()">Attaque!</button>
+        <div class="containerForMonsterStats">
+          <span class="monsterF"> 'F' donne &nbsp <span id="monsterFExp"> 0 </span> &nbsp points d'expérience par seconde</span>
+          <span class="monsterF"> Vaincu &nbsp<span id="monsterFKill"> 0 </span> &nbsp fois</span>
+        </div>
+      </div>
+
     </div>
 
     <div id="upgradeShop" class="displayNone">
 
-      <button id="buttonToReturn"><span>Cost</span>Return</button>
+    <div id="containerTopOfUpgradeShop">
+      <img src="../docsImages/64x32BIT-ReturnButton-1024x512px.png" id="buttonToReturn" />
+    </div>
 
       <div class="containerForAllUpgrades disable-dbl-tap-zoom">
         <button id="btnUpgradeMonsterA" class="allButtonsForUpgrades disable-dbl-tap-zoom">1</button>
@@ -94,8 +114,18 @@
       </div>
 
       <div id="containerForMonsterDUpgrade" class="visibilityHidden monsterD containerForAllUpgrades disable-dbl-tap-zoom">
-        <button id="btnUpgradeMonsterD" class="allButtonsForUpgrades disable-dbl-tap-zoom">4</button>
+        <button id="btnUpgradeMonsterD" class="allButtonsForUpgrades disable-dbl-tap-zoom">8</button>
         <span class="allSpansForUpgrades">'D' a &nbsp<span id="monsterDUpgrade"> 0 </span>&nbsp expérience de base supplémentaire</span>
+      </div>
+
+      <div id="containerForMonsterEUpgrade" class="visibilityHidden monsterE containerForAllUpgrades disable-dbl-tap-zoom">
+        <button id="btnUpgradeMonsterE" class="allButtonsForUpgrades disable-dbl-tap-zoom">16</button>
+        <span class="allSpansForUpgrades">'E' a &nbsp<span id="monsterEUpgrade"> 0 </span>&nbsp expérience de base supplémentaire</span>
+      </div>
+
+      <div id="containerForMonsterFUpgrade" class="visibilityHidden monsterF containerForAllUpgrades disable-dbl-tap-zoom">
+        <button id="btnUpgradeMonsterF" class="allButtonsForUpgrades disable-dbl-tap-zoom">32</button>
+        <span class="allSpansForUpgrades">'F' a &nbsp<span id="monsterFUpgrade"> 0 </span>&nbsp expérience de base supplémentaire</span>
       </div>
 
     </div>

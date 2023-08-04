@@ -404,31 +404,20 @@ body {
   flex-direction: column;
 }
 
-#buttonToReturn {
-  all: unset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 0%;
-  left: 0%;
-  padding: 1%;
-  border: white 4px solid;
-  box-sizing: border-box;
+#containerTopOfUpgradeShop {
+  height: 6vh;
+  width: 100vw;
 }
 
-#buttonToReturn > span {
-  all: unset;
+#buttonToReturn {
+  height: 6vh;
+  width: 12vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   top: 0%;
-  left: 0%;
-  padding: 1%;
-  border-right: white 4px solid;
-  box-sizing: border-box;
-  width: calc(20vw + 4px);
+  right: 0%;
 }
 
 .containerForAllUpgrades {
