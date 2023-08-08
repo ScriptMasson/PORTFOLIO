@@ -66,6 +66,27 @@ let IsMonsterCUnlocked = false;
 let IsMonsterDUnlocked = false;
 let IsMonsterEUnlocked = false;
 let IsMonsterFUnlocked = false;
+let IsMonsterGUnlocked = false;
+let IsMonsterHUnlocked = false;
+let IsMonsterIUnlocked = false;
+let IsMonsterJUnlocked = false;
+let IsMonsterKUnlocked = false;
+let IsMonsterLUnlocked = false;
+let IsMonsterMUnlocked = false;
+let IsMonsterNUnlocked = false;
+let IsMonsterOUnlocked = false;
+let IsMonsterPUnlocked = false;
+let IsMonsterQUnlocked = false;
+let IsMonsterRUnlocked = false;
+let IsMonsterSUnlocked = false;
+let IsMonsterTUnlocked = false;
+let IsMonsterUUnlocked = false;
+let IsMonsterVUnlocked = false;
+let IsMonsterWUnlocked = false;
+let IsMonsterXUnlocked = false;
+let IsMonsterYUnlocked = false;
+let IsMonsterZUnlocked = false;
+
 function lookIfAnyUnlockForMonsters() {
   if (currentLevel >= 1 && !IsMonsterAUnlocked) {
     setInterval(btnFightMonsterA, 1000);
@@ -73,7 +94,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterAUnlocked = true;
   }
-  if (currentLevel >= 3 && !IsMonsterBUnlocked) {
+  if (currentLevel >= 4 && !IsMonsterBUnlocked) {
     setInterval(btnFightMonsterB, 1000);
     setInterval(saveForMonsterB, 12000);
 
@@ -88,7 +109,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterBUnlocked = true;
   }
-  if (currentLevel >= 5 && !IsMonsterCUnlocked) {
+  if (currentLevel >= 7 && !IsMonsterCUnlocked) {
     setInterval(btnFightMonsterC, 1000);
     setInterval(saveForMonsterC, 12000);
 
@@ -103,7 +124,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterCUnlocked = true;
   }
-  if (currentLevel >= 8 && !IsMonsterDUnlocked) {
+  if (currentLevel >= 10 && !IsMonsterDUnlocked) {
     setInterval(btnFightMonsterD, 1000);
     setInterval(saveForMonsterD, 12000);
 
@@ -118,7 +139,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterDUnlocked = true;
   }
-  if (currentLevel >= 11 && !IsMonsterEUnlocked) {
+  if (currentLevel >= 13 && !IsMonsterEUnlocked) {
     setInterval(btnFightMonsterE, 1000);
     setInterval(saveForMonsterE, 12000);
 
@@ -133,7 +154,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterEUnlocked = true;
   }
-  if (currentLevel >= 15 && !IsMonsterFUnlocked) {
+  if (currentLevel >= 16 && !IsMonsterFUnlocked) {
     setInterval(btnFightMonsterF, 1000);
     setInterval(saveForMonsterF, 12000);
 
@@ -147,6 +168,21 @@ function lookIfAnyUnlockForMonsters() {
     document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(255, 224, 87)";
 
     IsMonsterFUnlocked = true;
+  }
+    if (currentLevel >= 19 && !IsMonsterGUnlocked) {
+    setInterval(btnFightMonsterG, 1000);
+    setInterval(saveForMonsterG, 12000);
+
+    document.getElementById("monsterContainerG").classList.remove("visibilityHidden");
+    document.getElementById("monsterContainerG").classList.add("visibilityVisible");
+
+    document.getElementById("containerForMonsterGUpgrade").classList.remove("visibilityHidden");
+    document.getElementById("containerForMonsterGUpgrade").classList.add("visibilityVisible");
+
+    document.getElementById("currentLevel").style.color = "rgb(255, 224, 87)";
+    document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(255, 224, 87)";
+
+    IsMonsterGUnlocked = true;
   }
 }
 setInterval(lookIfAnyUnlockForMonsters, 325);
