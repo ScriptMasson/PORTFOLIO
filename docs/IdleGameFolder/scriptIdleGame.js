@@ -94,7 +94,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterAUnlocked = true;
   }
-  if (currentLevel >= 4 && !IsMonsterBUnlocked) {
+  if (currentLevel >= 3 && !IsMonsterBUnlocked) {
     setInterval(btnFightMonsterB, 1000);
     setInterval(saveForMonsterB, 12000);
 
@@ -109,7 +109,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterBUnlocked = true;
   }
-  if (currentLevel >= 7 && !IsMonsterCUnlocked) {
+  if (currentLevel >= 5 && !IsMonsterCUnlocked) {
     setInterval(btnFightMonsterC, 1000);
     setInterval(saveForMonsterC, 12000);
 
@@ -124,7 +124,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterCUnlocked = true;
   }
-  if (currentLevel >= 10 && !IsMonsterDUnlocked) {
+  if (currentLevel >= 7 && !IsMonsterDUnlocked) {
     setInterval(btnFightMonsterD, 1000);
     setInterval(saveForMonsterD, 12000);
 
@@ -139,7 +139,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterDUnlocked = true;
   }
-  if (currentLevel >= 13 && !IsMonsterEUnlocked) {
+  if (currentLevel >= 10 && !IsMonsterEUnlocked) {
     setInterval(btnFightMonsterE, 1000);
     setInterval(saveForMonsterE, 12000);
 
@@ -154,7 +154,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterEUnlocked = true;
   }
-  if (currentLevel >= 16 && !IsMonsterFUnlocked) {
+  if (currentLevel >= 13 && !IsMonsterFUnlocked) {
     setInterval(btnFightMonsterF, 1000);
     setInterval(saveForMonsterF, 12000);
 
@@ -169,7 +169,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterFUnlocked = true;
   }
-    if (currentLevel >= 19 && !IsMonsterGUnlocked) {
+    if (currentLevel >= 16 && !IsMonsterGUnlocked) {
     setInterval(btnFightMonsterG, 1000);
     setInterval(saveForMonsterG, 12000);
 
@@ -183,6 +183,36 @@ function lookIfAnyUnlockForMonsters() {
     document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(255, 224, 87)";
 
     IsMonsterGUnlocked = true;
+  }
+  if (currentLevel >= 19 && !IsMonsterHUnlocked) {
+    setInterval(btnFightMonsterH, 1000);
+    setInterval(saveForMonsterH, 12000);
+
+    document.getElementById("monsterContainerH").classList.remove("visibilityHidden");
+    document.getElementById("monsterContainerH").classList.add("visibilityVisible");
+
+    document.getElementById("containerForMonsterHUpgrade").classList.remove("visibilityHidden");
+    document.getElementById("containerForMonsterHUpgrade").classList.add("visibilityVisible");
+
+    document.getElementById("currentLevel").style.color = "rgb(255, 224, 87)";
+    document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(255, 224, 87)";
+
+    IsMonsterHUnlocked = true;
+  }
+  if (currentLevel >= 22 && !IsMonsterIUnlocked) {
+    setInterval(btnFightMonsterI, 1000);
+    setInterval(saveForMonsterI, 12000);
+
+    document.getElementById("monsterContainerI").classList.remove("visibilityHidden");
+    document.getElementById("monsterContainerI").classList.add("visibilityVisible");
+
+    document.getElementById("containerForMonsterIUpgrade").classList.remove("visibilityHidden");
+    document.getElementById("containerForMonsterIUpgrade").classList.add("visibilityVisible");
+
+    document.getElementById("currentLevel").style.color = "rgb(255, 224, 87)";
+    document.getElementById("experienceBarFillingUp").style.backgroundColor = "rgb(255, 224, 87)";
+
+    IsMonsterIUnlocked = true;
   }
 }
 setInterval(lookIfAnyUnlockForMonsters, 325);
