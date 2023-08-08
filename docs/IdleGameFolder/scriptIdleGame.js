@@ -8,7 +8,7 @@ function levelUp() {
   if (currentExperience >= requiredExp) {
     currentLevel++;
     currentExperience = currentExperience - requiredExp;
-    requiredExp = requiredExp * 2;
+    requiredExp = requiredExp * 1.5;
   }
 }
 
