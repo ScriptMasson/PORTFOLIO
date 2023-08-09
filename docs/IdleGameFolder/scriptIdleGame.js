@@ -9,6 +9,7 @@ function levelUp() {
     currentLevel++;
     currentExperience = currentExperience - requiredExp;
     requiredExp = requiredExp * 1.5;
+    requiredExp = math.floor(requiredExp);
   }
 }
 
@@ -1046,9 +1047,9 @@ function btnFightMonsterF() {
 
 /* Monster G */
 var killNumberMonsterG = 0;
-var baseExpGivenByMonsterG = 32;
+var baseExpGivenByMonsterG = 64;
 var upgradeNumberMonsterG = 0;
-var costForUpgradeMonsterG = 32;
+var costForUpgradeMonsterG = 64;
 
 function saveForMonsterG() {
   let saveForMonsterG = {
@@ -1102,20 +1103,20 @@ function upgradesForMonsterG() {
     currentCoins = currentCoins - costForUpgradeMonsterG;
     //add one to the upgrade number and the cost of an upgrade
     upgradeNumberMonsterG = upgradeNumberMonsterG + 1;
-    costForUpgradeMonsterG = costForUpgradeMonsterG + 32;
+    costForUpgradeMonsterG = costForUpgradeMonsterG + 64;
     //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
   if (upgradeNumberMonsterG > 10 && upgradeNumberMonsterG <= 100 && currentCoins >= costForUpgradeMonsterG) {
     baseExpGivenByMonsterG = baseExpGivenByMonsterG + 1;
     currentCoins = currentCoins - costForUpgradeMonsterG;
     upgradeNumberMonsterG++;
-    costForUpgradeMonsterG = costForUpgradeMonsterG + 64;
+    costForUpgradeMonsterG = costForUpgradeMonsterG + 128;
   }
   if (upgradeNumberMonsterG > 100 && upgradeNumberMonsterG <= 1000 && currentCoins >= costForUpgradeMonsterG) {
     baseExpGivenByMonsterG = baseExpGivenByMonsterG + 1;
     currentCoins = currentCoins - costForUpgradeMonsterG;
     upgradeNumberMonsterG++;
-    costForUpgradeMonsterG = costForUpgradeMonsterG + 128;
+    costForUpgradeMonsterG = costForUpgradeMonsterG + 256;
   }
 }
 
@@ -1170,9 +1171,9 @@ function btnFightMonsterG() {
 }
 /* Monster H */
 var killNumberMonsterH = 0;
-var baseExpGivenByMonsterH = 32;
+var baseExpGivenByMonsterH = 128;
 var upgradeNumberMonsterH = 0;
-var costForUpgradeMonsterH = 32;
+var costForUpgradeMonsterH = 128;
 
 function saveForMonsterH() {
   let saveForMonsterH = {
@@ -1226,20 +1227,20 @@ function upgradesForMonsterH() {
     currentCoins = currentCoins - costForUpgradeMonsterH;
     //add one to the upgrade number and the cost of an upgrade
     upgradeNumberMonsterH = upgradeNumberMonsterH + 1;
-    costForUpgradeMonsterH = costForUpgradeMonsterH + 32;
+    costForUpgradeMonsterH = costForUpgradeMonsterH + 128;
     //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
   if (upgradeNumberMonsterH > 10 && upgradeNumberMonsterH <= 100 && currentCoins >= costForUpgradeMonsterH) {
     baseExpGivenByMonsterH = baseExpGivenByMonsterH + 1;
     currentCoins = currentCoins - costForUpgradeMonsterH;
     upgradeNumberMonsterH++;
-    costForUpgradeMonsterH = costForUpgradeMonsterH + 64;
+    costForUpgradeMonsterH = costForUpgradeMonsterH + 256;
   }
   if (upgradeNumberMonsterH > 100 && upgradeNumberMonsterH <= 1000 && currentCoins >= costForUpgradeMonsterH) {
     baseExpGivenByMonsterH = baseExpGivenByMonsterH + 1;
     currentCoins = currentCoins - costForUpgradeMonsterH;
     upgradeNumberMonsterH++;
-    costForUpgradeMonsterH = costForUpgradeMonsterH + 128;
+    costForUpgradeMonsterH = costForUpgradeMonsterH + 512;
   }
 }
 
@@ -1295,9 +1296,9 @@ function btnFightMonsterH() {
 
 /* Monster I */
 var killNumberMonsterI = 0;
-var baseExpGivenByMonsterI = 32;
+var baseExpGivenByMonsterI = 256;
 var upgradeNumberMonsterI = 0;
-var costForUpgradeMonsterI = 32;
+var costForUpgradeMonsterI = 256;
 
 function saveForMonsterI() {
   let saveForMonsterI = {
@@ -1351,20 +1352,20 @@ function upgradesForMonsterI() {
     currentCoins = currentCoins - costForUpgradeMonsterI;
     //add one to the upgrade number and the cost of an upgrade
     upgradeNumberMonsterI = upgradeNumberMonsterI + 1;
-    costForUpgradeMonsterI = costForUpgradeMonsterI + 32;
+    costForUpgradeMonsterI = costForUpgradeMonsterI + 256;
     //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
   if (upgradeNumberMonsterI > 10 && upgradeNumberMonsterI <= 100 && currentCoins >= costForUpgradeMonsterI) {
     baseExpGivenByMonsterI = baseExpGivenByMonsterI + 1;
     currentCoins = currentCoins - costForUpgradeMonsterI;
     upgradeNumberMonsterI++;
-    costForUpgradeMonsterI = costForUpgradeMonsterI + 64;
+    costForUpgradeMonsterI = costForUpgradeMonsterI + 512;
   }
   if (upgradeNumberMonsterI > 100 && upgradeNumberMonsterI <= 1000 && currentCoins >= costForUpgradeMonsterI) {
     baseExpGivenByMonsterI = baseExpGivenByMonsterI + 1;
     currentCoins = currentCoins - costForUpgradeMonsterI;
     upgradeNumberMonsterI++;
-    costForUpgradeMonsterI = costForUpgradeMonsterI + 128;
+    costForUpgradeMonsterI = costForUpgradeMonsterI + 1024;
   }
 }
 
@@ -1420,9 +1421,9 @@ function btnFightMonsterI() {
 
 /* Monster J */
 var killNumberMonsterJ = 0;
-var baseExpGivenByMonsterJ = 32;
+var baseExpGivenByMonsterJ = 512;
 var upgradeNumberMonsterJ = 0;
-var costForUpgradeMonsterJ = 32;
+var costForUpgradeMonsterJ = 512;
 
 function saveForMonsterJ() {
   let saveForMonsterJ = {
@@ -1476,20 +1477,20 @@ function upgradesForMonsterJ() {
     currentCoins = currentCoins - costForUpgradeMonsterJ;
     //add one to the upgrade number and the cost of an upgrade
     upgradeNumberMonsterJ = upgradeNumberMonsterJ + 1;
-    costForUpgradeMonsterJ = costForUpgradeMonsterJ + 32;
+    costForUpgradeMonsterJ = costForUpgradeMonsterJ + 512;
     //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
   if (upgradeNumberMonsterJ > 10 && upgradeNumberMonsterJ <= 100 && currentCoins >= costForUpgradeMonsterJ) {
     baseExpGivenByMonsterJ = baseExpGivenByMonsterJ + 1;
     currentCoins = currentCoins - costForUpgradeMonsterJ;
     upgradeNumberMonsterJ++;
-    costForUpgradeMonsterJ = costForUpgradeMonsterJ + 64;
+    costForUpgradeMonsterJ = costForUpgradeMonsterJ + 1024;
   }
   if (upgradeNumberMonsterJ > 100 && upgradeNumberMonsterJ <= 1000 && currentCoins >= costForUpgradeMonsterJ) {
     baseExpGivenByMonsterJ = baseExpGivenByMonsterJ + 1;
     currentCoins = currentCoins - costForUpgradeMonsterJ;
     upgradeNumberMonsterJ++;
-    costForUpgradeMonsterJ = costForUpgradeMonsterJ + 128;
+    costForUpgradeMonsterJ = costForUpgradeMonsterJ + 2048;
   }
 }
 
@@ -1545,9 +1546,9 @@ function btnFightMonsterJ() {
 
 /* Monster K */
 var killNumberMonsterK = 0;
-var baseExpGivenByMonsterK = 32;
+var baseExpGivenByMonsterK = 1024;
 var upgradeNumberMonsterK = 0;
-var costForUpgradeMonsterK = 32;
+var costForUpgradeMonsterK = 1024;
 
 function saveForMonsterK() {
   let saveForMonsterK = {
@@ -1601,20 +1602,20 @@ function upgradesForMonsterK() {
     currentCoins = currentCoins - costForUpgradeMonsterK;
     //add one to the upgrade number and the cost of an upgrade
     upgradeNumberMonsterK = upgradeNumberMonsterK + 1;
-    costForUpgradeMonsterK = costForUpgradeMonsterK + 32;
+    costForUpgradeMonsterK = costForUpgradeMonsterK + 1024;
     //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
   if (upgradeNumberMonsterK > 10 && upgradeNumberMonsterK <= 100 && currentCoins >= costForUpgradeMonsterK) {
     baseExpGivenByMonsterK = baseExpGivenByMonsterK + 1;
     currentCoins = currentCoins - costForUpgradeMonsterK;
     upgradeNumberMonsterK++;
-    costForUpgradeMonsterK = costForUpgradeMonsterK + 64;
+    costForUpgradeMonsterK = costForUpgradeMonsterK + 2048;
   }
   if (upgradeNumberMonsterK > 100 && upgradeNumberMonsterK <= 1000 && currentCoins >= costForUpgradeMonsterK) {
     baseExpGivenByMonsterK = baseExpGivenByMonsterK + 1;
     currentCoins = currentCoins - costForUpgradeMonsterK;
     upgradeNumberMonsterK++;
-    costForUpgradeMonsterK = costForUpgradeMonsterK + 128;
+    costForUpgradeMonsterK = costForUpgradeMonsterK + 4096;
   }
 }
 
@@ -1661,9 +1662,9 @@ function btnFightMonsterK() {
 }
 /* Monster L */
 var killNumberMonsterL = 0;
-var baseExpGivenByMonsterL = 32;
+var baseExpGivenByMonsterL = 2048;
 var upgradeNumberMonsterL = 0;
-var costForUpgradeMonsterL = 32;
+var costForUpgradeMonsterL = 2048;
 
 function saveForMonsterL() {
   let saveForMonsterL = {
@@ -1717,20 +1718,20 @@ function upgradesForMonsterL() {
     currentCoins = currentCoins - costForUpgradeMonsterL;
     //add one to the upgrade number and the cost of an upgrade
     upgradeNumberMonsterL = upgradeNumberMonsterL + 1;
-    costForUpgradeMonsterL = costForUpgradeMonsterL + 32;
+    costForUpgradeMonsterL = costForUpgradeMonsterL + 2048;
     //update the displays of the cost and the number of upgrades (refers to base experience boost)
   }
   if (upgradeNumberMonsterL > 10 && upgradeNumberMonsterL <= 100 && currentCoins >= costForUpgradeMonsterL) {
     baseExpGivenByMonsterL = baseExpGivenByMonsterL + 1;
     currentCoins = currentCoins - costForUpgradeMonsterL;
     upgradeNumberMonsterL++;
-    costForUpgradeMonsterL = costForUpgradeMonsterL + 64;
+    costForUpgradeMonsterL = costForUpgradeMonsterL + 4096;
   }
   if (upgradeNumberMonsterL > 100 && upgradeNumberMonsterL <= 1000 && currentCoins >= costForUpgradeMonsterL) {
     baseExpGivenByMonsterL = baseExpGivenByMonsterL + 1;
     currentCoins = currentCoins - costForUpgradeMonsterL;
     upgradeNumberMonsterL++;
-    costForUpgradeMonsterL = costForUpgradeMonsterL + 128;
+    costForUpgradeMonsterL = costForUpgradeMonsterL + 8192;
   }
 }
 
