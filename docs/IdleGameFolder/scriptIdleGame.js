@@ -8,7 +8,7 @@ function levelUp() {
   if (currentExperience >= requiredExp) {
     currentLevel++;
     currentExperience = currentExperience - requiredExp;
-    requiredExp = requiredExp * 1.5;
+    requiredExp = requiredExp * 1.75;
     requiredExp = parseFloat(requiredExp.toFixed(0));
   }
 }
