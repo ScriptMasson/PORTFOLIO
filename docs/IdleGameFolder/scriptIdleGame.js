@@ -9,7 +9,7 @@ function levelUp() {
     currentLevel++;
     currentExperience = currentExperience - requiredExp;
     requiredExp = requiredExp * 1.5;
-    requiredExp = math.floor(requiredExp);
+    requiredExp = parseFloat(requiredExp.toFixed(0));
   }
 }
 
