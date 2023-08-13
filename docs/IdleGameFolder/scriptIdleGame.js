@@ -95,7 +95,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterAUnlocked = true;
   }
-  if (currentLevel >= 3 && !IsMonsterBUnlocked) {
+  if (currentLevel >= 5 && !IsMonsterBUnlocked) {
     setInterval(btnFightMonsterB, 1000);
     setInterval(saveForMonsterB, 12000);
 
@@ -110,7 +110,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterBUnlocked = true;
   }
-  if (currentLevel >= 5 && !IsMonsterCUnlocked) {
+  if (currentLevel >= 10 && !IsMonsterCUnlocked) {
     setInterval(btnFightMonsterC, 1000);
     setInterval(saveForMonsterC, 12000);
 
@@ -125,7 +125,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterCUnlocked = true;
   }
-  if (currentLevel >= 7 && !IsMonsterDUnlocked) {
+  if (currentLevel >= 15 && !IsMonsterDUnlocked) {
     setInterval(btnFightMonsterD, 1000);
     setInterval(saveForMonsterD, 12000);
 
@@ -140,7 +140,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterDUnlocked = true;
   }
-  if (currentLevel >= 10 && !IsMonsterEUnlocked) {
+  if (currentLevel >= 20 && !IsMonsterEUnlocked) {
     setInterval(btnFightMonsterE, 1000);
     setInterval(saveForMonsterE, 12000);
 
@@ -155,7 +155,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterEUnlocked = true;
   }
-  if (currentLevel >= 13 && !IsMonsterFUnlocked) {
+  if (currentLevel >= 25 && !IsMonsterFUnlocked) {
     setInterval(btnFightMonsterF, 1000);
     setInterval(saveForMonsterF, 12000);
 
@@ -170,7 +170,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterFUnlocked = true;
   }
-    if (currentLevel >= 16 && !IsMonsterGUnlocked) {
+    if (currentLevel >= 30 && !IsMonsterGUnlocked) {
     setInterval(btnFightMonsterG, 1000);
     setInterval(saveForMonsterG, 12000);
 
@@ -185,7 +185,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterGUnlocked = true;
   }
-  if (currentLevel >= 19 && !IsMonsterHUnlocked) {
+  if (currentLevel >= 35 && !IsMonsterHUnlocked) {
     setInterval(btnFightMonsterH, 1000);
     setInterval(saveForMonsterH, 12000);
 
@@ -200,7 +200,7 @@ function lookIfAnyUnlockForMonsters() {
 
     IsMonsterHUnlocked = true;
   }
-  if (currentLevel >= 22 && !IsMonsterIUnlocked) {
+  if (currentLevel >= 40 && !IsMonsterIUnlocked) {
     setInterval(btnFightMonsterI, 1000);
     setInterval(saveForMonsterI, 12000);
 
